@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-06-07T11:56:34 IST" name="Suite_to_automate_SIM" finished-at="2024-06-07T11:57:01 IST" duration-ms="26223">
+  <suite started-at="2024-06-25T17:20:25 IST" name="Suite_to_automate_SIM" finished-at="2024-06-25T17:21:10 IST" duration-ms="45739">
     <groups>
     </groups>
-    <test started-at="2024-06-07T11:56:34 IST" name="Test" finished-at="2024-06-07T11:57:01 IST" duration-ms="26223">
+    <test started-at="2024-06-25T17:20:25 IST" name="Test" finished-at="2024-06-25T17:21:10 IST" duration-ms="45739">
       <class name="Sim_automation.InvoiceCreation">
-        <test-method is-config="true" signature="browserOpen()[pri:0, instance:Sim_automation.InvoiceCreation@64e7619d]" started-at="2024-06-07T11:56:34 IST" name="browserOpen" finished-at="2024-06-07T11:56:42 IST" duration-ms="7423" status="PASS">
+        <test-method is-config="true" signature="browserOpen()[pri:0, instance:Sim_automation.InvoiceCreation@21ca139c]" started-at="2024-06-25T17:20:25 IST" name="browserOpen" finished-at="2024-06-25T17:20:32 IST" duration-ms="7059" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserOpen -->
-        <test-method signature="invoiceform()[pri:0, instance:Sim_automation.InvoiceCreation@64e7619d]" started-at="2024-06-07T11:56:42 IST" name="invoiceform" finished-at="2024-06-07T11:57:00 IST" duration-ms="17666" status="PASS">
+        <test-method signature="invoiceform()[pri:0, instance:Sim_automation.InvoiceCreation@21ca139c]" started-at="2024-06-25T17:20:32 IST" name="invoiceform" finished-at="2024-06-25T17:21:09 IST" duration-ms="37551" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- invoiceform -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:Sim_automation.InvoiceCreation@64e7619d]" started-at="2024-06-07T11:57:00 IST" name="closeBrowser" finished-at="2024-06-07T11:57:01 IST" duration-ms="1090" status="PASS">
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:Sim_automation.InvoiceCreation@21ca139c]" started-at="2024-06-25T17:21:09 IST" name="closeBrowser" finished-at="2024-06-25T17:21:10 IST" duration-ms="1096" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->

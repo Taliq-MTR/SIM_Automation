@@ -13,21 +13,22 @@ public class InvoiceCreation extends InvoiceListPage {
 
 		boolean createInv = invpom.openInvoiceCreationForm();
 		Assert.assertEquals(createInv, true, "Create Invoice page Open successfully");
+		Thread.sleep(5000);
 
 		boolean client = invpom.addCCustomer();
 		Assert.assertEquals(client, true, "Customer Added successfully");
 
 		boolean product = invpom.selectProduct();
 		Assert.assertEquals(product, true, "product Added successfully");
-		Thread.sleep(1000);
+		Thread.sleep(4000);
 
 		boolean saveInv = invpom.saveInvoice();
 		Assert.assertEquals(saveInv, true, "Invoice Added successfully");
-		Thread.sleep(800);
+		Thread.sleep(9000);
 
 		boolean invToDashboard = invpom.dashboard();
 		Assert.assertEquals(invToDashboard, true, "Successfully Came back to Dasboard");
-		Thread.sleep(1500);
+		Thread.sleep(3500);
 
 	}
 

@@ -143,6 +143,9 @@
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite name=&quot;Suite_to_automate_SIM&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;browserSetup_Login.Listeners&quot;/&gt;
+  &lt;/listeners&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Test&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;Sim_automation.InvoiceCreation&quot;/&gt;
@@ -189,12 +192,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'invoiceform')
 data.setCell(0, 2, 'Sim_automation.InvoiceCreation')
-data.setCell(0, 3, 17666);
+data.setCell(0, 3, 37551);
 window.suiteTableData['Suite_to_automate_SIM']= { tableData: data, tableDiv: 'times-div-Suite_to_automate_SIM'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 17 seconds</span>
+              <span class="suite-total-time">Total running time: 37 seconds</span>
               <div id="times-div-Suite_to_automate_SIM">
               </div> <!-- times-div-Suite_to_automate_SIM -->
             </div> <!-- times-div -->
@@ -227,11 +230,11 @@ return data;
               </div> <!-- configuration-test before -->
               <div class="test-method">
                 <span class="method-name">invoiceform</span>
-                <span class="method-start">7448 ms</span>
+                <span class="method-start">7080 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-test after">
                 <span class="method-name">closeBrowser</span>
-                <span class="method-start">25118 ms</span>
+                <span class="method-start">44634 ms</span>
               </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

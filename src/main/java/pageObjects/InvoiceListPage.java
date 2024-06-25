@@ -63,7 +63,8 @@ public class InvoiceListPage extends Login {
 //	(2) Made a Constructor 
 //	Initialize the Element
 	public InvoiceListPage() {
-		System.out.println("This is search context" + driver);
+//		System.out.println("This is search context" + driver);
+		Login.log().info("This is search context" + driver);
 		PageFactory.initElements(driver, this);
 	}
 
@@ -77,7 +78,8 @@ public class InvoiceListPage extends Login {
 			// 1 => INVOICE
 			int formType = 1;
 
-			System.out.println("Creating Invoices");
+//			System.out.println("Creating Invoices");
+			Login.log().info("Creating Invoices");
 
 			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
 			// TODO Auto-generated method stub
@@ -89,10 +91,12 @@ public class InvoiceListPage extends Login {
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button.New_product")));
 
 			addNewInvoice.click();
-			System.out.println("Invoice creation Form Open");
+//			System.out.println("Invoice creation Form Open");
+			Login.log().info("Invoice creation Form Open");
 			return true;
 		} catch (Exception e) {
-			System.out.println("Invoice Creation Form not Opened");
+//			System.out.println("Invoice Creation Form not Opened");
+			Login.log().error("Invoice Creation Form not Opened:" + e);
 			e.printStackTrace();
 		}
 
@@ -105,7 +109,8 @@ public class InvoiceListPage extends Login {
 			addClient.click();
 			return true;
 		} catch (Exception e) {
-			System.out.println("Customer not added");
+//			System.out.println("Customer not added");
+			Login.log().error("Customer not added:" + e);
 		}
 
 		return false;
@@ -118,7 +123,8 @@ public class InvoiceListPage extends Login {
 			addProduct.click();
 
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToQtyINV);
-			System.out.println("Page scrolled to 'QtY' ");
+//			System.out.println("Page scrolled to 'QtY' ");
+			Login.log().info("Page scrolled to 'QtY' ");
 
 			// Wait for the element to be present and clickable
 			Duration duration = Duration.ofSeconds(10l, 10);
@@ -127,10 +133,12 @@ public class InvoiceListPage extends Login {
 			// Click the element using JavaScript to avoid interception issues
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", addItemButton);
 
-			System.out.println("Product Added Successfully");
+//			System.out.println("Product Added Successfully");
+			Login.log().info("Product Added Successfully");
 			return true;
 		} catch (Exception e) {
-			System.out.println("Product Line item not Added");
+//			System.out.println("Product Line item not Added");
+			Login.log().error("Product Line item not Added:" + e);
 			e.printStackTrace();
 		}
 
@@ -142,10 +150,11 @@ public class InvoiceListPage extends Login {
 
 			saveInvoice.click();
 //			System.out.println("Invoice Added Successfully");
-
+			Login.log().info("Invoice Added Successfully");
 			return true;
 		} catch (Exception e) {
-			System.out.println("Didn't Click on Save Invoice Button");
+//			System.out.println("Didn't Click on Save Invoice Button");
+			Login.log().error("Didn't Click on Save Invoice Button:" + e );
 		}
 
 		return false;
@@ -155,15 +164,18 @@ public class InvoiceListPage extends Login {
 	public boolean dashboard() {
 		try {
 
-			System.out.println("Waited 5 second");
+//			System.out.println("Waited 5 second");
+			Login.log().info("Waited 5 second");
 			invToDashboard.click();
 
-			System.out.println("We have Successfully Completed First Module");
+//			System.out.println("We have Successfully Completed First Module");
+			Login.log().info("We have Successfully Completed First Module");
 			// Set implicit wait of 5 seconds
 
 			return true;
 		} catch (Exception e) {
-			System.out.println("Failed to Go on Dashboard from Invoice List");
+//			System.out.println("Failed to Go on Dashboard from Invoice List");
+			Login.log().error("Failed to Go on Dashboard from Invoice List" + e);
 			e.printStackTrace();
 		}
 

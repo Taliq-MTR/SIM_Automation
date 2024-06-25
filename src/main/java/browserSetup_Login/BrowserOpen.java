@@ -19,7 +19,8 @@ public class BrowserOpen {
 	public void browserOpen() throws InterruptedException {
 		// TODO Auto-generated method st0ub
 		driver = new ChromeDriver();
-		System.out.println("The method call");
+//		System.out.println("The method call");
+		log().info("The method call");
 		driver.get("https://www.simpleinvoiceweb.com/#/home");
 		driver.manage().window().maximize();
 
@@ -39,4 +40,5 @@ public class BrowserOpen {
 		driver.quit();
 
 	}
+	
 }

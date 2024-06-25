@@ -27,13 +27,15 @@ public class Login extends BrowserOpen {
 			waitforDashboard.until(ExpectedConditions.visibilityOfElementLocated(
 					By.xpath("//h4[contains(@class, 'page-title') and contains(text(), 'Dashboard')]")));
 			String dashboardUrl = driver.getCurrentUrl();
-			System.out.println("The Dashboard url:" + dashboardUrl);
+//			System.out.println("The Dashboard url:" + dashboardUrl);
+			log().info("The Dashboard url:" + dashboardUrl);
 
 			return true;
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("User Login Failed");
+			
+//			System.out.println("User Login Failed");
+			log().error("User Login Failed" + e);
 		}
 		return false;
 	}
