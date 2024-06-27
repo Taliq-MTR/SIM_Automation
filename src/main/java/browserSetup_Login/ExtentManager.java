@@ -19,7 +19,7 @@ public class ExtentManager {
 	public static void setExtent() throws IOException {
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 		htmlReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "/test-output/ExtentReport/" + timeStamp
-				+ "_SurLeLacAutomationReport.html");
+				+ "_Simple Invoice Manager.html");
 		htmlReporter.config().setDocumentTitle("Automation Test Report");
 		htmlReporter.config().setReportName("Checkout Test Automation Report");
 		htmlReporter.config().setTheme(Theme.DARK);
@@ -27,8 +27,8 @@ public class ExtentManager {
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
 
-		extent.setSystemInfo("ProjectName", "Sur Le Lac");
-		extent.setSystemInfo("Tester", "Imran");
+		extent.setSystemInfo("ProjectName", "Simple Invoice Manager");
+		extent.setSystemInfo("Tester", "Taliq");
 		extent.setSystemInfo("Platform", "Windows 11");
 		extent.setSystemInfo("Browser", "Chrome");
 	}
