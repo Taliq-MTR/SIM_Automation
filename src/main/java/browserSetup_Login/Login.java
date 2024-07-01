@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.aventstack.extentreports.Status;
+
 public class Login extends BrowserOpen {
 
 	public boolean loginDetail() {
@@ -29,6 +31,7 @@ public class Login extends BrowserOpen {
 			String dashboardUrl = driver.getCurrentUrl();
 //			System.out.println("The Dashboard url:" + dashboardUrl);
 			log().info("The Dashboard url:" + dashboardUrl);
+//			ExtentManager.test.log(Status.PASS, "The Dashboard url:" + dashboardUrl);
 
 			return true;
 
@@ -36,6 +39,7 @@ public class Login extends BrowserOpen {
 			
 //			System.out.println("User Login Failed");
 			log().error("User Login Failed" + e);
+//			ExtentManager.test.log(Status.PASS, "User Login Failed" + e);
 		}
 		return false;
 	}
