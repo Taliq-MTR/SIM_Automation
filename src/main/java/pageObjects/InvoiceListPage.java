@@ -34,7 +34,7 @@ public class InvoiceListPage extends Login {
 	// Click on Client Section
 	@FindBy(css = "input[placeholder='Search & Select Client']")
 	WebElement searchClient;
-//	ssa
+
 
 	// Select and Add Client
 	@FindBy(xpath = "//span[@class='mdc-list-item__primary-text' and text()=' Saim ']")
