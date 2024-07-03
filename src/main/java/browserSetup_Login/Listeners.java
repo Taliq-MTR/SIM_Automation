@@ -19,24 +19,18 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 
 public class Listeners extends ExtentManager implements ITestListener {
-	
-	
-	
-	
-	
 
 	@Override
 	public void onTestStart(ITestResult result) {
-		   // This can be used to set up the driver before any test methods run
-       
-		test=extent.createTest(result.getMethod().getDescription()); 
+		// This can be used to set up the driver before any test methods run
+
+		test = extent.createTest(result.getMethod().getDescription());
 
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		if(result.getStatus()==ITestResult.SUCCESS)
-		{
+		if (result.getStatus() == ITestResult.SUCCESS) {
 			test.log(Status.PASS, "Pass test case :" + result.getName());
 		}
 
@@ -44,41 +38,39 @@ public class Listeners extends ExtentManager implements ITestListener {
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-		//Downcast web driver object to TakeScreenshot child interface
-    	TakesScreenshot scrShot =(TakesScreenshot)Login.driver;
-    	
-    	//Call getScreenshotAs method to create image file
-    	File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
-    	
-    	//Generate current date and time
-    	String timeString = new SimpleDateFormat("MM.dd.yyyy.HH.mm.ss").format(new Date ());
-    	 SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
-         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-         
-    	String destFolder= ("./screenshots/" + timeString + "screenshot.png");
-    	File destFile = new File(destFolder);
-    	
-     	try {
+		// Downcast web driver object to TakeScreenshot child interface
+		TakesScreenshot scrShot = (TakesScreenshot) Login.driver;
+
+		// Call getScreenshotAs method to create image file
+		File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
+
+		// Generate current date and time
+		String timeStamps = new SimpleDateFormat("MM.dd.yyyy.HH.mm.ss").format(new Date());
+//    	 SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+
+		String destFolder = ("./screenshots/" + timeStamps + "screenshot.png");
+		File destFile = new File(destFolder);
+
+		try {
 			FileUtils.copyFile(srcFile, destFile);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 //     	ScreenShot with Logs report
-     	if (result.getStatus() == ITestResult.FAILURE)
-     	{
-     		try {
-     			test.log(Status.FAIL,
-     				MarkupHelper.createLabel(result.getName() + "-Test Case Fialed", ExtentColor.RED));
-     			test.log(Status.FAIL,
-         				MarkupHelper.createLabel(result.getThrowable() + "-Test Case Fialed", ExtentColor.RED));
-     			test.addScreenCaptureFromPath(System.getProperty(("user.dir") + "/screenshots/" +timestamp +"screenshot.png" ));
-     		}
-     		catch (Exception e){
-     			e.printStackTrace();
-     			
-     		}
-     	}    	
+		if (result.getStatus() == ITestResult.FAILURE) {
+			try {
+				test.log(Status.FAIL,
+						MarkupHelper.createLabel(result.getName() + "-Test Case Fialed", ExtentColor.RED));
+				test.log(Status.FAIL,
+						MarkupHelper.createLabel(result.getThrowable() + "-Test Case Fialed", ExtentColor.RED));
+				test.addScreenCaptureFromPath(
+						System.getProperty("user.dir") + "/screenshots/" + timeStamps + "screenshot.png");
+			} catch (Exception e) {
+				e.printStackTrace();
+
+			}
+		}
 	}
 
 	@Override
