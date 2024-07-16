@@ -3,23 +3,21 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Sim_automation.InvoiceCreationCopy">
-        <methods>
-          <include name="addProduct"/>
-          <include name="closeBrowser"/>
-          <include name="addClient"/>
-          <include name="invoiceform"/>
-          <include name="browserOpen"/>
-          <include name="navigateToForm"/>
-        </methods>
-      </class> <!-- Sim_automation.InvoiceCreationCopy -->
       <class name="Sim_automation.InvoiceCreation">
         <methods>
           <include name="closeBrowser"/>
           <include name="browserOpen"/>
+          <include name="endReport"/>
+          <include name="reportGenerate"/>
           <include name="invoiceform"/>
         </methods>
       </class> <!-- Sim_automation.InvoiceCreation -->
+      <class name="browserSetup_Login.BrowserOpen">
+        <methods>
+          <include name="closeBrowser"/>
+          <include name="endReport"/>
+        </methods>
+      </class> <!-- browserSetup_Login.BrowserOpen -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -6,15 +6,15 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="Sim_automation.InvoiceCreation">
+      <class name="Sim_automation.PurchaseCreation">
         <methods>
           <include name="closeBrowser"/>
+          <include name="invoiceform"/>
           <include name="endReport"/>
           <include name="browserOpen"/>
           <include name="reportGenerate"/>
-          <include name="invoiceform"/>
         </methods>
-      </class> <!-- Sim_automation.InvoiceCreation -->
+      </class> <!-- Sim_automation.PurchaseCreation -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite_to_automate_SIM] -->

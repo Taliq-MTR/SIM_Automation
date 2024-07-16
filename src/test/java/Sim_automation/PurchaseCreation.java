@@ -1,37 +1,37 @@
 package Sim_automation;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-public class PurchaseCreation implements RecordCreation {
+import pageObjects.PurchaseListPage;
+
+public class PurchaseCreation extends PurchaseListPage {
 
 
-	@Override
-	public void addClient(WebDriver driver) {
-		// TODO Auto-generated method stub
-		
+	@Test (priority = 1, description = "Add a Purchase in the SIM-Web App")
+	public void invoiceform() throws InterruptedException {
+		PurchaseListPage purpom = new PurchaseListPage();
+
+		boolean createPur = purpom.openPurchaseCreationForm();
+		Assert.assertEquals(createPur, true, "Create Purchase page Open successfully");
+		Thread.sleep(5000);
+
+		boolean client = purpom.addSupplier();
+		Assert.assertEquals(client, true, "Supplier Added successfully");
+
+		boolean product = purpom.selectProduct();
+		Assert.assertEquals(product, true, "product Added successfully");
+		Thread.sleep(4000);
+
+		boolean saveInv = purpom.savePurchase();
+		Assert.assertEquals(saveInv, true, "Purchase Added successfully");
+		Thread.sleep(9000);
+
+		boolean invToDashboard = purpom.dashboard();
+		Assert.assertEquals(invToDashboard, true, "Successfully Came back to Dasboard");
+		Thread.sleep(3500);
+
 	}
-
-	@Override
-	public void addProduct(WebDriver driver) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void navigateToForm(WebDriver driver) {
-		
-		// 2 => Purchase
-		int formType = 2;
-		
-		String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)",formType);
-		// TODO Auto-generated method stub
-		WebElement addNewPurchase = driver
-				.findElement(By.cssSelector(dashboardSelectorCss));
-		addNewPurchase.click();
-	}
-  
 	
 
 }

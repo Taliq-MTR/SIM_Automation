@@ -18,7 +18,8 @@ import browserSetup_Login.BrowserOpen;
 import browserSetup_Login.ExtentManager;
 import browserSetup_Login.Login;
 
-public class InvoiceListPage extends BrowserOpen {
+
+public class PurchaseListPage extends BrowserOpen {
 
 //	All the elements to make a Invoice required actions
 //	We use @FindBy testNg method to locate the element
@@ -28,28 +29,28 @@ public class InvoiceListPage extends BrowserOpen {
 //	WebDriver driver;
 //	(1) All the elements will locate here
 
-	// Click on Add Invoice button
+	// Click on Add Purchase button
 	@FindBy(css = "button.New_product")
-	WebElement addNewInvoice;
+	WebElement addNewPurchase;
 
-	// Click on Client Section
-	@FindBy(css = "input[placeholder='Search & Select Client']")
-	WebElement searchClient;
+	// Click on Supplier Section
+	@FindBy(css = "#lwAddClient")
+	WebElement searchSupplier;
 
 
 	// Select and Add Client
-	@FindBy(xpath = "//span[@class='mdc-list-item__primary-text' and text()=' Saim ']")
-	WebElement addClient;
+	@FindBy(xpath = "//mat-option//span[text()=' MTR ']")
+	WebElement addSupplier;
 
 	// Click on Add product section to search for product
 	@FindBy(css = "input[name='itemName']")
 	WebElement searchProduct;
 
 	// Add Product
-	@FindBy(xpath = "//mat-option[contains(@class, 'mat-mdc-option')]/span[contains(@class, 'mdc-list-item__primary-text')][text()=' Football ']")
+	@FindBy(xpath = "//mat-option//span[text()=' Football ']")
 	WebElement addProduct;
 
-	// Scroll the Page to click on line itme
+	// Scroll the Page to click on line item
 	@FindBy(css = "th.qty-field")
 	WebElement scrollToQtyINV;
 
@@ -57,68 +58,69 @@ public class InvoiceListPage extends BrowserOpen {
 	@FindBy(css = "button.add-line-form")
 	WebElement addItemButton;
 
-	// Now Click on Save Invoice
-	@FindBy(xpath = "//button[contains(@class, 'btn-done') and contains(text(), 'Save Invoice')]")
-	WebElement saveInvoice;
+	// Now Click on Save Purchase
+	@FindBy(xpath ="//button[contains(@class, 'btn-done') and contains(text(), 'Save Purchase')]")
+	WebElement savePurchase;
 
 	// Now Going Back To Dashboard
-	@FindBy(css = "li.breadcrumb-item > a[routerlink='/dashboard']")
-	WebElement invToDashboard;
+	@FindBy(css = "a[href='#/dashboard']")
+	WebElement purchaseToDashboard;
 
 //	(2) Made a Constructor 
 //	Initialize the Element
-	public InvoiceListPage() {
-//		System.out.println("This is search context" + driver);
-		Login.log().info("This is search context" + driver);
+	public PurchaseListPage() {
+
+//		Login.log().info("This is search context" + driver);
+//		ExtentManager.test.log(Status.PASS, "This is search context" + driver);
+
 
 		PageFactory.initElements(driver, this);
 	}
 
 // (3) Perform Action on the Elements
 
-	public boolean openInvoiceCreationForm() {
+	public boolean openPurchaseCreationForm() {
 		try {
 			
-			// 1 => INVOICE
-			int formType = 1;
+			// 2 => Purchase
+			int formType = 2;
 
-//			System.out.println("Creating Invoices");
-			Login.log().info("Creating Invoices");
-			ExtentManager.test.log(Status.PASS, "Creating Invoices");
+			Login.log().info("Creating Purchases");
+			ExtentManager.test.log(Status.PASS, "Creating Purchases");
 
 			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
 			// TODO Auto-generated method stub
-			WebElement openInvoiceList = driver.findElement(By.cssSelector(dashboardSelectorCss));
-			openInvoiceList.click();
+			WebElement openPurchaseList = driver.findElement(By.cssSelector(dashboardSelectorCss));
+			openPurchaseList.click();
 
 			Duration duration = Duration.ofSeconds(10l, 10);
 			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button.New_product")));
 
-			addNewInvoice.click();
-//			System.out.println("Invoice creation Form Open");
-			Login.log().info("Invoice creation Form Open");
-			ExtentManager.test.log(Status.PASS, "Invoice creation Form Open");
+			addNewPurchase.click();
+
+			Login.log().info("Purchase creation Form Open");
+			ExtentManager.test.log(Status.PASS, "Purchase creation Form Open");
 			return true;
 		} catch (Exception e) {
-//			System.out.println("Invoice Creation Form not Opened");
-			Login.log().error("Invoice Creation Form not Opened:" + e);
-			ExtentManager.test.log(Status.FAIL, "Invoice Creation Form not Opened:" + e);
+
+			Login.log().error("Purchase Creation Form not Opened:" + e);
+			ExtentManager.test.log(Status.FAIL, "Purchase Creation Form not Opened:" + e);
 			
 		}
 
 		return false;
 	}
 
-	public boolean addCCustomer() {
+	public boolean addSupplier() {
 		try {
-			searchClient.click();
-			addClient.click();
+			searchSupplier.click();
+			addSupplier.click();
 			return true;
 		} catch (Exception e) {
 //			System.out.println("Customer not added");
-			Login.log().error("Customer not added:" + e);
-			ExtentManager.test.log(Status.FAIL, "Customer not added:" + e);
+			Login.log().error("Supplier not added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Supplier not added:" + e);
 		}
 
 		return false;
@@ -156,18 +158,18 @@ public class InvoiceListPage extends BrowserOpen {
 		return false;
 	}
 
-	public boolean saveInvoice() {
+	public boolean savePurchase() {
 		try {
 
-			saveInvoice.click();
-//			System.out.println("Invoice Added Successfully");
-			Login.log().info("Invoice Added Successfully");
-			ExtentManager.test.log(Status.PASS, "Invoice Added Successfully");
+			savePurchase.click();
+
+			Login.log().info("Purchase Added Successfully");
+			ExtentManager.test.log(Status.PASS, "Purchase Added Successfully");
 			return true;
 		} catch (Exception e) {
-//			System.out.println("Didn't Click on Save Invoice Button");
-			Login.log().error("Didn't Click on Save Invoice Button:" + e );
-			ExtentManager.test.log(Status.FAIL, "Didn't Click on Save Invoice Button:" + e);
+
+			Login.log().error("Didn't Click on Save Purchase Button:" + e );
+			ExtentManager.test.log(Status.FAIL, "Didn't Click on Save Purchase Button:" + e);
 		}
 
 		return false;
@@ -177,21 +179,18 @@ public class InvoiceListPage extends BrowserOpen {
 	public boolean dashboard() {
 		try {
 
-//			System.out.println("Waited 5 second");
 			Login.log().info("Waited 5 second");
 			ExtentManager.test.log(Status.PASS, "Waited 5 second");
-			invToDashboard.click();
+			purchaseToDashboard.click();
 			
-//			System.out.println("We have Successfully Completed First Module");
 			Login.log().info("We have Successfully Completed First Module");
 			ExtentManager.test.log(Status.PASS, "We have Successfully Completed First Module");
 			// Set implicit wait of 5 seconds
 
 			return true;
 		} catch (Exception e) {
-//			System.out.println("Failed to Go on Dashboard from Invoice List");
-			Login.log().error("Failed to Go on Dashboard from Invoice List" + e);
-			ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Invoice List" + e);			e.printStackTrace();
+			Login.log().error("Failed to Go on Dashboard from Purchase List" + e);
+			ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Purchase List" + e);			e.printStackTrace();
 		}
 
 		return false;
