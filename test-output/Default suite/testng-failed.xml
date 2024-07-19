@@ -18,6 +18,15 @@
           <include name="endReport"/>
         </methods>
       </class> <!-- browserSetup_Login.BrowserOpen -->
+      <class name="Sim_automation.PurchaseCreation">
+        <methods>
+          <include name="closeBrowser"/>
+          <include name="invoiceform"/>
+          <include name="endReport"/>
+          <include name="browserOpen"/>
+          <include name="reportGenerate"/>
+        </methods>
+      </class> <!-- Sim_automation.PurchaseCreation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

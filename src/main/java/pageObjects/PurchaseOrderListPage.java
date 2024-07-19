@@ -1,7 +1,6 @@
 package pageObjects;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,17 +9,15 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import com.aventstack.extentreports.Status;
 
 import browserSetup_Login.BrowserOpen;
 import browserSetup_Login.ExtentManager;
-import browserSetup_Login.Login;
 
+public class PurchaseOrderListPage extends BrowserOpen{
 
-public class PurchaseListPage extends BrowserOpen {
-
+	
 //	All the elements to make a Purchase required actions
 //	We use @FindBy testNg method to locate the element
 //	There are 3 works happen in page object model 1. Locate all the element 2. make constructor & initialize elements
@@ -31,7 +28,7 @@ public class PurchaseListPage extends BrowserOpen {
 
 	// Click on Add Purchase button
 	@FindBy(css = "button.New_product")
-	WebElement addNewPurchase;
+	WebElement addNewPurchaseOrder;
 
 	// Click on Supplier Section
 	@FindBy(css = "#lwAddClient")
@@ -59,8 +56,8 @@ public class PurchaseListPage extends BrowserOpen {
 	WebElement addItemButton;
 
 	// Now Click on Save Purchase
-	@FindBy(xpath ="//button[contains(@class, 'btn-done') and contains(text(), 'Save Purchase')]")
-	WebElement savePurchase;
+	@FindBy(xpath ="//button[contains(@class, 'btn-done') and contains(text(), 'Save Purchase Order')]")
+	WebElement savePurchaseOrder;
 
 	// Now Going Back To Dashboard
 	@FindBy(css = "a[href='#/dashboard']")
@@ -68,10 +65,9 @@ public class PurchaseListPage extends BrowserOpen {
 
 //	(2) Made a Constructor 
 //	Initialize the Element
-	public PurchaseListPage() {
+	public PurchaseOrderListPage() {
 
-//		Login.log().info("This is search context" + driver);
-//		ExtentManager.test.log(Status.PASS, "This is search context" + driver);
+
 
 
 		PageFactory.initElements(driver, this);
@@ -79,14 +75,14 @@ public class PurchaseListPage extends BrowserOpen {
 
 // (3) Perform Action on the Elements
 
-	public boolean openPurchaseCreationForm() {
+	public boolean openPurchaseOrderCreationForm() {
 		try {
 			
-			// 2 => Purchase
-			int formType = 2;
+			// 2 => Purchase Order
+			int formType = 4;
 
-			Login.log().info("Creating Purchases");
-			ExtentManager.test.log(Status.PASS, "Creating Purchases");
+			BrowserOpen.log().info("Creating Purchase Order");
+			ExtentManager.test.log(Status.PASS, "Creating Purchase Order");
 
 			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
 			// TODO Auto-generated method stub
@@ -97,15 +93,15 @@ public class PurchaseListPage extends BrowserOpen {
 			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button.New_product")));
 
-			addNewPurchase.click();
+			addNewPurchaseOrder.click();
 
-			Login.log().info("Purchase creation Form Open");
-			ExtentManager.test.log(Status.PASS, "Purchase creation Form Open");
+			BrowserOpen.log().info("Purchase Order creation Form Open");
+			ExtentManager.test.log(Status.PASS, "Purchase Order creation Form Open");
 			return true;
 		} catch (Exception e) {
 
-			Login.log().error("Purchase Creation Form not Opened:" + e);
-			ExtentManager.test.log(Status.FAIL, "Purchase Creation Form not Opened:" + e);
+			BrowserOpen.log().error("Purchase Order Creation Form not Opened:" + e);
+			ExtentManager.test.log(Status.FAIL, "Purchase Order Creation Form not Opened:" + e);
 			
 		}
 
@@ -118,8 +114,8 @@ public class PurchaseListPage extends BrowserOpen {
 			addSupplier.click();
 			return true;
 		} catch (Exception e) {
-//			System.out.println("Customer not added");
-			Login.log().error("Supplier not added:" + e);
+
+			BrowserOpen.log().error("Supplier not added:" + e);
 			ExtentManager.test.log(Status.FAIL, "Supplier not added:" + e);
 		}
 
@@ -133,8 +129,8 @@ public class PurchaseListPage extends BrowserOpen {
 			addProduct.click();
 
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToQtyINV);
-//			System.out.println("Page scrolled to 'QtY' ");
-			Login.log().info("Page scrolled to 'QtY' ");
+
+			BrowserOpen.log().info("Page scrolled to 'QtY' ");
 			ExtentManager.test.log(Status.PASS, "Page scrolled to 'QtY' ");
 
 			// Wait for the element to be present and clickable
@@ -144,13 +140,13 @@ public class PurchaseListPage extends BrowserOpen {
 			// Click the element using JavaScript to avoid interception issues
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", addItemButton);
 
-//			System.out.println("Product Added Successfully");
-			Login.log().info("Product Added Successfully");
+
+			BrowserOpen.log().info("Product Added Successfully");
 			ExtentManager.test.log(Status.PASS, "Product Added Successfully");
 			return true;
 		} catch (Exception e) {
-//			System.out.println("Product Line item not Added");
-			Login.log().error("Product Line item not Added:" + e);
+
+			BrowserOpen.log().error("Product Line item not Added:" + e);
 			ExtentManager.test.log(Status.FAIL, "Product Line item not Added:" + e);
 			
 		}
@@ -161,15 +157,15 @@ public class PurchaseListPage extends BrowserOpen {
 	public boolean savePurchase() {
 		try {
 
-			savePurchase.click();
+			savePurchaseOrder.click();
 
-			Login.log().info("Purchase Added Successfully");
-			ExtentManager.test.log(Status.PASS, "Purchase Added Successfully");
+			BrowserOpen.log().info("Purchase Order Added Successfully");
+			ExtentManager.test.log(Status.PASS, "Purchase Order Added Successfully");
 			return true;
 		} catch (Exception e) {
 
-			Login.log().error("Didn't Click on Save Purchase Button:" + e );
-			ExtentManager.test.log(Status.FAIL, "Didn't Click on Save Purchase Button:" + e);
+			BrowserOpen.log().error("Didn't Click on Save Purchase Order Button:" + e );
+			ExtentManager.test.log(Status.FAIL, "Didn't Click on Save Purchase Order Button:" + e);
 		}
 
 		return false;
@@ -179,22 +175,22 @@ public class PurchaseListPage extends BrowserOpen {
 	public boolean dashboard() {
 		try {
 
-			Login.log().info("Waited 5 second");
+			BrowserOpen.log().info("Waited 5 second");
 			ExtentManager.test.log(Status.PASS, "Waited 5 second");
 			purchaseToDashboard.click();
 			
-			Login.log().info("We have Successfully Completed First Module");
-			ExtentManager.test.log(Status.PASS, "We have Successfully Completed First Module");
+			BrowserOpen.log().info("We have Successfully Completed Third Module");
+			ExtentManager.test.log(Status.PASS, "We have Successfully Completed Third Module");
 			// Set implicit wait of 5 seconds
 
 			return true;
 		} catch (Exception e) {
-			Login.log().error("Failed to Go on Dashboard from Purchase List" + e);
-			ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Purchase List" + e);			e.printStackTrace();
+			BrowserOpen.log().error("Failed to Go on Dashboard from Purchase Order List" + e);
+			ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Purchase Order List" + e);			e.printStackTrace();
 		}
 
 		return false;
 
 	}
-
+	
 }

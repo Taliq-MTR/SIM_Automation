@@ -9,7 +9,7 @@ public class PurchaseCreation extends PurchaseListPage {
 
 
 	@Test (priority = 1, description = "Add a Purchase in the SIM-Web App")
-	public void invoiceform() throws InterruptedException {
+	public void purchaseform() throws InterruptedException {
 		PurchaseListPage purpom = new PurchaseListPage();
 
 		boolean createPur = purpom.openPurchaseCreationForm();
@@ -23,12 +23,12 @@ public class PurchaseCreation extends PurchaseListPage {
 		Assert.assertEquals(product, true, "product Added successfully");
 		Thread.sleep(4000);
 
-		boolean saveInv = purpom.savePurchase();
-		Assert.assertEquals(saveInv, true, "Purchase Added successfully");
+		boolean savePur = purpom.savePurchase();
+		Assert.assertEquals(savePur, true, "Purchase Added successfully");
 		Thread.sleep(9000);
 
-		boolean invToDashboard = purpom.dashboard();
-		Assert.assertEquals(invToDashboard, true, "Successfully Came back to Dasboard");
+		boolean purToDashboard = purpom.dashboard();
+		Assert.assertEquals(purToDashboard, true, "Successfully Came back to Dasboard From Purchase List");
 		Thread.sleep(3500);
 
 	}

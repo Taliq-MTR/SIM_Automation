@@ -8,6 +8,8 @@
         <classes>
             <class name="Sim_automation.PurchaseCreation"/>
             <class name= "Sim_automation.InvoiceCreation"/>
+             <class name= "Sim_automation.PurchaseOrderCreation"/>
+              <class name= "Sim_automation.SaleOrderCreation"/>
         </classes>
     </test>
 </suite> <!--

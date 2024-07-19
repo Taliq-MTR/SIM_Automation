@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">2 methods,   2 passed</span>
+                    <span class="method-stats">4 methods,   4 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -108,7 +108,17 @@
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite_to_automate_SIM" title="Sim_automation.PurchaseCreation" class="method navigator-link" hash-for-method="invoiceform">invoiceform</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite_to_automate_SIM" title="Sim_automation.PurchaseOrderCreation" class="method navigator-link" hash-for-method="purchaseOrderform">purchaseOrderform</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite_to_automate_SIM" title="Sim_automation.PurchaseCreation" class="method navigator-link" hash-for-method="purchaseform">purchaseform</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite_to_automate_SIM" title="Sim_automation.SaleOrderCreation" class="method navigator-link" hash-for-method="saleOrderform">saleOrderform</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite_to_automate_SIM -->
@@ -123,6 +133,40 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Suite_to_automate_SIM" class="panel Suite_to_automate_SIM">
+          <div class="suite-Suite_to_automate_SIM-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">Sim_automation.PurchaseOrderCreation</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="purchaseOrderform">
+                  </a> <!-- purchaseOrderform -->
+                  <span class="method-name">purchaseOrderform</span>
+                  <em>
+(Add a Purchase Order in the SIM-Web App)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Suite_to_automate_SIM-class-passed -->
+          <div class="suite-Suite_to_automate_SIM-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">Sim_automation.SaleOrderCreation</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="saleOrderform">
+                  </a> <!-- saleOrderform -->
+                  <span class="method-name">saleOrderform</span>
+                  <em>
+(Add a Sale Order in the SIM-Web App)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Suite_to_automate_SIM-class-passed -->
           <div class="suite-Suite_to_automate_SIM-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -148,9 +192,9 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="invoiceform">
-                  </a> <!-- invoiceform -->
-                  <span class="method-name">invoiceform</span>
+                  <a name="purchaseform">
+                  </a> <!-- purchaseform -->
+                  <span class="method-name">purchaseform</span>
                   <em>
 (Add a Purchase in the SIM-Web App)                  </em>
                 </div> <!-- method-content -->
@@ -174,6 +218,8 @@
     &lt;classes&gt;
       &lt;class name=&quot;Sim_automation.PurchaseCreation&quot;/&gt;
       &lt;class name=&quot;Sim_automation.InvoiceCreation&quot;/&gt;
+      &lt;class name=&quot;Sim_automation.PurchaseOrderCreation&quot;/&gt;
+      &lt;class name=&quot;Sim_automation.SaleOrderCreation&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Suite_to_automate_SIM --&gt;
@@ -187,7 +233,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Test (2 classes)</span>
+                <span class="test-name">Test (4 classes)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -213,20 +259,28 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(2);
+data.addRows(4);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'invoiceform')
-data.setCell(0, 2, 'Sim_automation.InvoiceCreation')
-data.setCell(0, 3, 22389);
+data.setCell(0, 1, 'purchaseform')
+data.setCell(0, 2, 'Sim_automation.PurchaseCreation')
+data.setCell(0, 3, 22502);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'invoiceform')
-data.setCell(1, 2, 'Sim_automation.PurchaseCreation')
-data.setCell(1, 3, 22337);
+data.setCell(1, 2, 'Sim_automation.InvoiceCreation')
+data.setCell(1, 3, 22362);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'saleOrderform')
+data.setCell(2, 2, 'Sim_automation.SaleOrderCreation')
+data.setCell(2, 3, 22276);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'purchaseOrderform')
+data.setCell(3, 2, 'Sim_automation.PurchaseOrderCreation')
+data.setCell(3, 3, 13285);
 window.suiteTableData['Suite_to_automate_SIM']= { tableData: data, tableDiv: 'times-div-Suite_to_automate_SIM'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 44 seconds</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Suite_to_automate_SIM">
               </div> <!-- times-div-Suite_to_automate_SIM -->
             </div> <!-- times-div -->
@@ -241,9 +295,35 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Suite_to_automate_SIM" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">4 ignored methods</span>
+            <span class="header-content">12 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">Sim_automation.PurchaseOrderCreation</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">reportGenerate</span>
+                <br/>
+                <span class="ignored-method-name">closeBrowser</span>
+                <br/>
+                <span class="ignored-method-name">endReport</span>
+                <br/>
+                <span class="ignored-method-name">browserOpen</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">Sim_automation.SaleOrderCreation</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">endReport</span>
+                <br/>
+                <span class="ignored-method-name">closeBrowser</span>
+                <br/>
+                <span class="ignored-method-name">reportGenerate</span>
+                <br/>
+                <span class="ignored-method-name">browserOpen</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
             <div class="ignored-class-div">
               <span class="ignored-class-name">Sim_automation.InvoiceCreation</span>
               <div class="ignored-methods-div">
@@ -272,29 +352,43 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-test before">
                 <span class="method-name">browserOpen</span>
-                <span class="method-start">139 ms</span>
+                <span class="method-start">161 ms</span>
               </div> <!-- configuration-test before -->
               <div class="test-method">
-                <span class="method-name">invoiceform</span>
-                <span class="method-start">19418 ms</span>
+                <span class="method-name">purchaseform</span>
+                <span class="method-start">18275 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">Sim_automation.InvoiceCreation</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">invoiceform</span>
-                <span class="method-start">41762 ms</span>
+                <span class="method-start">40781 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">Sim_automation.PurchaseOrderCreation</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">purchaseOrderform</span>
+                <span class="method-start">63145 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">Sim_automation.SaleOrderCreation</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">saleOrderform</span>
+                <span class="method-start">76432 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">Sim_automation.PurchaseCreation</div> <!-- chronological-class-name -->
               <div class="configuration-test after">
                 <span class="method-name">closeBrowser</span>
-                <span class="method-start">64153 ms</span>
+                <span class="method-start">98710 ms</span>
               </div> <!-- configuration-test after -->
               <div class="configuration-suite after">
                 <span class="method-name">endReport</span>
-                <span class="method-start">65302 ms</span>
+                <span class="method-start">99842 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
