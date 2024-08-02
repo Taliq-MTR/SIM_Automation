@@ -26,7 +26,7 @@ public class PurchaseListPage extends BrowserOpen {
 //	There are 3 works happen in page object model 1. Locate all the element 2. make constructor & initialize elements
 //	3. Perform actions on the elements
 
-//	WebDriver driver;
+
 //	(1) All the elements will locate here
 
 	// Click on Add Purchase button

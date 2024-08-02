@@ -16,7 +16,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import java.time.Duration;
-
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import com.aventstack.extentreports.Status;
@@ -74,12 +74,25 @@ public class BrowserOpen {
 	}
 
 	
-//	Login
+//	LogOut and Browser Closed.
 
+	@SuppressWarnings("deprecation")
 	@AfterTest
-	public void closeBrowser() throws InterruptedException {
+	public void logout () throws InterruptedException {
 		Thread.sleep(1000);
 
+		WebElement dropDown= driver.findElement(By.xpath("//a[@id='dropdownMenuButton1']"));
+		dropDown.click();
+		driver.manage().timeouts().implicitlyWait(500, TimeUnit.MILLISECONDS);
+
+		
+		WebElement logoutButton= driver.findElement(By.xpath("//ul[@class='dropdown-menu me-2 dropdown-menu-end show']/li[4]"));
+		logoutButton.click();
+		log().info("App Logout Successfully");
+		ExtentManager.test.log(Status.PASS, "App Logout Successfully");
+		
+		driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
+		
 		driver.quit();
 		log().info("Browser Closed");
 		ExtentManager.test.log(Status.PASS, "Browser Closed");
