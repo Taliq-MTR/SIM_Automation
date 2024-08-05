@@ -133,7 +133,6 @@ public class PurchaseListPage extends BrowserOpen {
 			addProduct.click();
 
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToQtyINV);
-//			System.out.println("Page scrolled to 'QtY' ");
 			Login.log().info("Page scrolled to 'QtY' ");
 			ExtentManager.test.log(Status.PASS, "Page scrolled to 'QtY' ");
 

@@ -2,46 +2,46 @@
 <testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-07-19T18:13:44 IST" name="Suite_to_automate_SIM" finished-at="2024-07-19T18:15:24 IST" duration-ms="99661">
+  <suite started-at="2024-08-02T18:30:56 IST" name="Suite_to_automate_SIM" finished-at="2024-08-02T18:32:59 IST" duration-ms="123010">
     <groups>
     </groups>
-    <test started-at="2024-07-19T18:13:44 IST" name="Test" finished-at="2024-07-19T18:15:24 IST" duration-ms="99661">
+    <test started-at="2024-08-02T18:30:56 IST" name="Test" finished-at="2024-08-02T18:32:59 IST" duration-ms="123010">
       <class name="Sim_automation.SaleOrderCreation">
-        <test-method signature="saleOrderform()[pri:4, instance:Sim_automation.SaleOrderCreation@16afbd92]" started-at="2024-07-19T18:15:00 IST" name="saleOrderform" description="Add a Sale Order in the SIM-Web App" finished-at="2024-07-19T18:15:23 IST" duration-ms="22276" status="PASS">
+        <test-method signature="saleOrderform()[pri:4, instance:Sim_automation.SaleOrderCreation@5aa0dbf4]" started-at="2024-08-02T18:32:35 IST" name="saleOrderform" description="Add a Sale Order in the SIM-Web App" finished-at="2024-08-02T18:32:58 IST" duration-ms="22410" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- saleOrderform -->
       </class> <!-- Sim_automation.SaleOrderCreation -->
       <class name="Sim_automation.InvoiceCreation">
-        <test-method signature="invoiceform()[pri:2, instance:Sim_automation.InvoiceCreation@8ab78bc]" started-at="2024-07-19T18:14:25 IST" name="invoiceform" description="Add an Invoice in the SIM-Web App" finished-at="2024-07-19T18:14:47 IST" duration-ms="22362" status="PASS">
+        <test-method signature="invoiceform()[pri:2, instance:Sim_automation.InvoiceCreation@2d72f75e]" started-at="2024-08-02T18:31:59 IST" name="invoiceform" description="Add an Invoice in the SIM-Web App" finished-at="2024-08-02T18:32:22 IST" duration-ms="22523" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- invoiceform -->
       </class> <!-- Sim_automation.InvoiceCreation -->
       <class name="Sim_automation.PurchaseCreation">
-        <test-method is-config="true" signature="reportGenerate()[pri:0, instance:Sim_automation.PurchaseCreation@7354b8c5]" started-at="2024-07-19T18:13:44 IST" name="reportGenerate" finished-at="2024-07-19T18:13:44 IST" duration-ms="153" status="PASS">
+        <test-method is-config="true" signature="reportGenerate()[pri:0, instance:Sim_automation.PurchaseCreation@329dbdbf]" started-at="2024-08-02T18:30:56 IST" name="reportGenerate" finished-at="2024-08-02T18:30:56 IST" duration-ms="296" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- reportGenerate -->
-        <test-method is-config="true" signature="browserOpen()[pri:0, instance:Sim_automation.PurchaseCreation@7354b8c5]" started-at="2024-07-19T18:13:44 IST" name="browserOpen" finished-at="2024-07-19T18:14:02 IST" duration-ms="18091" status="PASS">
+        <test-method is-config="true" signature="browserOpen()[pri:0, instance:Sim_automation.PurchaseCreation@329dbdbf]" started-at="2024-08-02T18:30:56 IST" name="browserOpen" finished-at="2024-08-02T18:31:37 IST" duration-ms="40425" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserOpen -->
-        <test-method signature="purchaseform()[pri:1, instance:Sim_automation.PurchaseCreation@7354b8c5]" started-at="2024-07-19T18:14:02 IST" name="purchaseform" description="Add a Purchase in the SIM-Web App" finished-at="2024-07-19T18:14:25 IST" duration-ms="22502" status="PASS">
+        <test-method signature="purchaseform()[pri:1, instance:Sim_automation.PurchaseCreation@329dbdbf]" started-at="2024-08-02T18:31:37 IST" name="purchaseform" description="Add a Purchase in the SIM-Web App" finished-at="2024-08-02T18:31:59 IST" duration-ms="22696" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- purchaseform -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:Sim_automation.PurchaseCreation@7354b8c5]" started-at="2024-07-19T18:15:23 IST" name="closeBrowser" finished-at="2024-07-19T18:15:24 IST" duration-ms="1105" status="PASS">
+        <test-method is-config="true" signature="logout()[pri:0, instance:Sim_automation.PurchaseCreation@329dbdbf]" started-at="2024-08-02T18:32:58 IST" name="logout" finished-at="2024-08-02T18:32:59 IST" duration-ms="1393" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- closeBrowser -->
-        <test-method is-config="true" signature="endReport()[pri:0, instance:Sim_automation.PurchaseCreation@7354b8c5]" started-at="2024-07-19T18:15:24 IST" name="endReport" finished-at="2024-07-19T18:15:24 IST" duration-ms="249" status="PASS">
+        </test-method> <!-- logout -->
+        <test-method is-config="true" signature="endReport()[pri:0, instance:Sim_automation.PurchaseCreation@329dbdbf]" started-at="2024-08-02T18:32:59 IST" name="endReport" finished-at="2024-08-02T18:32:59 IST" duration-ms="267" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endReport -->
       </class> <!-- Sim_automation.PurchaseCreation -->
       <class name="Sim_automation.PurchaseOrderCreation">
-        <test-method signature="purchaseOrderform()[pri:3, instance:Sim_automation.PurchaseOrderCreation@5aa0dbf4]" started-at="2024-07-19T18:14:47 IST" name="purchaseOrderform" description="Add a Purchase Order in the SIM-Web App" finished-at="2024-07-19T18:15:00 IST" duration-ms="13285" status="PASS">
+        <test-method signature="purchaseOrderform()[pri:3, instance:Sim_automation.PurchaseOrderCreation@8ab78bc]" started-at="2024-08-02T18:32:22 IST" name="purchaseOrderform" description="Add a Purchase Order in the SIM-Web App" finished-at="2024-08-02T18:32:35 IST" duration-ms="13513" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- purchaseOrderform -->
