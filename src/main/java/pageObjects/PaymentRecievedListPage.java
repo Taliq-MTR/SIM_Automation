@@ -9,7 +9,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.PageFactory;
 
+import com.aventstack.extentreports.Status;
+
 import browserSetup_Login.BrowserOpen;
+import browserSetup_Login.ExtentManager;
+import browserSetup_Login.Login;
 
 
 public class PaymentRecievedListPage extends BrowserOpen {
@@ -69,38 +73,83 @@ public class PaymentRecievedListPage extends BrowserOpen {
 //	Initialize the Element
 	 public	PaymentRecievedListPage() {
 		 
+		 
 		 PageFactory.initElements(driver, this);
 	 }
 	// (3) Perform Action on the Elements
-	 public void openPaymentListForm () {
+	 
+	 
+	 public boolean openPaymentListForm () {
+		 try {
 		 paymentsideMenu.click();
 		 openPaymentlist.click();
-		 
-	 
+		 return true;
+		 }catch (Exception e){
+			 Login.log().error("Didn't Click on Payment Button in Left Drawer On Dashboard:" + e );
+				ExtentManager.test.log(Status.FAIL, "Didn't Click on Payment Button in Left Drawer On Dashboard:" + e);
+		 }
+	 return false;
 	 }
-	 public void addPaymentForm () {
-		 
+	 public boolean addPaymentForm () {
+		 try {
 //	 	Click on Add Payment button
 		 addnewPaymentButton.click();
+		   Login.log().info("Clicked On Add New Payment Button");
+		   ExtentManager.test.log(Status.PASS, "Clicked On Add New Payment Button");
 		 
 //		 Scroll to select the customer we want
 		 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToSelectCustomer);
-					
+		   Login.log().info("Customer List Scrolled SuccessFully");
+		   ExtentManager.test.log(Status.PASS, "Customer List Scrolled SuccessFully");
+		   
 		 selectCustomer.click();
+		   Login.log().info("Seleceted The customer Sneha");
+		   ExtentManager.test.log(Status.PASS, "Seleceted The customer Sneha");
 		 
 //		 Click on 'Lumsum' Amount for advance payment 	 
 		 selectLumsumPayment.click();
+		   Login.log().info("Click on 'Lumsum' Amount for advance payment");
+		   ExtentManager.test.log(Status.PASS, "Click on 'Lumsum' Amount for advance payment");
+		 
+		 addAmount.click();
 		 
 		 addAmount.sendKeys("100");
 		 addNotes.sendKeys("Automated Notes Added For this Payment");
-		 nextButton.click();
-		 paymentDonebutton.click();
-		 driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-	 } 
-	 public void addReceiptForm () {
 		 
+		   Login.log().info("Amount and Notes data Added");
+		   ExtentManager.test.log(Status.PASS, "Amount and Notes data Added");
+		   
+		 nextButton.click();
+		   Login.log().info("Click on Next Button To complete the payment");
+		   ExtentManager.test.log(Status.PASS, "Click on Next Button To complete the payment");
+		 
+		 paymentDonebutton.click();
+		   Login.log().info("Payment Added SuccessFully");
+		   ExtentManager.test.log(Status.PASS, "Payment Added SuccessFully");
+			
+		 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		 
+		 return true;
+	 }catch (Exception e){
+		 Login.log().error("Payment Is not completed:" + e );
+			ExtentManager.test.log(Status.FAIL, "Payment Is not completed:" + e);
+	 }
+ return false;
+	 } 
+	 public boolean addReceiptForm () {
+		 try {
 		 AddreceiptYesButton.click();
+		 Login.log().info("Clcik On Add Receipt");
+			ExtentManager.test.log(Status.PASS, "Clcik On Add Receipt");
 		 saveReceipt.click();
+		 Login.log().info("Receipt Added Successfully");
+			ExtentManager.test.log(Status.PASS, "Receipt Added Successfully");
+		 return true;
+	 }catch (Exception e){
+		 Login.log().error("Receipt Is not made:" + e );
+			ExtentManager.test.log(Status.FAIL, "Receipt Is not made:" + e);
+	 }
+ return false;
 	 }
 	 
 }

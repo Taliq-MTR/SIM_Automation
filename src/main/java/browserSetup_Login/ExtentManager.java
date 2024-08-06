@@ -28,7 +28,7 @@ public class ExtentManager {
 		extent.attachReporter(htmlReporter);
 
 		extent.setSystemInfo("ProjectName", "Simple Invoice Manager");
-		extent.setSystemInfo("Tester", "Taliq");
+		extent.setSystemInfo("Tester", "Taliq Ur Rahman");
 		extent.setSystemInfo("Platform", "Windows 11");
 		extent.setSystemInfo("Browser", "Chrome");
 	}
