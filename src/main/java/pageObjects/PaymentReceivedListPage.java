@@ -16,7 +16,7 @@ import browserSetup_Login.ExtentManager;
 import browserSetup_Login.Login;
 
 
-public class PaymentRecievedListPage extends BrowserOpen {
+public class PaymentReceivedListPage extends BrowserOpen {
 	
 //	(1) All the elements will locate here
 	
@@ -69,9 +69,13 @@ public class PaymentRecievedListPage extends BrowserOpen {
 	@FindBy(xpath= "//button[@class='btn-done']")
 	WebElement saveReceipt;
 	
+//	Payment List to Dashboard
+	@FindBy(xpath= "//li[@class='breadcrumb-item']/a")
+	WebElement paymentlistToDashboard ;
+	
 //	(2) Made a Constructor 
 //	Initialize the Element
-	 public	PaymentRecievedListPage() {
+	 public	PaymentReceivedListPage() {
 		 
 		 
 		 PageFactory.initElements(driver, this);
@@ -151,5 +155,25 @@ public class PaymentRecievedListPage extends BrowserOpen {
 	 }
  return false;
 	 }
+	 public boolean dashboard() {
+			try {
+
+				Login.log().info("Waited 5 second");
+				ExtentManager.test.log(Status.PASS, "Waited 5 second");
+				paymentlistToDashboard.click();
+				
+				Login.log().info("We have Successfully Completed Payment Received");
+				ExtentManager.test.log(Status.PASS, "We have Successfully Completed Payment Received");
+				// Set implicit wait of 5 seconds
+
+				return true;
+			} catch (Exception e) {
+				Login.log().error("Failed to Go on Dashboard from Payment List" + e);
+				ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Payment List" + e);		
+			}
+
+			return false;
+
+		}
 	 
 }

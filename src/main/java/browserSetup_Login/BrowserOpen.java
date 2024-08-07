@@ -32,7 +32,11 @@ public class BrowserOpen {
 		// TODO Auto-generated method st0ub
 		driver = new ChromeDriver();
 //		System.out.println("The method call");
+
+		//	Here we can add any test url for smoke and regression Testing	
+//			driver.get("http://188.166.6.8/sim-live-2/#/home/login");
 		
+		// This is the main app url		
 		driver.get("https://www.simpleinvoiceweb.com/#/home");
 		driver.manage().window().maximize();
 		log().info("Browser Open and maximized");
@@ -83,7 +87,7 @@ public class BrowserOpen {
 
 		WebElement dropDown= driver.findElement(By.xpath("//a[@id='dropdownMenuButton1']"));
 		dropDown.click();
-		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+		driver.manage().timeouts().implicitlyWait(50000, TimeUnit.MILLISECONDS);
 
 		
 		WebElement logoutButton= driver.findElement(By.xpath("//ul[@class='dropdown-menu me-2 dropdown-menu-end show']/li[4]"));
@@ -91,7 +95,7 @@ public class BrowserOpen {
 		log().info("App Logout Successfully");
 		ExtentManager.test.log(Status.PASS, "App Logout Successfully");
 		
-		driver.manage().timeouts().implicitlyWait(8000, TimeUnit.MILLISECONDS);
+		driver.manage().timeouts().implicitlyWait(80000, TimeUnit.MILLISECONDS);
 		
 		driver.quit();
 		log().info("Browser Closed");

@@ -10,6 +10,7 @@
             <class name= "Sim_automation.InvoiceCreation"/>
              <class name= "Sim_automation.PurchaseOrderCreation"/>
               <class name= "Sim_automation.SaleOrderCreation"/>
+               <class name= "Sim_automation.PaymentReceivedCreation"/>
         </classes>
     </test>
 </suite> <!--
