@@ -1,5 +1,7 @@
 package pageObjects;
 
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -7,13 +9,17 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.Status;
 
 import browserSetup_Login.BrowserOpen;
 import browserSetup_Login.ExtentManager;
-import browserSetup_Login.Login;
+
+
 
 
 public class PaymentReceivedListPage extends BrowserOpen {
@@ -23,9 +29,12 @@ public class PaymentReceivedListPage extends BrowserOpen {
 //	Select Payment Module from Left Drawer
 	@FindBy(xpath= "//*[@id=\"side-menu\"]/li[6]/a")
 	 WebElement paymentsideMenu;
+//	Adding element for wait
+	@FindBy(xpath= "//a[text()=' Payment List ']") 
+	WebElement paymentListLink;
 	
 //	Click on Payment List To open Payment List
-	@FindBy(xpath= "//a[contains(text(), ' Payment List ')]")
+	@FindBy(xpath= "//ul[@id='side-menu']/li[6]/ul/li[2]")
 	WebElement openPaymentlist;
 	
 //	Click on Add new Payment Button
@@ -33,7 +42,7 @@ public class PaymentReceivedListPage extends BrowserOpen {
 	WebElement addnewPaymentButton;
 	
 //	Scroll to the customer to select the customer which we want to make payment
-	@FindBy(xpath= "//div/h4[text()= 'MMR ']")
+	@FindBy(xpath= "//*[@id=\"mat-tab-content-0-0\"]/div/virtual-scroller/div[2]/table/tbody/tr[2]/td/div/div[2]/div")
 	WebElement scrollToSelectCustomer;
 	
 	
@@ -64,9 +73,9 @@ public class PaymentReceivedListPage extends BrowserOpen {
 //	Click on Yes button to add Receipt
 	@FindBy(xpath= "//button[@class='btn-done']")
 	WebElement AddreceiptYesButton;
-	
+
 //	Click on Save button to add receipt
-	@FindBy(xpath= "//button[@class='btn-done']")
+	@FindBy(xpath= "//*[@id=\"mat-mdc-dialog-4\"]/div/div/app-add-edit/form/mat-dialog-actions/div/button[2]")
 	WebElement saveReceipt;
 	
 //	Payment List to Dashboard
@@ -86,89 +95,103 @@ public class PaymentReceivedListPage extends BrowserOpen {
 	 public boolean openPaymentListForm () {
 		 try {
 		 paymentsideMenu.click();
-		 openPaymentlist.click();
+		// Wait for the "Payment List" element to be visible and clickable
+		    Duration duration = Duration.ofSeconds(10l, 10);
+			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
+	        wait.until(ExpectedConditions.elementToBeClickable(paymentListLink));
+	        
+	     // Scroll into view if necessary (optional)
+	        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", paymentListLink);
+//	        Click on Payment list
+	        openPaymentlist.click();
 		 return true;
 		 }catch (Exception e){
-			 Login.log().error("Didn't Click on Payment Button in Left Drawer On Dashboard:" + e );
+			 BrowserOpen.log().error("Didn't Click on Payment Button in Left Drawer On Dashboard:" + e );
 				ExtentManager.test.log(Status.FAIL, "Didn't Click on Payment Button in Left Drawer On Dashboard:" + e);
 		 }
 	 return false;
 	 }
-	 public boolean addPaymentForm () {
+	 
+	public boolean addPaymentForm () {
 		 try {
+			 
 //	 	Click on Add Payment button
 		 addnewPaymentButton.click();
-		   Login.log().info("Clicked On Add New Payment Button");
+		   BrowserOpen.log().info("Clicked On Add New Payment Button");
 		   ExtentManager.test.log(Status.PASS, "Clicked On Add New Payment Button");
 		 
 //		 Scroll to select the customer we want
 		 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToSelectCustomer);
-		   Login.log().info("Customer List Scrolled SuccessFully");
+		   BrowserOpen.log().info("Customer List Scrolled SuccessFully");
 		   ExtentManager.test.log(Status.PASS, "Customer List Scrolled SuccessFully");
-		   
-		 selectCustomer.click();
-		   Login.log().info("Seleceted The customer Sneha");
-		   ExtentManager.test.log(Status.PASS, "Seleceted The customer Sneha");
 		 
-//		 Click on 'Lumsum' Amount for advance payment 	 
-		 selectLumsumPayment.click();
-		   Login.log().info("Click on 'Lumsum' Amount for advance payment");
+		 selectCustomer.click();
+		   BrowserOpen.log().info("Seleceted The customer Sneha");
+		   ExtentManager.test.log(Status.PASS, "Seleceted The customer Sneha");
+		   
+ 
+		   driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+//		  Click on 'Lumsum' Amount for advance payment 	 
+		  selectLumsumPayment.click();
+		   BrowserOpen.log().info("Click on 'Lumsum' Amount for advance payment");
 		   ExtentManager.test.log(Status.PASS, "Click on 'Lumsum' Amount for advance payment");
 		 
 		 addAmount.click();
-		 
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 		 addAmount.sendKeys("100");
 		 addNotes.sendKeys("Automated Notes Added For this Payment");
 		 
-		   Login.log().info("Amount and Notes data Added");
+		   BrowserOpen.log().info("Amount and Notes data Added");
 		   ExtentManager.test.log(Status.PASS, "Amount and Notes data Added");
-		   
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));  
 		 nextButton.click();
-		   Login.log().info("Click on Next Button To complete the payment");
+		   BrowserOpen.log().info("Click on Next Button To complete the payment");
 		   ExtentManager.test.log(Status.PASS, "Click on Next Button To complete the payment");
-		 
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 		 paymentDonebutton.click();
-		   Login.log().info("Payment Added SuccessFully");
+		 BrowserOpen.log().info("Payment Added SuccessFully");
 		   ExtentManager.test.log(Status.PASS, "Payment Added SuccessFully");
 			
-		 driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		   driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		 
 		 return true;
 	 }catch (Exception e){
-		 Login.log().error("Payment Is not completed:" + e );
+		 BrowserOpen.log().error("Payment Is not completed:" + e );
 			ExtentManager.test.log(Status.FAIL, "Payment Is not completed:" + e);
 	 }
  return false;
 	 } 
-	 public boolean addReceiptForm () {
+	 
+	public boolean addReceiptForm () {
 		 try {
 		 AddreceiptYesButton.click();
-		 Login.log().info("Clcik On Add Receipt");
+		 	BrowserOpen.log().info("Clcik On Add Receipt");
 			ExtentManager.test.log(Status.PASS, "Clcik On Add Receipt");
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));	
 		 saveReceipt.click();
-		 Login.log().info("Receipt Added Successfully");
+		 	BrowserOpen.log().info("Receipt Added Successfully");
 			ExtentManager.test.log(Status.PASS, "Receipt Added Successfully");
 		 return true;
 	 }catch (Exception e){
-		 Login.log().error("Receipt Is not made:" + e );
+		 	BrowserOpen.log().error("Receipt Is not made:" + e );
 			ExtentManager.test.log(Status.FAIL, "Receipt Is not made:" + e);
 	 }
  return false;
 	 }
 	 public boolean dashboard() {
 			try {
-
-				Login.log().info("Waited 5 second");
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+				BrowserOpen.log().info("Waited 5 second");
 				ExtentManager.test.log(Status.PASS, "Waited 5 second");
 				paymentlistToDashboard.click();
 				
-				Login.log().info("We have Successfully Completed Payment Received");
+				BrowserOpen.log().info("We have Successfully Completed Payment Received");
 				ExtentManager.test.log(Status.PASS, "We have Successfully Completed Payment Received");
 				// Set implicit wait of 5 seconds
-
+				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 				return true;
 			} catch (Exception e) {
-				Login.log().error("Failed to Go on Dashboard from Payment List" + e);
+				BrowserOpen.log().error("Failed to Go on Dashboard from Payment List" + e);
 				ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Payment List" + e);		
 			}
 

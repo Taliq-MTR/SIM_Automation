@@ -16,7 +16,7 @@ import com.aventstack.extentreports.Status;
 
 import browserSetup_Login.BrowserOpen;
 import browserSetup_Login.ExtentManager;
-import browserSetup_Login.Login;
+
 
 public class InvoiceListPage extends BrowserOpen {
 
@@ -69,7 +69,7 @@ public class InvoiceListPage extends BrowserOpen {
 //	Initialize the Element
 	public InvoiceListPage() {
 //		System.out.println("This is search context" + driver);
-		Login.log().info("This is search context" + driver);
+		BrowserOpen.log().info("This is search context" + driver);
 
 		PageFactory.initElements(driver, this);
 	}
@@ -83,7 +83,7 @@ public class InvoiceListPage extends BrowserOpen {
 			int formType = 1;
 
 //			System.out.println("Creating Invoices");
-			Login.log().info("Creating Invoices");
+			BrowserOpen.log().info("Creating Invoices");
 			ExtentManager.test.log(Status.PASS, "Creating Invoices");
 
 			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
@@ -97,12 +97,12 @@ public class InvoiceListPage extends BrowserOpen {
 
 			addNewInvoice.click();
 //			System.out.println("Invoice creation Form Open");
-			Login.log().info("Invoice creation Form Open");
+			BrowserOpen.log().info("Invoice creation Form Open");
 			ExtentManager.test.log(Status.PASS, "Invoice creation Form Open");
 			return true;
 		} catch (Exception e) {
 //			System.out.println("Invoice Creation Form not Opened");
-			Login.log().error("Invoice Creation Form not Opened:" + e);
+			BrowserOpen.log().error("Invoice Creation Form not Opened:" + e);
 			ExtentManager.test.log(Status.FAIL, "Invoice Creation Form not Opened:" + e);
 			
 		}
@@ -117,7 +117,7 @@ public class InvoiceListPage extends BrowserOpen {
 			return true;
 		} catch (Exception e) {
 //			System.out.println("Customer not added");
-			Login.log().error("Customer not added:" + e);
+			BrowserOpen.log().error("Customer not added:" + e);
 			ExtentManager.test.log(Status.FAIL, "Customer not added:" + e);
 		}
 
@@ -132,7 +132,7 @@ public class InvoiceListPage extends BrowserOpen {
 
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToQtyINV);
 //			System.out.println("Page scrolled to 'QtY' ");
-			Login.log().info("Page scrolled to 'QtY' ");
+			BrowserOpen.log().info("Page scrolled to 'QtY' ");
 			ExtentManager.test.log(Status.PASS, "Page scrolled to 'QtY' ");
 
 			// Wait for the element to be present and clickable
@@ -143,12 +143,12 @@ public class InvoiceListPage extends BrowserOpen {
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", addItemButton);
 
 //			System.out.println("Product Added Successfully");
-			Login.log().info("Product Added Successfully");
+			BrowserOpen.log().info("Product Added Successfully");
 			ExtentManager.test.log(Status.PASS, "Product Added Successfully");
 			return true;
 		} catch (Exception e) {
 //			System.out.println("Product Line item not Added");
-			Login.log().error("Product Line item not Added:" + e);
+			BrowserOpen.log().error("Product Line item not Added:" + e);
 			ExtentManager.test.log(Status.FAIL, "Product Line item not Added:" + e);
 			
 		}
@@ -161,12 +161,12 @@ public class InvoiceListPage extends BrowserOpen {
 
 			saveInvoice.click();
 //			System.out.println("Invoice Added Successfully");
-			Login.log().info("Invoice Added Successfully");
+			BrowserOpen.log().info("Invoice Added Successfully");
 			ExtentManager.test.log(Status.PASS, "Invoice Added Successfully");
 			return true;
 		} catch (Exception e) {
 //			System.out.println("Didn't Click on Save Invoice Button");
-			Login.log().error("Didn't Click on Save Invoice Button:" + e );
+			BrowserOpen.log().error("Didn't Click on Save Invoice Button:" + e );
 			ExtentManager.test.log(Status.FAIL, "Didn't Click on Save Invoice Button:" + e);
 		}
 
@@ -178,19 +178,19 @@ public class InvoiceListPage extends BrowserOpen {
 		try {
 
 //			System.out.println("Waited 5 second");
-			Login.log().info("Waited 5 second");
+			BrowserOpen.log().info("Waited 5 second");
 			ExtentManager.test.log(Status.PASS, "Waited 5 second");
 			invToDashboard.click();
 			
 //			System.out.println("We have Successfully Completed First Module");
-			Login.log().info("We have Successfully Completed Second Module");
+			BrowserOpen.log().info("We have Successfully Completed Second Module");
 			ExtentManager.test.log(Status.PASS, "We have Successfully Completed Second Module");
 			// Set implicit wait of 5 seconds
 
 			return true;
 		} catch (Exception e) {
 //			System.out.println("Failed to Go on Dashboard from Invoice List");
-			Login.log().error("Failed to Go on Dashboard from Invoice List" + e);
+			BrowserOpen.log().error("Failed to Go on Dashboard from Invoice List" + e);
 			ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Invoice List" + e);			e.printStackTrace();
 		}
 

@@ -16,7 +16,7 @@ import com.aventstack.extentreports.Status;
 
 import browserSetup_Login.BrowserOpen;
 import browserSetup_Login.ExtentManager;
-import browserSetup_Login.Login;
+
 
 
 public class PurchaseListPage extends BrowserOpen {
@@ -85,7 +85,7 @@ public class PurchaseListPage extends BrowserOpen {
 			// 2 => Purchase
 			int formType = 2;
 
-			Login.log().info("Creating Purchases");
+			BrowserOpen.log().info("Creating Purchases");
 			ExtentManager.test.log(Status.PASS, "Creating Purchases");
 
 			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
@@ -99,12 +99,12 @@ public class PurchaseListPage extends BrowserOpen {
 
 			addNewPurchase.click();
 
-			Login.log().info("Purchase creation Form Open");
+			BrowserOpen.log().info("Purchase creation Form Open");
 			ExtentManager.test.log(Status.PASS, "Purchase creation Form Open");
 			return true;
 		} catch (Exception e) {
 
-			Login.log().error("Purchase Creation Form not Opened:" + e);
+			BrowserOpen.log().error("Purchase Creation Form not Opened:" + e);
 			ExtentManager.test.log(Status.FAIL, "Purchase Creation Form not Opened:" + e);
 			
 		}
@@ -119,7 +119,7 @@ public class PurchaseListPage extends BrowserOpen {
 			return true;
 		} catch (Exception e) {
 //			System.out.println("Customer not added");
-			Login.log().error("Supplier not added:" + e);
+			BrowserOpen.log().error("Supplier not added:" + e);
 			ExtentManager.test.log(Status.FAIL, "Supplier not added:" + e);
 		}
 
@@ -133,7 +133,7 @@ public class PurchaseListPage extends BrowserOpen {
 			addProduct.click();
 
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToQtyINV);
-			Login.log().info("Page scrolled to 'QtY' ");
+			BrowserOpen.log().info("Page scrolled to 'QtY' ");
 			ExtentManager.test.log(Status.PASS, "Page scrolled to 'QtY' ");
 
 			// Wait for the element to be present and clickable
@@ -144,12 +144,12 @@ public class PurchaseListPage extends BrowserOpen {
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", addItemButton);
 
 //			System.out.println("Product Added Successfully");
-			Login.log().info("Product Added Successfully");
+			BrowserOpen.log().info("Product Added Successfully");
 			ExtentManager.test.log(Status.PASS, "Product Added Successfully");
 			return true;
 		} catch (Exception e) {
 //			System.out.println("Product Line item not Added");
-			Login.log().error("Product Line item not Added:" + e);
+			BrowserOpen.log().error("Product Line item not Added:" + e);
 			ExtentManager.test.log(Status.FAIL, "Product Line item not Added:" + e);
 			
 		}
@@ -162,12 +162,12 @@ public class PurchaseListPage extends BrowserOpen {
 
 			savePurchase.click();
 
-			Login.log().info("Purchase Added Successfully");
+			BrowserOpen.log().info("Purchase Added Successfully");
 			ExtentManager.test.log(Status.PASS, "Purchase Added Successfully");
 			return true;
 		} catch (Exception e) {
 
-			Login.log().error("Didn't Click on Save Purchase Button:" + e );
+			BrowserOpen.log().error("Didn't Click on Save Purchase Button:" + e );
 			ExtentManager.test.log(Status.FAIL, "Didn't Click on Save Purchase Button:" + e);
 		}
 
@@ -178,17 +178,17 @@ public class PurchaseListPage extends BrowserOpen {
 	public boolean dashboard() {
 		try {
 
-			Login.log().info("Waited 5 second");
+			BrowserOpen.log().info("Waited 5 second");
 			ExtentManager.test.log(Status.PASS, "Waited 5 second");
 			purchaseToDashboard.click();
 			
-			Login.log().info("We have Successfully Completed First Module");
+			BrowserOpen.log().info("We have Successfully Completed First Module");
 			ExtentManager.test.log(Status.PASS, "We have Successfully Completed First Module");
 			// Set implicit wait of 5 seconds
 
 			return true;
 		} catch (Exception e) {
-			Login.log().error("Failed to Go on Dashboard from Purchase List" + e);
+			BrowserOpen.log().error("Failed to Go on Dashboard from Purchase List" + e);
 			ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Purchase List" + e);			e.printStackTrace();
 		}
 

@@ -1,22 +1,39 @@
-package browserSetup_Login;
+package pageObjects;
 
 import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.aventstack.extentreports.Status;
+import browserSetup_Login.BrowserOpen;
 
-public class Login extends BrowserOpen {
+public class LoginPage extends BrowserOpen {
+	
+//	1) Allocate all the web element
+	@FindBy (name="email")
+	WebElement username;
 
+	@FindBy (name="password")
+	WebElement password;
+	
+	@FindBy (css = "button.public-btn")
+	WebElement loginButton;
+	
+//	2) Make a Constructor
+	public LoginPage (){
+		PageFactory.initElements(driver, this);
+	}
+	
+//	3) perform action
+	
 	public boolean loginDetail() {
 
 		try {
-			WebElement username = driver.findElement(By.name("email"));
-			WebElement password = driver.findElement(By.name("password"));
-			WebElement loginButton = driver.findElement(By.cssSelector("button.public-btn"));
+			
 
 			username.sendKeys("mtr@maildrop.cc");
 

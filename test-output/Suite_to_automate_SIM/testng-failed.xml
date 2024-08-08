@@ -6,15 +6,21 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="Sim_automation.SaleOrderCreation">
+      <class name="Sim_automation.Login">
         <methods>
-          <include name="closeBrowser"/>
-          <include name="saleOrderform"/>
-          <include name="browserOpen"/>
+          <include name="logout"/>
           <include name="endReport"/>
-          <include name="reportGenerate"/>
         </methods>
-      </class> <!-- Sim_automation.SaleOrderCreation -->
+      </class> <!-- Sim_automation.Login -->
+      <class name="Sim_automation.PaymentReceivedCreation">
+        <methods>
+          <include name="logout"/>
+          <include name="endReport"/>
+          <include name="browserOpen"/>
+          <include name="reportGenerate"/>
+          <include name="paymentRecivedForm"/>
+        </methods>
+      </class> <!-- Sim_automation.PaymentReceivedCreation -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite_to_automate_SIM] -->

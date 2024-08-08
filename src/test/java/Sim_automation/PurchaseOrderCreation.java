@@ -8,7 +8,7 @@ import pageObjects.PurchaseOrderListPage;
 
 public class PurchaseOrderCreation extends PurchaseOrderListPage {
 
-	@Test (priority = 3, description = "Add a Purchase Order in the SIM-Web App")
+	@Test (priority = 4, description = "Add a Purchase Order in the SIM-Web App")
 	public void purchaseOrderform() throws InterruptedException {
 		PurchaseOrderListPage purOrderpom = new PurchaseOrderListPage();
 

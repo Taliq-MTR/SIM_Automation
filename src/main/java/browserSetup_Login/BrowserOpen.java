@@ -44,50 +44,21 @@ public class BrowserOpen {
 
 		Thread.sleep(500);
 		
-//		Login
-		try {
-			WebElement username = driver.findElement(By.name("email"));
-			WebElement password = driver.findElement(By.name("password"));
-			WebElement loginButton = driver.findElement(By.cssSelector("button.public-btn"));
-
-			username.sendKeys("mtr@maildrop.cc");
-
-			password.sendKeys("1234");
-
-			loginButton.click();
-
-			Duration duration = Duration.ofSeconds(50l, 50);
-			WebDriverWait waitforDashboard = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
-			waitforDashboard.until(ExpectedConditions.visibilityOfElementLocated(
-					By.xpath("//h4[contains(@class, 'page-title') and contains(text(), 'Dashboard')]")));
-			String dashboardUrl = driver.getCurrentUrl();
-//			System.out.println("The Dashboard url:" + dashboardUrl);
-			log().info("The Dashboard url:" + dashboardUrl);
-//			ExtentManager.test.log(Status.PASS, "The Dashboard url:" + dashboardUrl);
-
-			return true;
-
-		} catch (Exception e) {
-			
-//			System.out.println("User Login Failed");
-			log().error("User Login Failed" + e);
-//			ExtentManager.test.log(Status.PASS, "User Login Failed" + e);
-		}
-		return false;
+     return false;
 		
 	}
 
 	
 //	LogOut and Browser Closed.
 
-	@SuppressWarnings("deprecation")
+	
 	@AfterTest
 	public void logout () throws InterruptedException {
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
 		WebElement dropDown= driver.findElement(By.xpath("//a[@id='dropdownMenuButton1']"));
 		dropDown.click();
-		driver.manage().timeouts().implicitlyWait(50000, TimeUnit.MILLISECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
 		
 		WebElement logoutButton= driver.findElement(By.xpath("//ul[@class='dropdown-menu me-2 dropdown-menu-end show']/li[4]"));
@@ -95,7 +66,7 @@ public class BrowserOpen {
 		log().info("App Logout Successfully");
 		ExtentManager.test.log(Status.PASS, "App Logout Successfully");
 		
-		driver.manage().timeouts().implicitlyWait(80000, TimeUnit.MILLISECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		
 		driver.quit();
 		log().info("Browser Closed");

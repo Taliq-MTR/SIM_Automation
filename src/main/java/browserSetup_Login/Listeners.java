@@ -39,7 +39,7 @@ public class Listeners extends ExtentManager implements ITestListener {
 	@Override
 	public void onTestFailure(ITestResult result) {
 		// Downcast web driver object to TakeScreenshot child interface
-		TakesScreenshot scrShot = (TakesScreenshot) Login.driver;
+		TakesScreenshot scrShot = (TakesScreenshot) BrowserOpen.driver;
 
 		// Call getScreenshotAs method to create image file
 		File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
