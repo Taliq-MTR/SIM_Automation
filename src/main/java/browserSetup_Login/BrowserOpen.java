@@ -58,7 +58,7 @@ public class BrowserOpen {
 
 		WebElement dropDown= driver.findElement(By.xpath("//a[@id='dropdownMenuButton1']"));
 		dropDown.click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		Thread.sleep(200);
 
 		
 		WebElement logoutButton= driver.findElement(By.xpath("//ul[@class='dropdown-menu me-2 dropdown-menu-end show']/li[4]"));
@@ -66,7 +66,7 @@ public class BrowserOpen {
 		log().info("App Logout Successfully");
 		ExtentManager.test.log(Status.PASS, "App Logout Successfully");
 		
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		Thread.sleep(200);
 		
 		driver.quit();
 		log().info("Browser Closed");

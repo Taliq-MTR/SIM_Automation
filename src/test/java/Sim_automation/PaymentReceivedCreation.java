@@ -7,7 +7,7 @@ import pageObjects.PaymentReceivedListPage;
 
 public class PaymentReceivedCreation extends PaymentReceivedListPage{
 
-	@Test (priority = 6, description = "Add a Payment (Received) in the SIM-Web App")
+	@Test (priority = 7, description = "Add a Payment (Received) in the SIM-Web App")
 	public void paymentRecivedForm() throws InterruptedException {
 	
 		PaymentReceivedListPage paymentR = new PaymentReceivedListPage();
