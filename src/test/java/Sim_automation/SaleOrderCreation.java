@@ -12,7 +12,7 @@ public class SaleOrderCreation extends SaleOrderListPage {
 	public void saleOrderform() throws InterruptedException {
 		SaleOrderListPage saleOrderpom = new SaleOrderListPage();
 
-		boolean createSaleOrder = saleOrderpom.openInvoiceCreationForm();
+		boolean createSaleOrder = saleOrderpom.openSaleOrderCreationForm();
 		Assert.assertEquals(createSaleOrder, true, "Create Sale Order page Open successfully");
 		Thread.sleep(5000);
 

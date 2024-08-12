@@ -25,9 +25,17 @@ public class EstimateListPage extends BrowserOpen {
 //	WebDriver driver;
 //	(1) All the elements will locate here
 
+	// Open Invoice to select Estimate list
+	@FindBy(xpath = "//div[@class='menu-scrolling']/div/ul/li[2]")
+	WebElement clickOnInvoice;
+	
+	// Click on Add Invoice button
+	@FindBy(xpath = "//li[@class='mm-active']/ul/li[4]/a[contains(text(),  'Estimate List')]")
+	WebElement openEstimateList;
+	
 	// Click on Add Invoice button
 	@FindBy(css = "button.New_product")
-	WebElement addNewSaleOrder;
+	WebElement addNewEstimate;
 
 	// Click on Client Section
 	@FindBy(css = "input[placeholder='Search & Select Client']")
@@ -56,11 +64,11 @@ public class EstimateListPage extends BrowserOpen {
 
 	// Now Click on Save Invoice
 	@FindBy(xpath = "//*[@id=\"wrapper\"]/div/app-add-edit/div/div/div[2]/div[2]/div/form/div[4]/div/button[2]")
-	WebElement saveSaleOrder;
+	WebElement saveEstimate;
 
 	// Now Going Back To Dashboard
 	@FindBy(css = "li.breadcrumb-item > a[routerlink='/dashboard']")
-	WebElement saleOrderToDashboard;
+	WebElement EstimateToDashboard;
 
 //	(2) Made a Constructor 
 //	Initialize the Element
@@ -73,34 +81,30 @@ public class EstimateListPage extends BrowserOpen {
 
 // (3) Perform Action on the Elements
 
-	public boolean openInvoiceCreationForm() {
+	public boolean openEstimateCreationForm() {
 		try {
 			
-			// 1 => Sale Order
-			int formType = 3;
+			clickOnInvoice.click();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			openEstimateList.click();
+			
+			BrowserOpen.log().info("Creating Estimate");
+			ExtentManager.test.log(Status.PASS, "Creating Estimate");
 
-
-			BrowserOpen.log().info("Creating Sale Order");
-			ExtentManager.test.log(Status.PASS, "Creating Sale Order");
-
-			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
-			// TODO Auto-generated method stub
-			WebElement openInvoiceList = driver.findElement(By.cssSelector(dashboardSelectorCss));
-			openInvoiceList.click();
 
 			Duration duration = Duration.ofSeconds(10l, 10);
 			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button.New_product")));
 
-			addNewSaleOrder.click();
+			addNewEstimate.click();
 
-			BrowserOpen.log().info("Sale Order creation Form Open");
-			ExtentManager.test.log(Status.PASS, "Sale Order creation Form Open");
+			BrowserOpen.log().info("Estimate creation Form Open");
+			ExtentManager.test.log(Status.PASS, "Estimate creation Form Open");
 			return true;
 		} catch (Exception e) {
 
-			BrowserOpen.log().error("Sale Order Creation Form not Opened:" + e);
-			ExtentManager.test.log(Status.FAIL, "Sale Order Creation Form not Opened:" + e);
+			BrowserOpen.log().error("Estimate Creation Form not Opened:" + e);
+			ExtentManager.test.log(Status.FAIL, "Estimate Creation Form not Opened:" + e);
 			
 		}
 
@@ -156,15 +160,15 @@ public class EstimateListPage extends BrowserOpen {
 	public boolean saveInvoice() {
 		try {
 
-			saveSaleOrder.click();
+			saveEstimate.click();
 
-			BrowserOpen.log().info("Sale Order Added Successfully");
-			ExtentManager.test.log(Status.PASS, "Sale Order Added Successfully");
+			BrowserOpen.log().info("Estimate Added Successfully");
+			ExtentManager.test.log(Status.PASS, "Estimate Added Successfully");
 			return true;
 		} catch (Exception e) {
 
-			BrowserOpen.log().error("Didn't Click on Save Sale Order Button:" + e );
-			ExtentManager.test.log(Status.FAIL, "Didn't Click on Save Sale Order Button:" + e);
+			BrowserOpen.log().error("Didn't Click on Save Estimate Button:" + e );
+			ExtentManager.test.log(Status.FAIL, "Didn't Click on Save Estimate Button:" + e);
 		}
 
 		return false;
@@ -177,7 +181,7 @@ public class EstimateListPage extends BrowserOpen {
 
 			BrowserOpen.log().info("Waited 5 second");
 			ExtentManager.test.log(Status.PASS, "Waited 5 second");
-			saleOrderToDashboard.click();
+			EstimateToDashboard.click();
 			
 
 			BrowserOpen.log().info("We have Successfully Completed Fourth Module");

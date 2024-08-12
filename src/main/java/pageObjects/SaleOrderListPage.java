@@ -25,6 +25,10 @@ public class SaleOrderListPage extends BrowserOpen {
 //	WebDriver driver;
 //	(1) All the elements will locate here
 
+//	 Add a wait to add new Sale order button click
+	
+	@FindBy(css = "dashboardSelectorCss")
+	WebElement openSaleOrderList;
 	// Click on Add Invoice button
 	@FindBy(css = "button.New_product")
 	WebElement addNewSaleOrder;
@@ -73,7 +77,7 @@ public class SaleOrderListPage extends BrowserOpen {
 
 // (3) Perform Action on the Elements
 
-	public boolean openInvoiceCreationForm() {
+	public boolean openSaleOrderCreationForm() {
 		try {
 			
 			// 1 => Sale Order
@@ -84,9 +88,8 @@ public class SaleOrderListPage extends BrowserOpen {
 			ExtentManager.test.log(Status.PASS, "Creating Sale Order");
 
 			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
-			// TODO Auto-generated method stub
-			WebElement openInvoiceList = driver.findElement(By.cssSelector(dashboardSelectorCss));
-			openInvoiceList.click();
+			
+			openSaleOrderList.click();
 
 			Duration duration = Duration.ofSeconds(10l, 10);
 			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
@@ -188,7 +191,7 @@ public class SaleOrderListPage extends BrowserOpen {
 		} catch (Exception e) {
 
 			BrowserOpen.log().error("Failed to Go on Dashboard from Invoice List" + e);
-			ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Invoice List" + e);			e.printStackTrace();
+			ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Sale Order List" + e);			e.printStackTrace();
 		}
 
 		return false;
