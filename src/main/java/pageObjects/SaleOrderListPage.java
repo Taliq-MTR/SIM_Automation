@@ -27,8 +27,8 @@ public class SaleOrderListPage extends BrowserOpen {
 
 //	 Add a wait to add new Sale order button click
 	
-	@FindBy(css = "dashboardSelectorCss")
-	WebElement openSaleOrderList;
+	@FindBy(xpath = "//div[@class='grid-container']//div/h4[contains(text(), 'Sale Order ')]")
+	WebElement openSaleOrderModule;
 	// Click on Add Invoice button
 	@FindBy(css = "button.New_product")
 	WebElement addNewSaleOrder;
@@ -81,15 +81,12 @@ public class SaleOrderListPage extends BrowserOpen {
 		try {
 			
 			// 1 => Sale Order
-			int formType = 3;
-
-
+			
 			BrowserOpen.log().info("Creating Sale Order");
 			ExtentManager.test.log(Status.PASS, "Creating Sale Order");
 
-			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
 			
-			openSaleOrderList.click();
+			openSaleOrderModule.click();
 
 			Duration duration = Duration.ofSeconds(10l, 10);
 			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds

@@ -182,10 +182,12 @@ public class EstimateListPage extends BrowserOpen {
 			BrowserOpen.log().info("Waited 5 second");
 			ExtentManager.test.log(Status.PASS, "Waited 5 second");
 			EstimateToDashboard.click();
+			Thread.sleep(500);
+			clickOnInvoice.click();
 			
 
-			BrowserOpen.log().info("We have Successfully Completed Fourth Module");
-			ExtentManager.test.log(Status.PASS, "We have Successfully Completed Fourth Module");
+			BrowserOpen.log().info("We have Successfully Completed Sixth Module");
+			ExtentManager.test.log(Status.PASS, "We have Successfully Completed Sixth Module");
 		
 
 			return true;
