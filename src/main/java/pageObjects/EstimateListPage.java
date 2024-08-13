@@ -51,7 +51,7 @@ public class EstimateListPage extends BrowserOpen {
 	WebElement searchProduct;
 
 	// Add Product
-	@FindBy(xpath = "//mat-option//span[text()=' Football ']")
+	@FindBy(xpath = "//div[@class='cdk-overlay-connected-position-bounding-box']//span[contains(text(), ' Water')]")
 	WebElement addProduct;
 
 	// Scroll the Page to click on line itme
@@ -62,8 +62,8 @@ public class EstimateListPage extends BrowserOpen {
 	@FindBy(css = "button.add-line-form")
 	WebElement addItemButton;
 
-	// Now Click on Save Invoice
-	@FindBy(xpath = "//*[@id=\"wrapper\"]/div/app-add-edit/div/div/div[2]/div[2]/div/form/div[4]/div/button[2]")
+	// Now Click on Save estimate
+	@FindBy(xpath = "//div[@class='fa-pull-right']//button[contains(text(), ' Save Estimate ')]")
 	WebElement saveEstimate;
 
 	// Now Going Back To Dashboard

@@ -43,6 +43,14 @@ public class BrowserOpen {
 //		ExtentManager.test.log(Status.PASS, "Browser Open and maximized");
 
 		Thread.sleep(500);
+//		Login method
+//		WebElement email= driver.findElement(By.name("email"));
+//		email.sendKeys("mtr@maildrop.cc");
+//		WebElement password= driver.findElement(By.name("password"));
+//		password.sendKeys("1234");
+//		WebElement loginButton= driver.findElement(By.xpath("//*[@id=\"home-section\"]/section/div/div/div/div[2]/app-login/div/div/div/div/form/div[4]/div[1]/button"));
+//		loginButton.click();
+		
 		
      return false;
 		
