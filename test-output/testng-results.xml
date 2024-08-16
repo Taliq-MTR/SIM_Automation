@@ -1,107 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="7" passed="6" failed="1" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-08-13T18:08:26 IST" name="Suite_to_automate_SIM" finished-at="2024-08-13T18:10:26 IST" duration-ms="119629">
+  <suite started-at="2024-08-16T17:58:08 IST" name="Suite_to_automate_SIM" finished-at="2024-08-16T17:58:53 IST" duration-ms="44775">
     <groups>
     </groups>
-    <test started-at="2024-08-13T18:08:26 IST" name="Test" finished-at="2024-08-13T18:10:26 IST" duration-ms="119629">
-      <class name="Sim_automation.EstimateCreation">
-        <test-method signature="estimateform()[pri:6, instance:Sim_automation.EstimateCreation@13006998]" started-at="2024-08-13T18:10:05 IST" name="estimateform" description="Add a Estimate in the SIM-Web App" finished-at="2024-08-13T18:10:24 IST" duration-ms="19105" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- estimateform -->
-      </class> <!-- Sim_automation.EstimateCreation -->
-      <class name="Sim_automation.PaymentReceivedCreation">
-        <test-method signature="paymentRecivedForm()[pri:7, instance:Sim_automation.PaymentReceivedCreation@560513ce]" started-at="2024-08-13T18:10:24 IST" name="paymentRecivedForm" description="Add a Payment (Received) in the SIM-Web App" finished-at="2024-08-13T18:10:25 IST" duration-ms="1138" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[Payment List Form Open expected [true] but found [false]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Payment List Form Open expected [true] but found [false]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:1067)
-at org.testng.Assert.assertEquals(Assert.java:1031)
-at Sim_automation.PaymentReceivedCreation.paymentRecivedForm(PaymentReceivedCreation.java:16)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:739)
-at org.testng.TestRunner.run(TestRunner.java:614)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
-at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
-at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-at java.base/java.lang.Thread.run(Thread.java:840)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- paymentRecivedForm -->
-      </class> <!-- Sim_automation.PaymentReceivedCreation -->
-      <class name="Sim_automation.SaleOrderCreation">
-        <test-method signature="saleOrderform()[pri:5, instance:Sim_automation.SaleOrderCreation@41beb473]" started-at="2024-08-13T18:09:42 IST" name="saleOrderform" description="Add a Sale Order in the SIM-Web App" finished-at="2024-08-13T18:10:05 IST" duration-ms="22431" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- saleOrderform -->
-      </class> <!-- Sim_automation.SaleOrderCreation -->
+    <test started-at="2024-08-16T17:58:08 IST" name="Test" finished-at="2024-08-16T17:58:53 IST" duration-ms="44775">
       <class name="Sim_automation.Login">
-        <test-method is-config="true" signature="reportGenerate()[pri:0, instance:Sim_automation.Login@a37aefe]" started-at="2024-08-13T18:08:26 IST" name="reportGenerate" finished-at="2024-08-13T18:08:26 IST" duration-ms="224" status="PASS">
+        <test-method is-config="true" signature="reportGenerate()[pri:0, instance:Sim_automation.Login@6736fa8d]" started-at="2024-08-16T17:58:08 IST" name="reportGenerate" finished-at="2024-08-16T17:58:08 IST" duration-ms="347" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- reportGenerate -->
-        <test-method is-config="true" signature="browserOpen()[pri:0, instance:Sim_automation.Login@a37aefe]" started-at="2024-08-13T18:08:26 IST" name="browserOpen" finished-at="2024-08-13T18:08:30 IST" duration-ms="3940" status="PASS">
+        <test-method is-config="true" signature="browserOpen()[pri:0, instance:Sim_automation.Login@6736fa8d]" started-at="2024-08-16T17:58:08 IST" name="browserOpen" finished-at="2024-08-16T17:58:22 IST" duration-ms="13218" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserOpen -->
-        <test-method signature="logindata()[pri:1, instance:Sim_automation.Login@a37aefe]" started-at="2024-08-13T18:08:30 IST" name="logindata" description="Login in the SIM-Web App" finished-at="2024-08-13T18:08:44 IST" duration-ms="13545" status="PASS">
+        <test-method signature="logindata()[pri:1, instance:Sim_automation.Login@6736fa8d]" started-at="2024-08-16T17:58:22 IST" name="logindata" description="Login in the SIM-Web App" finished-at="2024-08-16T17:58:36 IST" duration-ms="14455" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logindata -->
-        <test-method is-config="true" signature="logout()[pri:0, instance:Sim_automation.Login@a37aefe]" started-at="2024-08-13T18:10:25 IST" name="logout" finished-at="2024-08-13T18:10:26 IST" duration-ms="646" status="PASS">
+        <test-method is-config="true" signature="logout()[pri:0, instance:Sim_automation.Login@6736fa8d]" started-at="2024-08-16T17:58:53 IST" name="logout" finished-at="2024-08-16T17:58:53 IST" duration-ms="614" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
-        <test-method is-config="true" signature="endReport()[pri:0, instance:Sim_automation.Login@a37aefe]" started-at="2024-08-13T18:10:26 IST" name="endReport" finished-at="2024-08-13T18:10:26 IST" duration-ms="255" status="PASS">
+        <test-method is-config="true" signature="endReport()[pri:0, instance:Sim_automation.Login@6736fa8d]" started-at="2024-08-16T17:58:53 IST" name="endReport" finished-at="2024-08-16T17:58:54 IST" duration-ms="307" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endReport -->
       </class> <!-- Sim_automation.Login -->
-      <class name="Sim_automation.InvoiceCreation">
-        <test-method signature="invoiceform()[pri:3, instance:Sim_automation.InvoiceCreation@4d411036]" started-at="2024-08-13T18:09:06 IST" name="invoiceform" description="Add an Invoice in the SIM-Web App" finished-at="2024-08-13T18:09:29 IST" duration-ms="22520" status="PASS">
+      <class name="Sim_automation.PaymentPaidCreation">
+        <test-method signature="paymentPecivedForm()[pri:8, instance:Sim_automation.PaymentPaidCreation@11d8ae8b]" started-at="2024-08-16T17:58:36 IST" name="paymentPecivedForm" description="Add a Payment (Paid) in the SIM-Web App" finished-at="2024-08-16T17:58:53 IST" duration-ms="16458" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- invoiceform -->
-      </class> <!-- Sim_automation.InvoiceCreation -->
-      <class name="Sim_automation.PurchaseCreation">
-        <test-method signature="purchaseform()[pri:2, instance:Sim_automation.PurchaseCreation@7b7fdc8]" started-at="2024-08-13T18:08:44 IST" name="purchaseform" description="Add a Purchase in the SIM-Web App" finished-at="2024-08-13T18:09:06 IST" duration-ms="22741" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- purchaseform -->
-      </class> <!-- Sim_automation.PurchaseCreation -->
-      <class name="Sim_automation.PurchaseOrderCreation">
-        <test-method signature="purchaseOrderform()[pri:4, instance:Sim_automation.PurchaseOrderCreation@7adbd080]" started-at="2024-08-13T18:09:29 IST" name="purchaseOrderform" description="Add a Purchase Order in the SIM-Web App" finished-at="2024-08-13T18:09:42 IST" duration-ms="13380" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- purchaseOrderform -->
-      </class> <!-- Sim_automation.PurchaseOrderCreation -->
+        </test-method> <!-- paymentPecivedForm -->
+      </class> <!-- Sim_automation.PaymentPaidCreation -->
     </test> <!-- Test -->
   </suite> <!-- Suite_to_automate_SIM -->
 </testng-results>
