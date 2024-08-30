@@ -15,6 +15,15 @@
           <include name="paymentRecivedForm"/>
         </methods>
       </class> <!-- Sim_automation.PaymentReceivedCreation -->
+      <class name="Sim_automation.PaymentPaidCreation">
+        <methods>
+          <include name="logout"/>
+          <include name="paymentPecivedForm"/>
+          <include name="browserOpen"/>
+          <include name="endReport"/>
+          <include name="reportGenerate"/>
+        </methods>
+      </class> <!-- Sim_automation.PaymentPaidCreation -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite_to_automate_SIM] -->

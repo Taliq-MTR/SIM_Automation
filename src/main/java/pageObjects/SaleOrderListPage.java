@@ -70,8 +70,6 @@ public class SaleOrderListPage extends BrowserOpen {
 //	Initialize the Element
 	public SaleOrderListPage() {
 
-		BrowserOpen.log().info("This is search context" + driver);
-
 		PageFactory.initElements(driver, this);
 	}
 
@@ -82,8 +80,8 @@ public class SaleOrderListPage extends BrowserOpen {
 			
 			// 1 => Sale Order
 			
-			BrowserOpen.log().info("Creating Sale Order");
-			ExtentManager.test.log(Status.PASS, "Creating Sale Order");
+			BrowserOpen.log().info("Sale Order Creation Started");
+			ExtentManager.test.log(Status.PASS, "Sale Order Creation Started");
 
 			
 			openSaleOrderModule.click();

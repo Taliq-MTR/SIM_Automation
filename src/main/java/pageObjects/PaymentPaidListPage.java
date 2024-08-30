@@ -19,7 +19,7 @@ public class PaymentPaidListPage extends BrowserOpen {
 //	(1) All the elements will locate here
 	
 //	Select Payment Module from Left Drawer
-	@FindBy(xpath= "//*[@id=\"side-menu\"]/li[6]/a")
+	@FindBy(xpath= "//*[@id='side-menu']/li[6]/a")
 	 WebElement paymentsideMenu;
 //	Adding element for wait
 	@FindBy(xpath= "//a[text()=' Payment List ']") 

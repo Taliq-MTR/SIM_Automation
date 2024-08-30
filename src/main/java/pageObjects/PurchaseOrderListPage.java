@@ -67,9 +67,6 @@ public class PurchaseOrderListPage extends BrowserOpen{
 //	Initialize the Element
 	public PurchaseOrderListPage() {
 
-
-
-
 		PageFactory.initElements(driver, this);
 	}
 
@@ -81,8 +78,8 @@ public class PurchaseOrderListPage extends BrowserOpen{
 			// 2 => Purchase Order
 			int formType = 4;
 
-			BrowserOpen.log().info("Creating Purchase Order");
-			ExtentManager.test.log(Status.PASS, "Creating Purchase Order");
+			BrowserOpen.log().info("Purchase Order Creation Started");
+			ExtentManager.test.log(Status.PASS, "Purchase Order Creation Started");
 
 			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
 			// TODO Auto-generated method stub

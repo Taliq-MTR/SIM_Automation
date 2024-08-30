@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>2/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>6/2/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Aug 16 17:58:08 IST 2024</td>
+<td>Started on:</td><td>Fri Aug 30 17:40:08 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>44 seconds (44775 ms)</td>
+<tr><td>Total time:</td><td>140 seconds (140133 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,101 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='Sim_automation.PaymentPaidCreation.paymentPecivedForm()'><b>paymentPecivedForm</b><br>Test class: Sim_automation.PaymentPaidCreation<br>Test method: Add a Payment (Paid) in the SIM-Web App</td>
+<td><div><pre>java.lang.AssertionError: Payment List Form Open expected [true] but found [false]
+	at Sim_automation.PaymentPaidCreation.paymentPecivedForm(PaymentPaidCreation.java:17)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace573599874", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace573599874'><pre>java.lang.AssertionError: Payment List Form Open expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+	at org.testng.Assert.assertEquals(Assert.java:132)
+	at org.testng.Assert.assertEquals(Assert.java:1067)
+	at org.testng.Assert.assertEquals(Assert.java:1031)
+	at Sim_automation.PaymentPaidCreation.paymentPecivedForm(PaymentPaidCreation.java:17)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+</pre></div></td>
+<td>1</td>
+<td>Sim_automation.PaymentPaidCreation@55c53a33</td></tr>
+<tr>
+<td title='Sim_automation.PaymentReceivedCreation.paymentRecivedForm()'><b>paymentRecivedForm</b><br>Test class: Sim_automation.PaymentReceivedCreation<br>Test method: Add a Payment (Received) in the SIM-Web App</td>
+<td><div><pre>java.lang.AssertionError: Payment List Form Open expected [true] but found [false]
+	at Sim_automation.PaymentReceivedCreation.paymentRecivedForm(PaymentReceivedCreation.java:16)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1796957943", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1796957943'><pre>java.lang.AssertionError: Payment List Form Open expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+	at org.testng.Assert.assertEquals(Assert.java:132)
+	at org.testng.Assert.assertEquals(Assert.java:1067)
+	at org.testng.Assert.assertEquals(Assert.java:1031)
+	at Sim_automation.PaymentReceivedCreation.paymentRecivedForm(PaymentReceivedCreation.java:16)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+</pre></div></td>
+<td>1</td>
+<td>Sim_automation.PaymentReceivedCreation@544d57e</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -76,15 +171,35 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
+<td title='Sim_automation.EstimateCreation.estimateform()'><b>estimateform</b><br>Test class: Sim_automation.EstimateCreation<br>Test method: Add a Estimate in the SIM-Web App</td>
+<td></td>
+<td>19</td>
+<td>Sim_automation.EstimateCreation@1863d2fe</td></tr>
+<tr>
+<td title='Sim_automation.PurchaseCreation.purchaseform()'><b>purchaseform</b><br>Test class: Sim_automation.PurchaseCreation<br>Test method: Add a Purchase in the SIM-Web App</td>
+<td></td>
+<td>22</td>
+<td>Sim_automation.PurchaseCreation@766653e6</td></tr>
+<tr>
+<td title='Sim_automation.InvoiceCreation.invoiceform()'><b>invoiceform</b><br>Test class: Sim_automation.InvoiceCreation<br>Test method: Add an Invoice in the SIM-Web App</td>
+<td></td>
+<td>22</td>
+<td>Sim_automation.InvoiceCreation@1f81aa00</td></tr>
+<tr>
+<td title='Sim_automation.PurchaseOrderCreation.purchaseOrderform()'><b>purchaseOrderform</b><br>Test class: Sim_automation.PurchaseOrderCreation<br>Test method: Add a Purchase Order in the SIM-Web App</td>
+<td></td>
+<td>13</td>
+<td>Sim_automation.PurchaseOrderCreation@6b6776cb</td></tr>
+<tr>
 <td title='Sim_automation.Login.logindata()'><b>logindata</b><br>Test class: Sim_automation.Login<br>Test method: Login in the SIM-Web App</td>
 <td></td>
-<td>14</td>
-<td>Sim_automation.Login@6736fa8d</td></tr>
+<td>22</td>
+<td>Sim_automation.Login@24c4ddae</td></tr>
 <tr>
-<td title='Sim_automation.PaymentPaidCreation.paymentPecivedForm()'><b>paymentPecivedForm</b><br>Test class: Sim_automation.PaymentPaidCreation<br>Test method: Add a Payment (Paid) in the SIM-Web App</td>
+<td title='Sim_automation.SaleOrderCreation.saleOrderform()'><b>saleOrderform</b><br>Test class: Sim_automation.SaleOrderCreation<br>Test method: Add a Sale Order in the SIM-Web App</td>
 <td></td>
-<td>16</td>
-<td>Sim_automation.PaymentPaidCreation@11d8ae8b</td></tr>
+<td>22</td>
+<td>Sim_automation.SaleOrderCreation@1787bc24</td></tr>
 </table><p>
 </body>
 </html>

@@ -51,7 +51,7 @@ public class EstimateListPage extends BrowserOpen {
 	WebElement searchProduct;
 
 	// Add Product
-	@FindBy(xpath = "//div[@class='cdk-overlay-connected-position-bounding-box']//span[contains(text(), ' Water')]")
+	@FindBy(xpath = "//div[@class='cdk-overlay-connected-position-bounding-box']//span[contains(text(), ' Kiwi')]")
 	WebElement addProduct;
 
 	// Scroll the Page to click on line itme
@@ -88,8 +88,8 @@ public class EstimateListPage extends BrowserOpen {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			openEstimateList.click();
 			
-			BrowserOpen.log().info("Creating Estimate");
-			ExtentManager.test.log(Status.PASS, "Creating Estimate");
+			BrowserOpen.log().info("Estimate Creation Started");
+			ExtentManager.test.log(Status.PASS, "Estimate Creation Started");
 
 
 			Duration duration = Duration.ofSeconds(10l, 10);
@@ -157,7 +157,7 @@ public class EstimateListPage extends BrowserOpen {
 		return false;
 	}
 
-	public boolean saveInvoice() {
+	public boolean saveEstimate() {
 		try {
 
 			saveEstimate.click();
@@ -182,10 +182,9 @@ public class EstimateListPage extends BrowserOpen {
 			BrowserOpen.log().info("Waited 5 second");
 			ExtentManager.test.log(Status.PASS, "Waited 5 second");
 			EstimateToDashboard.click();
+			Thread.sleep(50);
+			clickOnInvoice.click();			
 			Thread.sleep(500);
-			clickOnInvoice.click();
-			
-
 			BrowserOpen.log().info("We have Successfully Completed Sixth Module");
 			ExtentManager.test.log(Status.PASS, "We have Successfully Completed Sixth Module");
 		

@@ -14,10 +14,10 @@ import browserSetup_Login.BrowserOpen;
 public class LoginPage extends BrowserOpen {
 	
 //	1) Allocate all the web element
-	@FindBy (name="email")
+	@FindBy (xpath="//div[@class='box-login']//input[@name='email']")
 	WebElement username;
 
-	@FindBy (name="password")
+	@FindBy (xpath="//div[contains(@class, 'form-group password-field')]//input[@name='password']")
 	WebElement password;
 	
 	@FindBy (css = "button.public-btn")
@@ -33,10 +33,11 @@ public class LoginPage extends BrowserOpen {
 	public boolean loginDetail() {
 
 		try {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			
-
 			username.sendKeys("mtr@maildrop.cc");
 
+			password.click();	
 			password.sendKeys("1234");
 
 			loginButton.click();

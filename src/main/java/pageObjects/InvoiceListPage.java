@@ -68,8 +68,7 @@ public class InvoiceListPage extends BrowserOpen {
 //	(2) Made a Constructor 
 //	Initialize the Element
 	public InvoiceListPage() {
-//		System.out.println("This is search context" + driver);
-		BrowserOpen.log().info("This is search context" + driver);
+
 
 		PageFactory.initElements(driver, this);
 	}
@@ -83,8 +82,8 @@ public class InvoiceListPage extends BrowserOpen {
 			int formType = 1;
 
 //			System.out.println("Creating Invoices");
-			BrowserOpen.log().info("Creating Invoices");
-			ExtentManager.test.log(Status.PASS, "Creating Invoices");
+			BrowserOpen.log().info("Invoice Creation Started");
+			ExtentManager.test.log(Status.PASS, "Invoice Creation Started");
 
 			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
 			// TODO Auto-generated method stub

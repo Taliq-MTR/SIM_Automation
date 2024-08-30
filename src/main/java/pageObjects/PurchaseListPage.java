@@ -69,11 +69,7 @@ public class PurchaseListPage extends BrowserOpen {
 //	(2) Made a Constructor 
 //	Initialize the Element
 	public PurchaseListPage() {
-
-//		Login.log().info("This is search context" + driver);
-//		ExtentManager.test.log(Status.PASS, "This is search context" + driver);
-
-
+		
 		PageFactory.initElements(driver, this);
 	}
 
@@ -85,8 +81,8 @@ public class PurchaseListPage extends BrowserOpen {
 			// 2 => Purchase
 			int formType = 2;
 
-			BrowserOpen.log().info("Creating Purchases");
-			ExtentManager.test.log(Status.PASS, "Creating Purchases");
+			BrowserOpen.log().info("Purchase Creation Started");
+			ExtentManager.test.log(Status.PASS, "Purchase Creation Started");
 
 			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
 			// TODO Auto-generated method stub
@@ -118,7 +114,7 @@ public class PurchaseListPage extends BrowserOpen {
 			addSupplier.click();
 			return true;
 		} catch (Exception e) {
-//			System.out.println("Customer not added");
+
 			BrowserOpen.log().error("Supplier not added:" + e);
 			ExtentManager.test.log(Status.FAIL, "Supplier not added:" + e);
 		}

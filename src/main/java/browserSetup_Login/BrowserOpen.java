@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
@@ -30,6 +31,10 @@ public class BrowserOpen {
 	@BeforeTest
 	public boolean browserOpen() throws InterruptedException {
 		// TODO Auto-generated method st0ub
+		
+//		ChromeOptions options = new ChromeOptions();
+//		options.setBrowserVersion("127");
+//		 driver = new ChromeDriver(options);
 		driver = new ChromeDriver();
 //		System.out.println("The method call");
 
@@ -42,7 +47,7 @@ public class BrowserOpen {
 		log().info("Browser Open and maximized");
 //		ExtentManager.test.log(Status.PASS, "Browser Open and maximized");
 
-		Thread.sleep(500);
+		Thread.sleep(5000);
 //		Login method
 //		WebElement email= driver.findElement(By.name("email"));
 //		email.sendKeys("mtr@maildrop.cc");
