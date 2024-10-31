@@ -7,7 +7,7 @@
 
     <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
     <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
-    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="testng-reports.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type='text/javascript'>
@@ -21,11 +21,12 @@
      -->
   </head>
 
-  <body>    <div class="top-banner-root">
+  <body>
+    <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
+      <span class="top-banner-font-1">1 suite, 3 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -92,7 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">8 methods, 2 failed,   6 passed</span>
+                    <span class="method-stats">8 methods, 3 failed,   5 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -109,6 +110,11 @@
                       <span>
                         <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite_to_automate_SIM" title="Sim_automation.PaymentReceivedCreation" class="method navigator-link" hash-for-method="paymentRecivedForm">paymentRecivedForm</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite_to_automate_SIM" title="Sim_automation.SaleOrderCreation" class="method navigator-link" hash-for-method="saleOrderform">saleOrderform</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Suite_to_automate_SIM -->
@@ -145,11 +151,6 @@
                         <a href="#" panel-name="suite-Suite_to_automate_SIM" title="Sim_automation.PurchaseCreation" class="method navigator-link" hash-for-method="purchaseform">purchaseform</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite_to_automate_SIM" title="Sim_automation.SaleOrderCreation" class="method navigator-link" hash-for-method="saleOrderform">saleOrderform</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
                     </div> <!-- method-list-content passed suite-Suite_to_automate_SIM -->
                   </li>
                 </ul>
@@ -175,15 +176,41 @@
                   <span class="method-name">paymentRecivedForm</span>
                   <div class="stack-trace">java.lang.AssertionError: Payment List Form Open expected [true] but found [false]
 	at Sim_automation.PaymentReceivedCreation.paymentRecivedForm(PaymentReceivedCreation.java:16)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:840)
-... Removed 23 stack frames
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 21 stack frames
 </div> <!-- stack-trace -->
                   <em>
 (Add a Payment (Received) in the SIM-Web App)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Suite_to_automate_SIM-class-failed -->
+          <div class="suite-Suite_to_automate_SIM-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">Sim_automation.SaleOrderCreation</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="saleOrderform">
+                  </a> <!-- saleOrderform -->
+                  <span class="method-name">saleOrderform</span>
+                  <div class="stack-trace">java.lang.AssertionError: Create Sale Order page Open successfully expected [true] but found [false]
+	at Sim_automation.SaleOrderCreation.saleOrderform(SaleOrderCreation.java:16)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 21 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(Add a Sale Order in the SIM-Web App)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -201,12 +228,12 @@
                   <span class="method-name">paymentPecivedForm</span>
                   <div class="stack-trace">java.lang.AssertionError: Payment List Form Open expected [true] but found [false]
 	at Sim_automation.PaymentPaidCreation.paymentPecivedForm(PaymentPaidCreation.java:17)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:840)
-... Removed 23 stack frames
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 21 stack frames
 </div> <!-- stack-trace -->
                   <em>
 (Add a Payment (Paid) in the SIM-Web App)                  </em>
@@ -217,16 +244,16 @@
           <div class="suite-Suite_to_automate_SIM-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">Sim_automation.SaleOrderCreation</span>
+              <span class="class-name">Sim_automation.PurchaseOrderCreation</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="saleOrderform">
-                  </a> <!-- saleOrderform -->
-                  <span class="method-name">saleOrderform</span>
+                  <a name="purchaseOrderform">
+                  </a> <!-- purchaseOrderform -->
+                  <span class="method-name">purchaseOrderform</span>
                   <em>
-(Add a Sale Order in the SIM-Web App)                  </em>
+(Add a Purchase Order in the SIM-Web App)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -251,33 +278,16 @@
           <div class="suite-Suite_to_automate_SIM-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">Sim_automation.PurchaseOrderCreation</span>
+              <span class="class-name">Sim_automation.PurchaseCreation</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="purchaseOrderform">
-                  </a> <!-- purchaseOrderform -->
-                  <span class="method-name">purchaseOrderform</span>
+                  <a name="purchaseform">
+                  </a> <!-- purchaseform -->
+                  <span class="method-name">purchaseform</span>
                   <em>
-(Add a Purchase Order in the SIM-Web App)                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite_to_automate_SIM-class-passed -->
-          <div class="suite-Suite_to_automate_SIM-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">Sim_automation.EstimateCreation</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="estimateform">
-                  </a> <!-- estimateform -->
-                  <span class="method-name">estimateform</span>
-                  <em>
-(Add a Estimate in the SIM-Web App)                  </em>
+(Add a Purchase in the SIM-Web App)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -302,16 +312,16 @@
           <div class="suite-Suite_to_automate_SIM-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">Sim_automation.PurchaseCreation</span>
+              <span class="class-name">Sim_automation.EstimateCreation</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="purchaseform">
-                  </a> <!-- purchaseform -->
-                  <span class="method-name">purchaseform</span>
+                  <a name="estimateform">
+                  </a> <!-- estimateform -->
+                  <span class="method-name">estimateform</span>
                   <em>
-(Add a Purchase in the SIM-Web App)                  </em>
+(Add a Estimate in the SIM-Web App)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -319,7 +329,7 @@
         </div> <!-- panel Suite_to_automate_SIM -->
         <div panel-name="test-xml-Suite_to_automate_SIM" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/home/tacktile/Downloads/SIM_project/Sim_automationproject/testng.xml</span>
+            <span class="header-content">/home/tacktile/Downloads/SIM-App/SIM_Automation/testng.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -380,37 +390,37 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(8);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'logindata')
-data.setCell(0, 2, 'Sim_automation.Login')
-data.setCell(0, 3, 22693);
+data.setCell(0, 1, 'purchaseform')
+data.setCell(0, 2, 'Sim_automation.PurchaseCreation')
+data.setCell(0, 3, 22802);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'invoiceform')
 data.setCell(1, 2, 'Sim_automation.InvoiceCreation')
-data.setCell(1, 3, 22576);
+data.setCell(1, 3, 22740);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'purchaseform')
-data.setCell(2, 2, 'Sim_automation.PurchaseCreation')
-data.setCell(2, 3, 22441);
+data.setCell(2, 1, 'estimateform')
+data.setCell(2, 2, 'Sim_automation.EstimateCreation')
+data.setCell(2, 3, 19899);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'saleOrderform')
-data.setCell(3, 2, 'Sim_automation.SaleOrderCreation')
-data.setCell(3, 3, 22328);
+data.setCell(3, 1, 'logindata')
+data.setCell(3, 2, 'Sim_automation.Login')
+data.setCell(3, 3, 17068);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'estimateform')
-data.setCell(4, 2, 'Sim_automation.EstimateCreation')
-data.setCell(4, 3, 19040);
+data.setCell(4, 1, 'purchaseOrderform')
+data.setCell(4, 2, 'Sim_automation.PurchaseOrderCreation')
+data.setCell(4, 3, 13572);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'purchaseOrderform')
-data.setCell(5, 2, 'Sim_automation.PurchaseOrderCreation')
-data.setCell(5, 3, 13419);
+data.setCell(5, 1, 'saleOrderform')
+data.setCell(5, 2, 'Sim_automation.SaleOrderCreation')
+data.setCell(5, 3, 5063);
 data.setCell(6, 0, 6)
 data.setCell(6, 1, 'paymentRecivedForm')
 data.setCell(6, 2, 'Sim_automation.PaymentReceivedCreation')
-data.setCell(6, 3, 1091);
+data.setCell(6, 3, 1100);
 data.setCell(7, 0, 7)
 data.setCell(7, 1, 'paymentPecivedForm')
 data.setCell(7, 2, 'Sim_automation.PaymentPaidCreation')
-data.setCell(7, 3, 1055);
+data.setCell(7, 3, 1069);
 window.suiteTableData['Suite_to_automate_SIM']= { tableData: data, tableDiv: 'times-div-Suite_to_automate_SIM'}
 return data;
 }
@@ -434,15 +444,15 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">Sim_automation.SaleOrderCreation</span>
+              <span class="ignored-class-name">Sim_automation.PaymentReceivedCreation</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">endReport</span>
+                <span class="ignored-method-name">logout</span>
                 <br/>
-                <span class="ignored-method-name">reportGenerate</span>
+                <span class="ignored-method-name">endReport</span>
                 <br/>
                 <span class="ignored-method-name">browserOpen</span>
                 <br/>
-                <span class="ignored-method-name">logout</span>
+                <span class="ignored-method-name">reportGenerate</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -451,33 +461,33 @@ return data;
               <div class="ignored-methods-div">
                 <span class="ignored-method-name">logout</span>
                 <br/>
-                <span class="ignored-method-name">browserOpen</span>
-                <br/>
-                <span class="ignored-method-name">reportGenerate</span>
-                <br/>
                 <span class="ignored-method-name">endReport</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">Sim_automation.PaymentReceivedCreation</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">logout</span>
                 <br/>
                 <span class="ignored-method-name">browserOpen</span>
                 <br/>
                 <span class="ignored-method-name">reportGenerate</span>
                 <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">Sim_automation.SaleOrderCreation</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">logout</span>
+                <br/>
                 <span class="ignored-method-name">endReport</span>
+                <br/>
+                <span class="ignored-method-name">browserOpen</span>
+                <br/>
+                <span class="ignored-method-name">reportGenerate</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
             <div class="ignored-class-div">
-              <span class="ignored-class-name">Sim_automation.EstimateCreation</span>
+              <span class="ignored-class-name">Sim_automation.PurchaseCreation</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">endReport</span>
-                <br/>
                 <span class="ignored-method-name">logout</span>
+                <br/>
+                <span class="ignored-method-name">endReport</span>
                 <br/>
                 <span class="ignored-method-name">browserOpen</span>
                 <br/>
@@ -488,39 +498,39 @@ return data;
             <div class="ignored-class-div">
               <span class="ignored-class-name">Sim_automation.InvoiceCreation</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">browserOpen</span>
-                <br/>
                 <span class="ignored-method-name">logout</span>
+                <br/>
+                <span class="ignored-method-name">endReport</span>
+                <br/>
+                <span class="ignored-method-name">browserOpen</span>
                 <br/>
                 <span class="ignored-method-name">reportGenerate</span>
                 <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">Sim_automation.EstimateCreation</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">logout</span>
+                <br/>
                 <span class="ignored-method-name">endReport</span>
+                <br/>
+                <span class="ignored-method-name">browserOpen</span>
+                <br/>
+                <span class="ignored-method-name">reportGenerate</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
             <div class="ignored-class-div">
               <span class="ignored-class-name">Sim_automation.PaymentPaidCreation</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">browserOpen</span>
+                <span class="ignored-method-name">logout</span>
                 <br/>
                 <span class="ignored-method-name">endReport</span>
                 <br/>
-                <span class="ignored-method-name">reportGenerate</span>
-                <br/>
-                <span class="ignored-method-name">logout</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">Sim_automation.PurchaseCreation</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">endReport</span>
-                <br/>
-                <span class="ignored-method-name">logout</span>
-                <br/>
-                <span class="ignored-method-name">reportGenerate</span>
-                <br/>
                 <span class="ignored-method-name">browserOpen</span>
+                <br/>
+                <span class="ignored-method-name">reportGenerate</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -539,46 +549,48 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-test before">
                 <span class="method-name">browserOpen</span>
-                <span class="method-start">186 ms</span>
+                <span class="method-start">206 ms</span>
               </div> <!-- configuration-test before -->
               <div class="test-method">
                 <span class="method-name">logindata</span>
-                <span class="method-start">14776 ms</span>
+                <span class="method-start">20079 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">Sim_automation.PurchaseCreation</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">purchaseform</span>
-                <span class="method-start">37475 ms</span>
+                <span class="method-start">37155 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">Sim_automation.InvoiceCreation</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">invoiceform</span>
-                <span class="method-start">59921 ms</span>
+                <span class="method-start">59961 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">Sim_automation.PurchaseOrderCreation</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">purchaseOrderform</span>
-                <span class="method-start">82502 ms</span>
+                <span class="method-start">82704 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">Sim_automation.EstimateCreation</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">estimateform</span>
-                <span class="method-start">95924 ms</span>
+                <span class="method-start">96280 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">Sim_automation.SaleOrderCreation</div> <!-- chronological-class-name -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">saleOrderform</span>
-                <span class="method-start">114968 ms</span>
+                <span class="method-start">116182 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
@@ -587,7 +599,7 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">paymentRecivedForm</span>
-                <span class="method-start">137298 ms</span>
+                <span class="method-start">121382 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
@@ -596,18 +608,18 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">paymentPecivedForm</span>
-                <span class="method-start">138483 ms</span>
+                <span class="method-start">122587 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">Sim_automation.Login</div> <!-- chronological-class-name -->
               <div class="configuration-test after">
                 <span class="method-name">logout</span>
-                <span class="method-start">139614 ms</span>
+                <span class="method-start">123798 ms</span>
               </div> <!-- configuration-test after -->
               <div class="configuration-suite after">
                 <span class="method-name">endReport</span>
-                <span class="method-start">140361 ms</span>
+                <span class="method-start">124563 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

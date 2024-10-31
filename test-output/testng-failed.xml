@@ -11,16 +11,25 @@
           <include name="logout"/>
           <include name="endReport"/>
           <include name="browserOpen"/>
-          <include name="reportGenerate"/>
           <include name="paymentRecivedForm"/>
+          <include name="reportGenerate"/>
         </methods>
       </class> <!-- Sim_automation.PaymentReceivedCreation -->
+      <class name="Sim_automation.SaleOrderCreation">
+        <methods>
+          <include name="logout"/>
+          <include name="saleOrderform"/>
+          <include name="endReport"/>
+          <include name="browserOpen"/>
+          <include name="reportGenerate"/>
+        </methods>
+      </class> <!-- Sim_automation.SaleOrderCreation -->
       <class name="Sim_automation.PaymentPaidCreation">
         <methods>
           <include name="logout"/>
           <include name="paymentPecivedForm"/>
-          <include name="browserOpen"/>
           <include name="endReport"/>
+          <include name="browserOpen"/>
           <include name="reportGenerate"/>
         </methods>
       </class> <!-- Sim_automation.PaymentPaidCreation -->
