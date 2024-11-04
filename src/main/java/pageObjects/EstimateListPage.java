@@ -26,7 +26,7 @@ public class EstimateListPage extends BrowserOpen {
 //	(1) All the elements will locate here
 
 	// Open Invoice to select Estimate list
-	@FindBy(xpath = "//div[@class='menu-scrolling']/div/ul/li[2]")
+	@FindBy(xpath = "//div[@class='menu-scrolling']/div/ul/li[2]/a")
 	WebElement clickOnInvoice;
 	
 	// Click on Add Invoice button
