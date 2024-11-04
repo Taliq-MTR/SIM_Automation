@@ -13,5 +13,5 @@ public class Login extends LoginPage {
 		boolean loginaction = login.loginDetail();
 		Assert.assertEquals(loginaction, true, "USer login in the app successfully");
 		}
-
+//aa
 }
