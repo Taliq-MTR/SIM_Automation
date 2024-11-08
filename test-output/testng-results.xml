@@ -1,75 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="28" total="36" passed="8" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-04T15:31:39 IST" name="Suite_to_automate_SIM" finished-at="2024-11-04T15:34:40 IST" duration-ms="180403">
+  <suite started-at="2024-11-08T18:22:47 IST" name="Suite_to_automate_SIM" finished-at="2024-11-08T18:23:20 IST" duration-ms="32720">
     <groups>
     </groups>
-    <test started-at="2024-11-04T15:31:39 IST" name="Test" finished-at="2024-11-04T15:34:40 IST" duration-ms="180403">
-      <class name="Sim_automation.EstimateCreation">
-        <test-method signature="estimateform()[pri:5, instance:Sim_automation.EstimateCreation@5158b42f]" started-at="2024-11-04T15:33:11 IST" name="estimateform" description="Add a Estimate in the SIM-Web App" finished-at="2024-11-04T15:33:31 IST" duration-ms="19745" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- estimateform -->
-      </class> <!-- Sim_automation.EstimateCreation -->
-      <class name="Sim_automation.PaymentReceivedCreation">
-        <test-method signature="paymentRecivedForm()[pri:7, instance:Sim_automation.PaymentReceivedCreation@72d1ad2e]" started-at="2024-11-04T15:33:54 IST" name="paymentRecivedForm" description="Add a Payment (Received) in the SIM-Web App" finished-at="2024-11-04T15:34:15 IST" duration-ms="21611" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- paymentRecivedForm -->
-      </class> <!-- Sim_automation.PaymentReceivedCreation -->
-      <class name="Sim_automation.SaleOrderCreation">
-        <test-method signature="saleOrderform()[pri:6, instance:Sim_automation.SaleOrderCreation@595b007d]" started-at="2024-11-04T15:33:31 IST" name="saleOrderform" description="Add a Sale Order in the SIM-Web App" finished-at="2024-11-04T15:33:54 IST" duration-ms="22732" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- saleOrderform -->
-      </class> <!-- Sim_automation.SaleOrderCreation -->
+    <test started-at="2024-11-08T18:22:47 IST" name="Test" finished-at="2024-11-08T18:23:20 IST" duration-ms="32720">
       <class name="Sim_automation.Login">
-        <test-method is-config="true" signature="reportGenerate()[pri:0, instance:Sim_automation.Login@2a798d51]" started-at="2024-11-04T15:31:39 IST" name="reportGenerate" finished-at="2024-11-04T15:31:39 IST" duration-ms="294" status="PASS">
+        <test-method is-config="true" signature="reportGenerate()[pri:0, instance:Sim_automation.Login@7b9a4292]" started-at="2024-11-08T18:22:47 IST" name="reportGenerate" finished-at="2024-11-08T18:22:47 IST" duration-ms="240" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- reportGenerate -->
-        <test-method is-config="true" signature="browserOpen()[pri:0, instance:Sim_automation.Login@2a798d51]" started-at="2024-11-04T15:31:39 IST" name="browserOpen" finished-at="2024-11-04T15:31:54 IST" duration-ms="14665" status="PASS">
+        <test-method is-config="true" signature="browserOpen()[pri:0, instance:Sim_automation.Login@7b9a4292]" started-at="2024-11-08T18:22:47 IST" name="browserOpen" finished-at="2024-11-08T18:23:05 IST" duration-ms="17214" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserOpen -->
-        <test-method signature="logindata()[pri:1, instance:Sim_automation.Login@2a798d51]" started-at="2024-11-04T15:31:54 IST" name="logindata" description="Login in the SIM-Web App" finished-at="2024-11-04T15:32:12 IST" duration-ms="17966" status="PASS">
+        <test-method signature="logindata()[pri:1, instance:Sim_automation.Login@7b9a4292]" started-at="2024-11-08T18:23:05 IST" name="logindata" description="Login in the SIM-Web App" finished-at="2024-11-08T18:23:19 IST" duration-ms="14740" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logindata -->
-        <test-method is-config="true" signature="logout()[pri:0, instance:Sim_automation.Login@2a798d51]" started-at="2024-11-04T15:34:39 IST" name="logout" finished-at="2024-11-04T15:34:40 IST" duration-ms="836" status="PASS">
+        <test-method is-config="true" signature="logout()[pri:0, instance:Sim_automation.Login@7b9a4292]" started-at="2024-11-08T18:23:19 IST" name="logout" finished-at="2024-11-08T18:23:20 IST" duration-ms="733" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
-        <test-method is-config="true" signature="endReport()[pri:0, instance:Sim_automation.Login@2a798d51]" started-at="2024-11-04T15:34:40 IST" name="endReport" finished-at="2024-11-04T15:34:40 IST" duration-ms="253" status="PASS">
+        <test-method is-config="true" signature="endReport()[pri:0, instance:Sim_automation.Login@7b9a4292]" started-at="2024-11-08T18:23:20 IST" name="endReport" finished-at="2024-11-08T18:23:20 IST" duration-ms="260" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endReport -->
       </class> <!-- Sim_automation.Login -->
-      <class name="Sim_automation.PaymentPaidCreation">
-        <test-method signature="paymentPecivedForm()[pri:8, instance:Sim_automation.PaymentPaidCreation@2d7275fc]" started-at="2024-11-04T15:34:15 IST" name="paymentPecivedForm" description="Add a Payment (Paid) in the SIM-Web App" finished-at="2024-11-04T15:34:39 IST" duration-ms="23533" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- paymentPecivedForm -->
-      </class> <!-- Sim_automation.PaymentPaidCreation -->
-      <class name="Sim_automation.PurchaseCreation">
-        <test-method signature="purchaseform()[pri:2, instance:Sim_automation.PurchaseCreation@222545dc]" started-at="2024-11-04T15:32:12 IST" name="purchaseform" description="Add a Purchase in the SIM-Web App" finished-at="2024-11-04T15:32:35 IST" duration-ms="22768" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- purchaseform -->
-      </class> <!-- Sim_automation.PurchaseCreation -->
-      <class name="Sim_automation.InvoiceCreation">
-        <test-method signature="invoiceform()[pri:3, instance:Sim_automation.InvoiceCreation@5c5eefef]" started-at="2024-11-04T15:32:35 IST" name="invoiceform" description="Add an Invoice in the SIM-Web App" finished-at="2024-11-04T15:32:57 IST" duration-ms="22840" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- invoiceform -->
-      </class> <!-- Sim_automation.InvoiceCreation -->
-      <class name="Sim_automation.PurchaseOrderCreation">
-        <test-method signature="purchaseOrderform()[pri:4, instance:Sim_automation.PurchaseOrderCreation@16293aa2]" started-at="2024-11-04T15:32:57 IST" name="purchaseOrderform" description="Add a Purchase Order in the SIM-Web App" finished-at="2024-11-04T15:33:11 IST" duration-ms="13660" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- purchaseOrderform -->
-      </class> <!-- Sim_automation.PurchaseOrderCreation -->
     </test> <!-- Test -->
   </suite> <!-- Suite_to_automate_SIM -->
 </testng-results>

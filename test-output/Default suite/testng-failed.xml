@@ -3,30 +3,69 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Sim_automation.InvoiceCreation">
+      <class name="Sim_automation.SaleOrderCreation">
         <methods>
-          <include name="closeBrowser"/>
+          <include name="logout"/>
+          <include name="saleOrderform"/>
+          <include name="endReport"/>
           <include name="browserOpen"/>
-          <include name="endReport"/>
           <include name="reportGenerate"/>
-          <include name="invoiceform"/>
         </methods>
-      </class> <!-- Sim_automation.InvoiceCreation -->
-      <class name="browserSetup_Login.BrowserOpen">
-        <methods>
-          <include name="closeBrowser"/>
-          <include name="endReport"/>
-        </methods>
-      </class> <!-- browserSetup_Login.BrowserOpen -->
+      </class> <!-- Sim_automation.SaleOrderCreation -->
       <class name="Sim_automation.PurchaseCreation">
         <methods>
-          <include name="closeBrowser"/>
-          <include name="invoiceform"/>
+          <include name="logout"/>
+          <include name="purchaseform"/>
           <include name="endReport"/>
           <include name="browserOpen"/>
           <include name="reportGenerate"/>
         </methods>
       </class> <!-- Sim_automation.PurchaseCreation -->
+      <class name="Sim_automation.InvoiceCreation">
+        <methods>
+          <include name="logout"/>
+          <include name="endReport"/>
+          <include name="browserOpen"/>
+          <include name="reportGenerate"/>
+          <include name="invoiceform"/>
+        </methods>
+      </class> <!-- Sim_automation.InvoiceCreation -->
+      <class name="Sim_automation.EstimateCreation">
+        <methods>
+          <include name="logout"/>
+          <include name="estimateform"/>
+          <include name="endReport"/>
+          <include name="browserOpen"/>
+          <include name="reportGenerate"/>
+        </methods>
+      </class> <!-- Sim_automation.EstimateCreation -->
+      <class name="Sim_automation.PaymentReceivedCreation">
+        <methods>
+          <include name="logout"/>
+          <include name="endReport"/>
+          <include name="browserOpen"/>
+          <include name="paymentRecivedForm"/>
+          <include name="reportGenerate"/>
+        </methods>
+      </class> <!-- Sim_automation.PaymentReceivedCreation -->
+      <class name="Sim_automation.PurchaseOrderCreation">
+        <methods>
+          <include name="purchaseOrderform"/>
+          <include name="logout"/>
+          <include name="endReport"/>
+          <include name="browserOpen"/>
+          <include name="reportGenerate"/>
+        </methods>
+      </class> <!-- Sim_automation.PurchaseOrderCreation -->
+      <class name="Sim_automation.PaymentPaidCreation">
+        <methods>
+          <include name="logout"/>
+          <include name="paymentPecivedForm"/>
+          <include name="endReport"/>
+          <include name="browserOpen"/>
+          <include name="reportGenerate"/>
+        </methods>
+      </class> <!-- Sim_automation.PaymentPaidCreation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

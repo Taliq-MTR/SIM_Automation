@@ -6,33 +6,15 @@
   </listeners>
   <test thread-count="2" parallel="tests" name="Test(failed)">
     <classes>
-      <class name="Sim_automation.PaymentReceivedCreation">
+      <class name="Sim_automation.Login">
         <methods>
           <include name="logout"/>
-          <include name="endReport"/>
-          <include name="browserOpen"/>
-          <include name="paymentRecivedForm"/>
-          <include name="reportGenerate"/>
-        </methods>
-      </class> <!-- Sim_automation.PaymentReceivedCreation -->
-      <class name="Sim_automation.SaleOrderCreation">
-        <methods>
-          <include name="logout"/>
-          <include name="saleOrderform"/>
+          <include name="logindata"/>
           <include name="endReport"/>
           <include name="browserOpen"/>
           <include name="reportGenerate"/>
         </methods>
-      </class> <!-- Sim_automation.SaleOrderCreation -->
-      <class name="Sim_automation.PaymentPaidCreation">
-        <methods>
-          <include name="logout"/>
-          <include name="paymentPecivedForm"/>
-          <include name="endReport"/>
-          <include name="browserOpen"/>
-          <include name="reportGenerate"/>
-        </methods>
-      </class> <!-- Sim_automation.PaymentPaidCreation -->
+      </class> <!-- Sim_automation.Login -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite_to_automate_SIM] -->
