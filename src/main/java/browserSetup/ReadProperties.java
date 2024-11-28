@@ -1,4 +1,4 @@
-package browserSetup_Login;
+package browserSetup;
 
 import java.io.FileInputStream;
 import java.util.Properties;

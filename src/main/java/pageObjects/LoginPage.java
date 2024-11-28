@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import browserSetup_Login.BrowserOpen;
+import browserSetup.BrowserOpen;
 
 public class LoginPage extends BrowserOpen {
 	

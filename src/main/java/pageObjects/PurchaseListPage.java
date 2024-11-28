@@ -14,8 +14,8 @@ import org.testng.Assert;
 
 import com.aventstack.extentreports.Status;
 
-import browserSetup_Login.BrowserOpen;
-import browserSetup_Login.ExtentManager;
+import browserSetup.BrowserOpen;
+import browserSetup.ExtentManager;
 
 
 

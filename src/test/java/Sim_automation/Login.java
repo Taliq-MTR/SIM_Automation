@@ -8,9 +8,9 @@ import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
 
-import browserSetup_Login.BrowserOpen;
-import browserSetup_Login.ExcelUtils;
-import browserSetup_Login.ExtentManager;
+import browserSetup.BrowserOpen;
+import browserSetup.ExcelUtils;
+import browserSetup.ExtentManager;
 import pageObjects.LoginPage;
 
 public class Login extends LoginPage {

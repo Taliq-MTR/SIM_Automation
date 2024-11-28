@@ -1,4 +1,4 @@
-package browserSetup_Login;
+package browserSetup;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;

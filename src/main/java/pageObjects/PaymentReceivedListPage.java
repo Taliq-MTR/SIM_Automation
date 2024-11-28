@@ -16,8 +16,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.Status;
 
-import browserSetup_Login.BrowserOpen;
-import browserSetup_Login.ExtentManager;
+import browserSetup.BrowserOpen;
+import browserSetup.ExtentManager;
 
 
 

@@ -1,4 +1,4 @@
-package browserSetup_Login;
+package browserSetup;
 
 import java.io.File;
 import java.io.IOException;

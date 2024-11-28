@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="1" parallel="tests" name="Failed suite [Failed suite [Suite_to_automate_SIM]]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="browserSetup.Listeners"/>
+  </listeners>
+  <test thread-count="1" parallel="methods" name="Firefox Test(failed)(failed)">
+    <classes>
+      <class name="Sim_automation.Login">
+        <methods>
+          <include name="browserOpen"/>
+          <include name="logindata"/>
+          <include name="endReport"/>
+          <include name="logout"/>
+          <include name="reportGenerate"/>
+        </methods>
+      </class> <!-- Sim_automation.Login -->
+      <class name="Sim_automation.LogOut">
+        <methods>
+          <include name="browserOpen"/>
+          <include name="endReport"/>
+          <include name="logout"/>
+          <include name="reportGenerate"/>
+          <include name="logOutdata"/>
+        </methods>
+      </class> <!-- Sim_automation.LogOut -->
+    </classes>
+  </test> <!-- Firefox Test(failed)(failed) -->
+</suite> <!-- Failed suite [Failed suite [Suite_to_automate_SIM]] -->
