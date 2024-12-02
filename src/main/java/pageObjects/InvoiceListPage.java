@@ -18,7 +18,7 @@ import browserSetup.BrowserOpen;
 import browserSetup.ExtentManager;
 
 
-public class InvoiceListPage extends BrowserOpen {
+public class InvoiceListPage extends DataCreationPage {
 
 //	All the elements to make a Invoice required actions
 //	We use @FindBy testNg method to locate the element

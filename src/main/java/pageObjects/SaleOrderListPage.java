@@ -15,7 +15,7 @@ import com.aventstack.extentreports.Status;
 import browserSetup.BrowserOpen;
 import browserSetup.ExtentManager;
 
-public class SaleOrderListPage extends BrowserOpen {
+public class SaleOrderListPage extends DataCreationPage {
 	
 //	All the elements to make a Invoice required actions
 //	We use @FindBy testNg method to locate the element

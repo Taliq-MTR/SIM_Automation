@@ -19,7 +19,7 @@ import browserSetup.ExtentManager;
 
 
 
-public class PurchaseListPage extends BrowserOpen {
+public class PurchaseListPage extends DataCreationPage {
 
 //	All the elements to make a Purchase required actions
 //	We use @FindBy testNg method to locate the element
@@ -29,6 +29,11 @@ public class PurchaseListPage extends BrowserOpen {
 
 //	(1) All the elements will locate here
 
+
+//	 Click On Purchase Module
+	
+	@FindBy(xpath = "//div[@class='grid-container']//div[2]/h4[contains(text(), 'Purchase ')]")
+	WebElement openPurchaseModule;
 	// Click on Add Purchase button
 	@FindBy(css = "button.New_product")
 	WebElement addNewPurchase;
@@ -78,22 +83,23 @@ public class PurchaseListPage extends BrowserOpen {
 	public boolean openPurchaseCreationForm() {
 		try {
 			
-			// 2 => Purchase
-			int formType = 2;
-
-			BrowserOpen.log().info("Purchase Creation Started");
-			ExtentManager.test.log(Status.PASS, "Purchase Creation Started");
-
-			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
-			// TODO Auto-generated method stub
-			WebElement openPurchaseList = driver.findElement(By.cssSelector(dashboardSelectorCss));
-			openPurchaseList.click();
+//			// 2 => Purchase
+//			int formType = 2;
+//
+//			BrowserOpen.log().info("Purchase Creation Started");
+//			ExtentManager.test.log(Status.PASS, "Purchase Creation Started");
+//
+//			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
+//			// TODO Auto-generated method stub
+//			WebElement openPurchaseList = driver.findElement(By.cssSelector(dashboardSelectorCss));
+//			openPurchaseList.click();
+			openPurchaseModule.click();
 
 			Duration duration = Duration.ofSeconds(10l, 10);
 			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button.New_product")));
 
-			addNewPurchase.click();
+			createNewInvoiceFormButton.click();
 
 			BrowserOpen.log().info("Purchase creation Form Open");
 			ExtentManager.test.log(Status.PASS, "Purchase creation Form Open");
