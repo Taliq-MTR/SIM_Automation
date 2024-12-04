@@ -17,8 +17,6 @@ import com.aventstack.extentreports.Status;
 import browserSetup.BrowserOpen;
 import browserSetup.ExtentManager;
 
-
-
 public class PurchaseListPage extends DataCreationPage {
 
 //	All the elements to make a Purchase required actions
@@ -26,12 +24,10 @@ public class PurchaseListPage extends DataCreationPage {
 //	There are 3 works happen in page object model 1. Locate all the element 2. make constructor & initialize elements
 //	3. Perform actions on the elements
 
-
 //	(1) All the elements will locate here
 
-
 //	 Click On Purchase Module
-	
+
 	@FindBy(xpath = "//div[@class='grid-container']//div[2]/h4[contains(text(), 'Purchase ')]")
 	WebElement openPurchaseModule;
 	// Click on Add Purchase button
@@ -42,9 +38,8 @@ public class PurchaseListPage extends DataCreationPage {
 	@FindBy(css = "#lwAddClient")
 	WebElement searchSupplier;
 
-
 	// Select and Add Client
-	@FindBy(xpath = "//mat-option//span[text()=' MTR ']")
+	@FindBy(css = "div[role='listbox'] mat-option:nth-of-type(2)")
 	WebElement addSupplier;
 
 	// Click on Add product section to search for product
@@ -64,7 +59,7 @@ public class PurchaseListPage extends DataCreationPage {
 	WebElement addItemButton;
 
 	// Now Click on Save Purchase
-	@FindBy(xpath ="//button[contains(@class, 'btn-done') and contains(text(), 'Save Purchase')]")
+	@FindBy(xpath = "//button[contains(@class, 'btn-done') and contains(text(), 'Save Purchase')]")
 	WebElement savePurchase;
 
 	// Now Going Back To Dashboard
@@ -74,7 +69,7 @@ public class PurchaseListPage extends DataCreationPage {
 //	(2) Made a Constructor 
 //	Initialize the Element
 	public PurchaseListPage() {
-		
+
 		PageFactory.initElements(driver, this);
 	}
 
@@ -82,7 +77,7 @@ public class PurchaseListPage extends DataCreationPage {
 
 	public boolean openPurchaseCreationForm() {
 		try {
-			
+
 //			// 2 => Purchase
 //			int formType = 2;
 //
@@ -108,7 +103,7 @@ public class PurchaseListPage extends DataCreationPage {
 
 			BrowserOpen.log().error("Purchase Creation Form not Opened:" + e);
 			ExtentManager.test.log(Status.FAIL, "Purchase Creation Form not Opened:" + e);
-			
+
 		}
 
 		return false;
@@ -153,7 +148,7 @@ public class PurchaseListPage extends DataCreationPage {
 //			System.out.println("Product Line item not Added");
 			BrowserOpen.log().error("Product Line item not Added:" + e);
 			ExtentManager.test.log(Status.FAIL, "Product Line item not Added:" + e);
-			
+
 		}
 
 		return false;
@@ -169,7 +164,7 @@ public class PurchaseListPage extends DataCreationPage {
 			return true;
 		} catch (Exception e) {
 
-			BrowserOpen.log().error("Didn't Click on Save Purchase Button:" + e );
+			BrowserOpen.log().error("Didn't Click on Save Purchase Button:" + e);
 			ExtentManager.test.log(Status.FAIL, "Didn't Click on Save Purchase Button:" + e);
 		}
 
@@ -183,7 +178,7 @@ public class PurchaseListPage extends DataCreationPage {
 			BrowserOpen.log().info("Waited 5 second");
 			ExtentManager.test.log(Status.PASS, "Waited 5 second");
 			purchaseToDashboard.click();
-			
+
 			BrowserOpen.log().info("We have Successfully Completed First Module");
 			ExtentManager.test.log(Status.PASS, "We have Successfully Completed First Module");
 			// Set implicit wait of 5 seconds
@@ -191,7 +186,8 @@ public class PurchaseListPage extends DataCreationPage {
 			return true;
 		} catch (Exception e) {
 			BrowserOpen.log().error("Failed to Go on Dashboard from Purchase List" + e);
-			ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Purchase List" + e);			e.printStackTrace();
+			ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Purchase List" + e);
+			e.printStackTrace();
 		}
 
 		return false;

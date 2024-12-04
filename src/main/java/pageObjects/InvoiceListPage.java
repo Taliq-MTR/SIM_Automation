@@ -37,8 +37,11 @@ public class InvoiceListPage extends DataCreationPage {
 	WebElement searchClient;
 
 
-	// Select and Add Client
-	@FindBy(xpath = "//span[@class='mdc-list-item__primary-text' and text()=' Saim ']")
+//	// Select and Add Client
+//	@FindBy(xpath = "//span[@class='mdc-list-item__primary-text' and text()=' Saim ']")
+//	WebElement addClient;
+	
+	@FindBy(css = "div[role='listbox'] mat-option:nth-of-type(2)")
 	WebElement addClient;
 
 	// Click on Add product section to search for product
@@ -159,7 +162,6 @@ public class InvoiceListPage extends DataCreationPage {
 		try {
 
 			saveInvoice.click();
-//			System.out.println("Invoice Added Successfully");
 			BrowserOpen.log().info("Invoice Added Successfully");
 			ExtentManager.test.log(Status.PASS, "Invoice Added Successfully");
 			return true;

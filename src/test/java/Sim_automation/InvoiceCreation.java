@@ -24,7 +24,7 @@ public class InvoiceCreation extends InvoiceListPage {
 
 		boolean saveInv = invpom.saveInvoice();
 		Assert.assertEquals(saveInv, true, "Invoice Added successfully");
-		Thread.sleep(9000);
+		Thread.sleep(1000);
 
 		boolean invToDashboard = invpom.dashboard();
 		Assert.assertEquals(invToDashboard, true, "Successfully Came back to Dasboard");

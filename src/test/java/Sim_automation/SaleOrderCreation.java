@@ -8,7 +8,7 @@ import pageObjects.SaleOrderListPage;
 
 public class SaleOrderCreation extends SaleOrderListPage {
 
-	@Test (priority = 6, description = "Add a Sale Order in the SIM-Web App")
+	@Test (priority = 5, description = "Add a Sale Order in the SIM-Web App")
 	public void saleOrderform() throws InterruptedException {
 		SaleOrderListPage saleOrderpom = new SaleOrderListPage();
 

@@ -34,7 +34,7 @@ public class BrowserOpen {
 		driver = new DriverManager().initializeDriver();
 
 		// URL is hardcoded and the same for both browsers
-		String url = "https://www.simpleinvoiceweb.com/#/home";
+		String url = "https://www.simpleinvoiceweb.com/#/home/login";
 
 		// Open the URL in the specified browser
 		driver.get(url);

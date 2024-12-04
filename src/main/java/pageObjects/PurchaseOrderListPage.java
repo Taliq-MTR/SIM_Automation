@@ -36,7 +36,7 @@ public class PurchaseOrderListPage extends BrowserOpen{
 
 
 	// Select and Add Client
-	@FindBy(xpath = "//mat-option//span[text()=' MTR ']")
+	@FindBy(css = "div[role='listbox'] mat-option:nth-of-type(2)")
 	WebElement addSupplier;
 
 	// Click on Add product section to search for product

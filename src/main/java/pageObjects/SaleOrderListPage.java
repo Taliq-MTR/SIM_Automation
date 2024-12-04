@@ -39,7 +39,7 @@ public class SaleOrderListPage extends DataCreationPage {
 
 
 	// Select and Add Client
-	@FindBy(xpath = "//mat-option//span[contains(text(), 'MMR')]")
+	@FindBy(css = "div[role='listbox'] mat-option:nth-of-type(2)")
 	WebElement addClient;
 
 	// Click on Add product section to search for product
