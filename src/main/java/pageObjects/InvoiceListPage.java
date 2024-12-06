@@ -84,7 +84,7 @@ public class InvoiceListPage extends DataCreationPage {
 			// 1 => INVOICE
 			int formType = 1;
 
-//			System.out.println("Creating Invoices");
+
 			BrowserOpen.log().info("Invoice Creation Started");
 			ExtentManager.test.log(Status.PASS, "Invoice Creation Started");
 

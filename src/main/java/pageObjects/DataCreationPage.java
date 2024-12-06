@@ -2,6 +2,7 @@ package pageObjects;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -39,6 +40,10 @@ public class DataCreationPage extends BrowserOpen {
 	// Click on Client Section
 	@FindBy(css = "input[placeholder='Search & Select Client']")
 	WebElement searchClient;
+
+	// Select Client
+	@FindBy(css = "div[role='listbox'] mat-option:nth-of-type(2)")
+	WebElement addClient;
 
 	// Scroll the Page to click on line item
 	@FindBy(css = "th.qty-field")
@@ -138,6 +143,61 @@ public class DataCreationPage extends BrowserOpen {
 
 //	Add Methods for The action on The Invoices/Purchases
 
+	protected Boolean openModuleFromDashBoard(int formType) {
+		try {
+
+			BrowserOpen.log().info("Invoice/Purchase Creation Started");
+			ExtentManager.test.log(Status.PASS, "Invoice/Purchase Creation Started");
+
+			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
+			// TODO Auto-generated method stub
+			WebElement openInvoiceList = driver.findElement(By.cssSelector(dashboardSelectorCss));
+			openInvoiceList.click();
+
+			return true;
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("The user Didn't open the" + formType + "Module from  DashBoard:" + e);
+			ExtentManager.test.log(Status.FAIL, "The user Didn't open the" + formType + "Module from  DashBoard:" + e);
+
+		}
+
+		return false;
+	}
+
+//	 Method to get the dynamic addClient element
+	protected WebElement addClient(int index) {
+		try {
+			String ClientSelection = String.format("div[role='listbox'] mat-option:nth-of-type(%d)", index);
+			return driver.findElement(By.cssSelector(ClientSelection));
+
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("Dynamic Client Is not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Dynamic Client Is not Added:" + e);
+
+		}
+		return null;
+
+	}
+
+//	 Method to get the dynamic addClient element	
+
+	protected WebElement addProduct(int index) {
+		try {
+			String productSelection = String.format("div[role='listbox'] mat-option:nth-of-type(%d)", index);
+			return driver.findElement(By.cssSelector(productSelection));
+
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("Dynamic Product Is not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Dynamic Product Is not Added:" + e);
+
+		}
+
+		return null;
+	}
+
 	protected boolean openTheDashBoard() {
 		try {
 			clickOnDashBoardIcon.click();
@@ -212,6 +272,7 @@ public class DataCreationPage extends BrowserOpen {
 		try {
 			searchClient.click();
 
+//			addClient.click();
 			BrowserOpen.log().info("Client Search Button Clicked Successfully");
 			ExtentManager.test.log(Status.PASS, "Client Search Button Clicked Successfully");
 
@@ -225,6 +286,11 @@ public class DataCreationPage extends BrowserOpen {
 		return false;
 	}
 
+	protected WebElement addClientdynamic(int index) {
+		String addClientDynamic = String.format("div[role='listbox'] mat-option:nth-of-type(%d)", index);
+		return driver.findElement(By.cssSelector(addClientDynamic));
+	}
+
 	protected boolean addProductItem() {
 
 		try {
@@ -236,8 +302,11 @@ public class DataCreationPage extends BrowserOpen {
 
 			// Wait for the element to be present and clickable
 			searchProduct.click();
-			addProduct.click();
+			
+//			Call Add Product Method
 
+			addProduct(1);
+			
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			productCustomField.click();
 			productCustomFieldData.sendKeys("Added Data in Product Custom Field.");
@@ -245,8 +314,8 @@ public class DataCreationPage extends BrowserOpen {
 			addItemButton.click();
 			productCustomField.click();
 
-			BrowserOpen.log().info("Product Added Successfully");
-			ExtentManager.test.log(Status.PASS, "Product Added Successfully");
+			BrowserOpen.log().info("Product And product Custom Field Added Successfully");
+			ExtentManager.test.log(Status.PASS, "Product And product Custom Field Added Successfully");
 //		Duration duration = Duration.ofSeconds(10l, 10);
 //		WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
 //		wait.until(ExpectedConditions.elementToBeClickable(addItemButton));
@@ -472,22 +541,22 @@ public class DataCreationPage extends BrowserOpen {
 			BrowserOpen.log().info("User SuccessFully Came To DashBoard");
 			ExtentManager.test.log(Status.PASS, "User SuccessFully Came To DashBoard");
 			return true;
-			
-			
+
 		} catch (Exception e) {
 			BrowserOpen.log().error("User not Came To DashBoard:" + e);
 			ExtentManager.test.log(Status.FAIL, "User not Came To DashBoard:" + e);
 			try {
-			clickOnDashBoardIcon.click();
-			BrowserOpen.log().info("User SuccessFully Came To DashBoard By Click On the DashBoard Icon");
-			ExtentManager.test.log(Status.PASS, "User SuccessFully Came To DashBoard By Click On the DashBoard Icon");
-			return true;
-			}catch(Exception e1) {
+				clickOnDashBoardIcon.click();
+				BrowserOpen.log().info("User SuccessFully Came To DashBoard By Click On the DashBoard Icon");
+				ExtentManager.test.log(Status.PASS,
+						"User SuccessFully Came To DashBoard By Click On the DashBoard Icon");
+				return true;
+			} catch (Exception e1) {
 				BrowserOpen.log().error("User not Came To DashBoard by Click On DashBoard Icon:" + e1);
 				ExtentManager.test.log(Status.FAIL, "User not Came To DashBoard by Click On DashBoard Icon:" + e1);
 			}
 			return false;
 		}
-		
+
 	}
 }

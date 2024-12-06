@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite_to_automate_SIM" parallel="tests" thread-count="1">
+<suite name="Suite_to_automate_SIM" parallel="tests"
+	thread-count="1">
 	<listeners>
 		<listener class-name="browserSetup.Listeners" />
 	</listeners>
@@ -9,13 +10,8 @@
 	<test thread-count="1" name="Test">
 		<classes>
 			<class name="Sim_automation.Login" />
-			<class name="Sim_automation.PurchaseCreation" />
-			<class name="Sim_automation.InvoiceCreation" />
-			<class name="Sim_automation.PurchaseOrderCreation" />
-			<class name="Sim_automation.EstimateCreation" />
-			<class name="Sim_automation.SaleOrderCreation" />
-			<class name="Sim_automation.PaymentReceivedCreation" />
-			<class name="Sim_automation.PaymentPaidCreation" />
+			<class name="Sim_automation.InvoicCreationdummy" />
+			
 			<class name="Sim_automation.LogOut" />
 
 
