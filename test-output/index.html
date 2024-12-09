@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -40,7 +40,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Suite_to_automate_SIM" class="navigator-link">
-              <span class="suite-name border-failed">Suite_to_automate_SIM</span>
+              <span class="suite-name border-passed">Suite_to_automate_SIM</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -93,21 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">3 methods, 1 failed,   2 passed</span>
-                  </li>
-                  <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Suite_to_automate_SIM" class="hide-methods failed suite-Suite_to_automate_SIM"> (hide)</a> <!-- hide-methods failed suite-Suite_to_automate_SIM -->
-                      <a href="#" panel-name="suite-Suite_to_automate_SIM" class="show-methods failed suite-Suite_to_automate_SIM"> (show)</a> <!-- show-methods failed suite-Suite_to_automate_SIM -->
-                    </span>
-                    <div class="method-list-content failed suite-Suite_to_automate_SIM">
-                      <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite_to_automate_SIM" title="Sim_automation.LogOut" class="method navigator-link" hash-for-method="logOutdata">logOutdata</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content failed suite-Suite_to_automate_SIM -->
+                    <span class="method-stats">3 methods,   3 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -119,6 +105,11 @@
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite_to_automate_SIM" title="Sim_automation.InvoicCreationdummy" class="method navigator-link" hash-for-method="invoiceform">invoiceform</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite_to_automate_SIM" title="Sim_automation.LogOut" class="method navigator-link" hash-for-method="logOutdata">logOutdata</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -138,9 +129,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Suite_to_automate_SIM" class="panel Suite_to_automate_SIM">
-          <div class="suite-Suite_to_automate_SIM-class-failed">
+          <div class="suite-Suite_to_automate_SIM-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
+              <img src="passed.png"/>
               <span class="class-name">Sim_automation.LogOut</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -149,21 +140,12 @@
                   <a name="logOutdata">
                   </a> <!-- logOutdata -->
                   <span class="method-name">logOutdata</span>
-                  <div class="stack-trace">java.lang.AssertionError: USer Log-Out From the SIM-Web App successfully expected [true] but found [false]
-	at Sim_automation.LogOut.logOutdata(LogOut.java:14)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-... Removed 21 stack frames
-</div> <!-- stack-trace -->
                   <em>
 (Log-Out From the SIM-Web App)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite_to_automate_SIM-class-failed -->
+          </div> <!-- suite-Suite_to_automate_SIM-class-passed -->
           <div class="suite-Suite_to_automate_SIM-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -259,20 +241,20 @@ data.addRows(3);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'invoiceform')
 data.setCell(0, 2, 'Sim_automation.InvoicCreationdummy')
-data.setCell(0, 3, 29250);
+data.setCell(0, 3, 19653);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'logindata')
 data.setCell(1, 2, 'Sim_automation.Login')
-data.setCell(1, 3, 19836);
+data.setCell(1, 3, 16199);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'logOutdata')
 data.setCell(2, 2, 'Sim_automation.LogOut')
-data.setCell(2, 3, 1169);
+data.setCell(2, 3, 6332);
 window.suiteTableData['Suite_to_automate_SIM']= { tableData: data, tableDiv: 'times-div-Suite_to_automate_SIM'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 51 seconds</span>
               <div id="times-div-Suite_to_automate_SIM">
               </div> <!-- times-div-Suite_to_automate_SIM -->
             </div> <!-- times-div -->
@@ -331,38 +313,36 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-test before">
                 <span class="method-name">browserOpen</span>
-                <span class="method-start">278 ms</span>
+                <span class="method-start">181 ms</span>
               </div> <!-- configuration-test before -->
               <div class="test-method">
                 <span class="method-name">logindata</span>
-                <span class="method-start">18593 ms</span>
+                <span class="method-start">9852 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">Sim_automation.InvoicCreationdummy</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">invoiceform</span>
-                <span class="method-start">38436 ms</span>
+                <span class="method-start">26058 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">Sim_automation.LogOut</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">logOutdata</span>
-                <span class="method-start">67689 ms</span>
+                <span class="method-start">45714 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">Sim_automation.Login</div> <!-- chronological-class-name -->
               <div class="configuration-test after">
                 <span class="method-name">logout</span>
-                <span class="method-start">68993 ms</span>
+                <span class="method-start">52047 ms</span>
               </div> <!-- configuration-test after -->
               <div class="configuration-suite after">
                 <span class="method-name">endReport</span>
-                <span class="method-start">69147 ms</span>
+                <span class="method-start">52156 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

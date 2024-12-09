@@ -86,8 +86,7 @@ public class Invoiceop extends DataCreationPage {
 	public boolean addCustomer() {
 		try {
 
-			dcp.clientSearch();
-
+			dcp.SelectClient();
 			dcp.addClient(2);
 
 			BrowserOpen.log().info("Customer Added SuccessFully");
@@ -169,7 +168,8 @@ public class Invoiceop extends DataCreationPage {
 		try {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			dcp.addPayment();
-			dcp.addCustomField();
+			
+			
 
 			BrowserOpen.log().info("Payment of the Invoice Added SuccessFully");
 			ExtentManager.test.log(Status.PASS, "Payment of the Invoice Added SuccessFully");

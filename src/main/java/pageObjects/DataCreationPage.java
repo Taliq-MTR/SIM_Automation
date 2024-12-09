@@ -60,9 +60,14 @@ public class DataCreationPage extends BrowserOpen {
 	// Product custom Field
 	@FindBy(xpath = "//h2[@class='accordion-header mt-0']")
 	WebElement productCustomField;
-
+ 
+//	Product Custom Field element is not working so We need to invoke element by cicking on it
+	@FindBy(xpath = "//*[@id='collapseOne']/div/div/div/div/div")
+	WebElement clickOnProductCustomFieldBox;
+	
+	
 	// Product custom Field Data Added
-	@FindBy(css = "input[class='form-control ng-pristine ng-valid ng-touched']")
+	@FindBy(xpath = "//*[@id=\"collapseOne\"]/div/div/div/div/div/input")
 	WebElement productCustomFieldData;
 
 	// We have to wait and then Click on add product line item Button
@@ -74,7 +79,7 @@ public class DataCreationPage extends BrowserOpen {
 	WebElement termsAndConditionButton;
 
 	// Add Terms And Condition from popUpd
-	@FindBy(xpath = "//div[@id=\"termstwo\"]//label/input")
+	@FindBy(xpath = "//*[@id='termstwo']/div/div/div[1]/div//span")
 	WebElement selectTermsAndCondition;
 
 	// Add Terms And Condition from popUpd
@@ -82,8 +87,12 @@ public class DataCreationPage extends BrowserOpen {
 	WebElement doneButtonTermsAndCondition;
 
 	// Add Custom Field For Invoice
-	@FindBy(xpath = "//input[@class='form-control ng-pristine ng-valid ng-touched']")
+	@FindBy(xpath = "//*[@id=\"wrapper\"]/div/app-sale-add-edit/div/div//div/form/div[1]/div[4]/div[2]/div[1]/div[2]/div[2]//div/input")
 	WebElement customField;
+
+	// Scroll Page to Sub Total
+	@FindBy(xpath = "//div[contains(text(), 'Sub Total ')]")
+	WebElement subTotal;
 
 	// Add Discount
 	@FindBy(css = "input[name='discountOnBillRate']")
@@ -106,7 +115,7 @@ public class DataCreationPage extends BrowserOpen {
 	WebElement paidButton;
 
 	// Add Note to the Payment
-	@FindBy(xpath = "textarea[name='note']")
+	@FindBy(css = "textarea[name='note']")
 	WebElement addPaymentNote;
 
 	// Click on Add to Payment Button
@@ -141,18 +150,24 @@ public class DataCreationPage extends BrowserOpen {
 		PageFactory.initElements(driver, this);
 	}
 
+//	Explicit Wait
+//	 Wait for the element to be present and clickable
+	Duration duration = Duration.ofSeconds(10l, 10);
+	WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
+
 //	Add Methods for The action on The Invoices/Purchases
 
 	protected Boolean openModuleFromDashBoard(int formType) {
 		try {
 
-			BrowserOpen.log().info("Invoice/Purchase Creation Started");
-			ExtentManager.test.log(Status.PASS, "Invoice/Purchase Creation Started");
+			Thread.sleep(1000);
 
 			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
 			// TODO Auto-generated method stub
 			WebElement openInvoiceList = driver.findElement(By.cssSelector(dashboardSelectorCss));
 			openInvoiceList.click();
+			BrowserOpen.log().info("Open list Page From DashBoard");
+			ExtentManager.test.log(Status.PASS, "Open list Page From DashBoard");
 
 			return true;
 		} catch (Exception e) {
@@ -186,8 +201,10 @@ public class DataCreationPage extends BrowserOpen {
 	protected WebElement addProduct(int index) {
 		try {
 			String productSelection = String.format("div[role='listbox'] mat-option:nth-of-type(%d)", index);
-			return driver.findElement(By.cssSelector(productSelection));
 
+			WebElement productselected = driver.findElement(By.cssSelector(productSelection));
+			productselected.click();
+			return productselected;
 		} catch (Exception e) {
 
 			BrowserOpen.log().error("Dynamic Product Is not Added:" + e);
@@ -218,7 +235,7 @@ public class DataCreationPage extends BrowserOpen {
 		try {
 			createNewInvoiceFormButton.click();
 			BrowserOpen.log().info("The user Clicked On Create New Form Button.");
-			ExtentManager.test.log(Status.FAIL, "The user Clicked On Create New Form Button.");
+			ExtentManager.test.log(Status.PASS, "The user Clicked On Create New Form Button.");
 			return true;
 		} catch (Exception e) {
 
@@ -267,58 +284,64 @@ public class DataCreationPage extends BrowserOpen {
 		return false;
 	}
 
-	protected boolean clientSearch() {
+	protected boolean SelectClient() {
 
 		try {
 			searchClient.click();
 
-//			addClient.click();
 			BrowserOpen.log().info("Client Search Button Clicked Successfully");
 			ExtentManager.test.log(Status.PASS, "Client Search Button Clicked Successfully");
+
+			addClient.click();
+			BrowserOpen.log().info("Client Added Successfully");
+			ExtentManager.test.log(Status.PASS, "Client Added Successfully");
 
 			return true;
 		} catch (Exception e) {
 
-			BrowserOpen.log().error("Search Client is not Clicked:" + e);
-			ExtentManager.test.log(Status.FAIL, "Search Client is not Clicked:" + e);
+			BrowserOpen.log().error("Client Is not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Client Is not Added:" + e);
 
 		}
 		return false;
-	}
-
-	protected WebElement addClientdynamic(int index) {
-		String addClientDynamic = String.format("div[role='listbox'] mat-option:nth-of-type(%d)", index);
-		return driver.findElement(By.cssSelector(addClientDynamic));
 	}
 
 	protected boolean addProductItem() {
 
 		try {
 			// Click the element using JavaScript to avoid interception issues
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", scrollToQty);
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToQty);
 
 			BrowserOpen.log().info("Page scrolled to 'QtY' ");
 			ExtentManager.test.log(Status.PASS, "Page scrolled to 'QtY' ");
 
+			Thread.sleep(2000);
 			// Wait for the element to be present and clickable
 			searchProduct.click();
-			
+
 //			Call Add Product Method
 
 			addProduct(1);
+
+			wait.until(ExpectedConditions.elementToBeClickable(productCustomField)).click();
+
+			wait.until(ExpectedConditions.elementToBeClickable(clickOnProductCustomFieldBox)).click();
+
+			wait.until(ExpectedConditions.elementToBeClickable(productCustomFieldData))
+					.sendKeys("Added Data in Product Custom Field.");
+
+			wait.until(ExpectedConditions.elementToBeClickable(addItemButton)).click();
 			
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-			productCustomField.click();
-			productCustomFieldData.sendKeys("Added Data in Product Custom Field.");
+//			Just Random click to Avoid product name Pop-up
+			subTotal.click();
+
+
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-			addItemButton.click();
 			productCustomField.click();
 
 			BrowserOpen.log().info("Product And product Custom Field Added Successfully");
 			ExtentManager.test.log(Status.PASS, "Product And product Custom Field Added Successfully");
-//		Duration duration = Duration.ofSeconds(10l, 10);
-//		WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
-//		wait.until(ExpectedConditions.elementToBeClickable(addItemButton));
 
 			return true;
 		} catch (Exception e) {
@@ -334,11 +357,7 @@ public class DataCreationPage extends BrowserOpen {
 
 		try {
 
-			// Click the element using JavaScript to avoid interception issues
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", termsAndConditionButton);
-
-			BrowserOpen.log().info("Page scrolled to 'Terms & Condition' ");
-			ExtentManager.test.log(Status.PASS, "Page scrolled to 'Terms & Condition' ");
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			termsAndConditionButton.click();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			selectTermsAndCondition.click();
@@ -360,7 +379,7 @@ public class DataCreationPage extends BrowserOpen {
 
 	protected boolean addCustomField() {
 		try {
-			customField.click();
+//			customField.click();
 			customField.sendKeys("Custom Field Data Added SuccessFully By Automated Script");
 
 			BrowserOpen.log().info("Custom Field Data Added SuccessFully");
@@ -379,6 +398,14 @@ public class DataCreationPage extends BrowserOpen {
 	protected boolean addDiscount() {
 
 		try {
+
+			wait.until(ExpectedConditions.elementToBeClickable(subTotal));
+//			 Click the element using JavaScript to avoid interception issues
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", subTotal);
+
+			BrowserOpen.log().info("Page scrolled to 'Sub Total' ");
+			ExtentManager.test.log(Status.PASS, "Page scrolled to 'Sub Total' ");
+
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			addDiscount.click();
 			addDiscount.sendKeys("12.5");
@@ -444,15 +471,22 @@ public class DataCreationPage extends BrowserOpen {
 
 		try {
 
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-			// Click the element using JavaScript to avoid interception issues
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", paidButton);
+			wait.until(ExpectedConditions.elementToBeClickable(paidButton));
+			// Scroll to paid Button
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", paidButton);
+			
+			wait.until(ExpectedConditions.elementToBeClickable(footer));
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", footer);
 
 			BrowserOpen.log().info("Page scrolled to \"Paid Button\" ");
 			ExtentManager.test.log(Status.PASS, "Page scrolled to \"Paid Button\" ");
-
+			wait.until(ExpectedConditions.elementToBeClickable(paidButton));
 			paidButton.click();
+			wait.until(ExpectedConditions.elementToBeClickable(addPaymentNote));
+			addPaymentNote.click();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			addPaymentNote.sendKeys("This Note is auto generated through script Written By MTR For the Payment");
+			wait.until(ExpectedConditions.elementToBeClickable(addPayment));
 			addPayment.click();
 
 			BrowserOpen.log().info("Payment Amount Added SuccessFully");
@@ -474,12 +508,17 @@ public class DataCreationPage extends BrowserOpen {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
 			// Click the element using JavaScript to avoid interception issues
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", footer);
+
+			BrowserOpen.log().info("Page scrolled to \"Footer\" ");
+			ExtentManager.test.log(Status.PASS, "Page scrolled to \"Footer\" ");
+
+			Duration duration = Duration.ofSeconds(10l, 10);
+			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
+			wait.until(ExpectedConditions.elementToBeClickable(footer));
+//			 Click the element using JavaScript to avoid interception issues
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", footer);
 
-			BrowserOpen.log().info("Page scrolled to \"Paid Button\" ");
-			ExtentManager.test.log(Status.PASS, "Page scrolled to \"Paid Button\" ");
-
-			footer.click();
 			addDataInFooter.sendKeys("Footer Added For the Invoice");
 
 			BrowserOpen.log().info("Footer Added SuccessFully");
