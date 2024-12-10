@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.Status;
@@ -37,13 +38,13 @@ public class DataCreationPage extends BrowserOpen {
 	@FindBy(css = "textarea[name='invoiceHeader']")
 	WebElement addDataInHeader;
 
+	// Due Date selection
+	@FindBy(id = "selectDueDate")
+	WebElement dueDateDropdown;
+
 	// Click on Client Section
 	@FindBy(css = "input[placeholder='Search & Select Client']")
 	WebElement searchClient;
-
-	// Select Client
-	@FindBy(css = "div[role='listbox'] mat-option:nth-of-type(2)")
-	WebElement addClient;
 
 	// Scroll the Page to click on line item
 	@FindBy(css = "th.qty-field")
@@ -60,12 +61,11 @@ public class DataCreationPage extends BrowserOpen {
 	// Product custom Field
 	@FindBy(xpath = "//h2[@class='accordion-header mt-0']")
 	WebElement productCustomField;
- 
+
 //	Product Custom Field element is not working so We need to invoke element by cicking on it
 	@FindBy(xpath = "//*[@id='collapseOne']/div/div/div/div/div")
 	WebElement clickOnProductCustomFieldBox;
-	
-	
+
 	// Product custom Field Data Added
 	@FindBy(xpath = "//*[@id=\"collapseOne\"]/div/div/div/div/div/input")
 	WebElement productCustomFieldData;
@@ -184,8 +184,9 @@ public class DataCreationPage extends BrowserOpen {
 	protected WebElement addClient(int index) {
 		try {
 			String ClientSelection = String.format("div[role='listbox'] mat-option:nth-of-type(%d)", index);
-			return driver.findElement(By.cssSelector(ClientSelection));
-
+			WebElement clientSelected = driver.findElement(By.cssSelector(ClientSelection));
+			clientSelected.click();
+			return clientSelected;
 		} catch (Exception e) {
 
 			BrowserOpen.log().error("Dynamic Client Is not Added:" + e);
@@ -284,6 +285,30 @@ public class DataCreationPage extends BrowserOpen {
 		return false;
 	}
 
+	protected boolean addDueDate() {
+
+		try {
+			dueDateDropdown.click();
+//		    Create an instance of the Select class
+			Select select = new Select(dueDateDropdown);
+			
+//			Select the "Immediately" option by visible text
+			select.selectByVisibleText("Immediately");
+			
+
+			BrowserOpen.log().info("Due Date Added Successfully");
+			ExtentManager.test.log(Status.PASS, "Due Date Added Successfully");
+
+			return true;
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("The Due Date Of The Invoice not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "The Du Date Of The Invoice not Added:" + e);
+
+		}
+		return false;
+	}
+
 	protected boolean SelectClient() {
 
 		try {
@@ -292,15 +317,15 @@ public class DataCreationPage extends BrowserOpen {
 			BrowserOpen.log().info("Client Search Button Clicked Successfully");
 			ExtentManager.test.log(Status.PASS, "Client Search Button Clicked Successfully");
 
-			addClient.click();
-			BrowserOpen.log().info("Client Added Successfully");
-			ExtentManager.test.log(Status.PASS, "Client Added Successfully");
+
+			BrowserOpen.log().info("Client button clicked Successfully");
+			ExtentManager.test.log(Status.PASS, "Client button clicked Successfully");
 
 			return true;
 		} catch (Exception e) {
 
-			BrowserOpen.log().error("Client Is not Added:" + e);
-			ExtentManager.test.log(Status.FAIL, "Client Is not Added:" + e);
+			BrowserOpen.log().error("Client button Is not clicked:" + e);
+			ExtentManager.test.log(Status.FAIL, "Client button Is not clicked:" + e);
 
 		}
 		return false;
@@ -312,11 +337,13 @@ public class DataCreationPage extends BrowserOpen {
 			// Click the element using JavaScript to avoid interception issues
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToQty);
 
+			
 			BrowserOpen.log().info("Page scrolled to 'QtY' ");
 			ExtentManager.test.log(Status.PASS, "Page scrolled to 'QtY' ");
 
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			// Wait for the element to be present and clickable
+			wait.until(ExpectedConditions.elementToBeClickable(searchProduct));
 			searchProduct.click();
 
 //			Call Add Product Method
@@ -331,11 +358,10 @@ public class DataCreationPage extends BrowserOpen {
 					.sendKeys("Added Data in Product Custom Field.");
 
 			wait.until(ExpectedConditions.elementToBeClickable(addItemButton)).click();
-			
+
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 //			Just Random click to Avoid product name Pop-up
 			subTotal.click();
-
 
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			productCustomField.click();
@@ -405,7 +431,7 @@ public class DataCreationPage extends BrowserOpen {
 
 			BrowserOpen.log().info("Page scrolled to 'Sub Total' ");
 			ExtentManager.test.log(Status.PASS, "Page scrolled to 'Sub Total' ");
-
+			Thread.sleep(900);
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			addDiscount.click();
 			addDiscount.sendKeys("12.5");
@@ -474,12 +500,13 @@ public class DataCreationPage extends BrowserOpen {
 			wait.until(ExpectedConditions.elementToBeClickable(paidButton));
 			// Scroll to paid Button
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", paidButton);
-			
-			wait.until(ExpectedConditions.elementToBeClickable(footer));
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", footer);
 
+//			wait.until(ExpectedConditions.elementToBeClickable(footer));
+//			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", footer);
+			
 			BrowserOpen.log().info("Page scrolled to \"Paid Button\" ");
 			ExtentManager.test.log(Status.PASS, "Page scrolled to \"Paid Button\" ");
+			Thread.sleep(1000);
 			wait.until(ExpectedConditions.elementToBeClickable(paidButton));
 			paidButton.click();
 			wait.until(ExpectedConditions.elementToBeClickable(addPaymentNote));

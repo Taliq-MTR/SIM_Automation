@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,11 +18,55 @@ import browserSetup.ExtentManager;
 public class Invoiceop extends DataCreationPage {
 	DataCreationPage dcp = new DataCreationPage();
 
+	@FindBy(css = "div[href='#commission']")
+	WebElement clickOnCommissionButton;
+
+	@FindBy(xpath = "//div/span[text()=' Shipping Charges ']")
+	WebElement scrollToshippingCharges;
+
+	@FindBy(xpath = "//label[text()='Commission']/following::span[contains(@class, 'dropdown-toggle')]")
+	WebElement clickOnCurrencyArrowToSelectPercent;
+	
+	@FindBy(xpath = "//*[@id='commission']/div[1]/div[1]/div[2]/div[1]//li[2]")
+	WebElement clickOnPercentbutton;
+	
+	@FindBy(css = "input[name='perOrAmountValue']")
+	WebElement enterCommssionAmount;
+	
+	@FindBy(xpath = "//li/input[@id='f-option']/following-sibling::label[text()='Pay Now']")
+	WebElement commissionPayNowButton;
+	
+	@FindBy(css = "button[class='add-commission']")
+	WebElement AddcommisionButton;
+	
+
 //	2 Create Constructor and invoke both Driver from parent and this class
 
 	public Invoiceop() {
 
 		PageFactory.initElements(driver, this);
+	}
+
+//	Dynamic Agent selection
+	protected WebElement addAgent(int index) {
+		try {
+			String AgentSelection = String.format("div[role='listbox'] mat-option:nth-of-type(%d)", index);
+			WebElement agentSelected = driver.findElement(By.cssSelector(AgentSelection));
+			agentSelected.click();
+			
+			BrowserOpen.log().info("Agent Added (Dynamically) Successfully");
+			ExtentManager.test.log(Status.PASS, "Agent Added (Dynamically) Successfully");
+			return agentSelected;
+			
+			
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("Dynamic Agent Is not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Dynamic Agent Is not Added:" + e);
+
+		}
+		return null;
+
 	}
 
 	public boolean openInvoiceModuleFromDashBoard() {
@@ -62,21 +107,22 @@ public class Invoiceop extends DataCreationPage {
 		return false;
 	}
 
-	public boolean addHeaderAndReference() {
+	public boolean addHeaderReferenceDueDate() {
 
 		try {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			dcp.addReferenceForInvoice();
 			dcp.addDataForHeader();
+			dcp.addDueDate();
 
-			BrowserOpen.log().info("Invoice Header Reference And Header Added");
-			ExtentManager.test.log(Status.PASS, "Invoice  Refrence And Header Added");
+			BrowserOpen.log().info("Invoice Header, Reference And Due Date Added");
+			ExtentManager.test.log(Status.PASS, "Invoice Header, Reference And Due Date Added");
 
 			return true;
 		} catch (Exception e) {
 
-			BrowserOpen.log().error("Invoice  Refrence, Header not Added:" + e);
-			ExtentManager.test.log(Status.FAIL, "Invoice Header Reference, Header not Added:" + e);
+			BrowserOpen.log().error("Invoice Header, Reference And Due Date not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Invoice Header, Reference And Due Date not Added:" + e);
 
 		}
 
@@ -168,8 +214,6 @@ public class Invoiceop extends DataCreationPage {
 		try {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			dcp.addPayment();
-			
-			
 
 			BrowserOpen.log().info("Payment of the Invoice Added SuccessFully");
 			ExtentManager.test.log(Status.PASS, "Payment of the Invoice Added SuccessFully");
@@ -205,13 +249,12 @@ public class Invoiceop extends DataCreationPage {
 
 		return false;
 	}
-	
+
 	public boolean saveInvoice() {
 
 		try {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			dcp.saveInvoiceButton();
-		
 
 			BrowserOpen.log().info(" Invoice Added SuccessFully");
 			ExtentManager.test.log(Status.PASS, "Invoice Added SuccessFully");
@@ -226,8 +269,7 @@ public class Invoiceop extends DataCreationPage {
 
 		return false;
 	}
-	
-	
+
 	public void listToDashboard() {
 		dcp.listToDashBoard();
 	}

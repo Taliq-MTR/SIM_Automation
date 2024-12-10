@@ -2,40 +2,40 @@
 <testng-results ignored="8" total="11" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-12-09T18:02:32 IST" name="Suite_to_automate_SIM" finished-at="2024-12-09T18:03:24 IST" duration-ms="51966">
+  <suite started-at="2024-12-10T15:37:06 IST" name="Suite_to_automate_SIM" finished-at="2024-12-10T15:38:01 IST" duration-ms="54810">
     <groups>
     </groups>
-    <test started-at="2024-12-09T18:02:32 IST" name="Test" finished-at="2024-12-09T18:03:24 IST" duration-ms="51966">
+    <test started-at="2024-12-10T15:37:06 IST" name="Test" finished-at="2024-12-10T15:38:01 IST" duration-ms="54810">
       <class name="Sim_automation.InvoicCreationdummy">
-        <test-method signature="invoiceform()[pri:3, instance:Sim_automation.InvoicCreationdummy@293a5bf6]" started-at="2024-12-09T18:02:58 IST" name="invoiceform" description="Add an Invoice in the SIM-Web App" finished-at="2024-12-09T18:03:17 IST" duration-ms="19653" status="PASS">
+        <test-method signature="invoiceform()[pri:3, instance:Sim_automation.InvoicCreationdummy@1283bb96]" started-at="2024-12-10T15:37:36 IST" name="invoiceform" description="Add an Invoice in the SIM-Web App" finished-at="2024-12-10T15:37:55 IST" duration-ms="19075" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- invoiceform -->
       </class> <!-- Sim_automation.InvoicCreationdummy -->
       <class name="Sim_automation.Login">
-        <test-method is-config="true" signature="reportGenerate()[pri:0, instance:Sim_automation.Login@77847718]" started-at="2024-12-09T18:02:31 IST" name="reportGenerate" finished-at="2024-12-09T18:02:32 IST" duration-ms="175" status="PASS">
+        <test-method is-config="true" signature="reportGenerate()[pri:0, instance:Sim_automation.Login@77847718]" started-at="2024-12-10T15:37:06 IST" name="reportGenerate" finished-at="2024-12-10T15:37:06 IST" duration-ms="206" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- reportGenerate -->
-        <test-method is-config="true" signature="browserOpen()[pri:0, instance:Sim_automation.Login@77847718]" started-at="2024-12-09T18:02:32 IST" name="browserOpen" finished-at="2024-12-09T18:02:41 IST" duration-ms="9658" status="PASS">
+        <test-method is-config="true" signature="browserOpen()[pri:0, instance:Sim_automation.Login@77847718]" started-at="2024-12-10T15:37:06 IST" name="browserOpen" finished-at="2024-12-10T15:37:22 IST" duration-ms="15760" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserOpen -->
-        <test-method signature="logindata()[pri:1, instance:Sim_automation.Login@77847718]" started-at="2024-12-09T18:02:41 IST" name="logindata" description="Login in the SIM-Web App" finished-at="2024-12-09T18:02:58 IST" duration-ms="16199" status="PASS">
+        <test-method signature="logindata()[pri:1, instance:Sim_automation.Login@77847718]" started-at="2024-12-10T15:37:22 IST" name="logindata" description="Login in the SIM-Web App" finished-at="2024-12-10T15:37:36 IST" duration-ms="13565" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logindata -->
-        <test-method is-config="true" signature="logout()[pri:0, instance:Sim_automation.Login@77847718]" started-at="2024-12-09T18:03:24 IST" name="logout" finished-at="2024-12-09T18:03:24 IST" duration-ms="97" status="PASS">
+        <test-method is-config="true" signature="logout()[pri:0, instance:Sim_automation.Login@77847718]" started-at="2024-12-10T15:38:01 IST" name="logout" finished-at="2024-12-10T15:38:01 IST" duration-ms="101" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logout -->
-        <test-method is-config="true" signature="endReport()[pri:0, instance:Sim_automation.Login@77847718]" started-at="2024-12-09T18:03:24 IST" name="endReport" finished-at="2024-12-09T18:03:24 IST" duration-ms="240" status="PASS">
+        <test-method is-config="true" signature="endReport()[pri:0, instance:Sim_automation.Login@77847718]" started-at="2024-12-10T15:38:01 IST" name="endReport" finished-at="2024-12-10T15:38:02 IST" duration-ms="258" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endReport -->
       </class> <!-- Sim_automation.Login -->
       <class name="Sim_automation.LogOut">
-        <test-method signature="logOutdata()[pri:9, instance:Sim_automation.LogOut@6aeb35e6]" started-at="2024-12-09T18:03:17 IST" name="logOutdata" description="Log-Out From the SIM-Web App" finished-at="2024-12-09T18:03:24 IST" duration-ms="6332" status="PASS">
+        <test-method signature="logOutdata()[pri:9, instance:Sim_automation.LogOut@74f0ea28]" started-at="2024-12-10T15:37:55 IST" name="logOutdata" description="Log-Out From the SIM-Web App" finished-at="2024-12-10T15:38:01 IST" duration-ms="6274" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOutdata -->

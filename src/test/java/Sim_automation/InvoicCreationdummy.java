@@ -19,7 +19,7 @@ public class InvoicCreationdummy extends Invoiceop {
 		boolean Invpage = invpom.openAddNewInvoicePage();
 		Assert.assertEquals(Invpage, true, "Customer Added successfully");
 
-		boolean headerRef = invpom.addHeaderAndReference();
+		boolean headerRef = invpom.addHeaderReferenceDueDate();
 		Assert.assertEquals(headerRef, true, "product Added successfully");
 		Thread.sleep(400);
 
