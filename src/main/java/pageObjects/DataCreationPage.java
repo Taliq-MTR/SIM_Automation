@@ -341,9 +341,10 @@ public class DataCreationPage extends BrowserOpen {
 			BrowserOpen.log().info("Page scrolled to 'QtY' ");
 			ExtentManager.test.log(Status.PASS, "Page scrolled to 'QtY' ");
 
-			Thread.sleep(1000);
+			
 			// Wait for the element to be present and clickable
-			wait.until(ExpectedConditions.elementToBeClickable(searchProduct));
+			wait.until(ExpectedConditions.elementToBeClickable(productCustomField));
+			Thread.sleep(900);
 			searchProduct.click();
 
 //			Call Add Product Method
@@ -425,18 +426,21 @@ public class DataCreationPage extends BrowserOpen {
 
 		try {
 
-			wait.until(ExpectedConditions.elementToBeClickable(subTotal));
-//			 Click the element using JavaScript to avoid interception issues
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", subTotal);
+			
 
-			BrowserOpen.log().info("Page scrolled to 'Sub Total' ");
-			ExtentManager.test.log(Status.PASS, "Page scrolled to 'Sub Total' ");
-			Thread.sleep(900);
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			addDiscount.click();
 			addDiscount.sendKeys("12.5");
+			
 			BrowserOpen.log().info("Discount Added SuccessFully");
 			ExtentManager.test.log(Status.PASS, "Discount Added SuccessFully");
+			
+//			 scroll the page
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", subTotal);
+//			wait.until(ExpectedConditions.elementToBeClickable(addDiscount));
+			BrowserOpen.log().info("Page scrolled to 'Sub Total' ");
+			ExtentManager.test.log(Status.PASS, "Page scrolled to 'Sub Total' ");
+			Thread.sleep(1000);
 
 			return true;
 		} catch (Exception e) {

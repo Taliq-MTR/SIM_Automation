@@ -14,7 +14,7 @@ public class InvoicCreationdummy extends Invoiceop {
 
 		boolean createInv = invpom.openInvoiceModuleFromDashBoard();
 		Assert.assertEquals(createInv, true, "Create Invoice page Open successfully");
-		Thread.sleep(5000);
+		Thread.sleep(500);
 
 		boolean Invpage = invpom.openAddNewInvoicePage();
 		Assert.assertEquals(Invpage, true, "Customer Added successfully");
@@ -26,7 +26,7 @@ public class InvoicCreationdummy extends Invoiceop {
 		boolean customer = invpom.addCustomer();
 		Assert.assertEquals(customer, true, "product Added successfully");
 		Thread.sleep(400);
-		
+
 		boolean product = invpom.addproduct();
 		Assert.assertEquals(product, true, "product Added successfully");
 		Thread.sleep(400);
@@ -36,15 +36,19 @@ public class InvoicCreationdummy extends Invoiceop {
 		boolean discount = invpom.addDiscountTaxShippingAndROundOff();
 		Assert.assertEquals(discount, true, "product Added successfully");
 		Thread.sleep(400);
-		
+
+		boolean commission = invpom.addCommission();
+		Assert.assertEquals(discount, true, "Commission Added successfully");
+		Thread.sleep(400);
+
 		boolean payment = invpom.addPaymentOfInvoice();
 		Assert.assertEquals(payment, true, "product Added successfully");
 		Thread.sleep(400);
-		
+
 		boolean footerNote = invpom.addFooterAndNote();
 		Assert.assertEquals(footerNote, true, "product Added successfully");
 		Thread.sleep(400);
-		
+
 		boolean saveInv = invpom.saveInvoice();
 		Assert.assertEquals(saveInv, true, "Invoice Added successfully");
 		Thread.sleep(1000);
