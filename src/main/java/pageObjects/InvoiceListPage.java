@@ -1,8 +1,6 @@
 package pageObjects;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -10,8 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-
 import com.aventstack.extentreports.Status;
 
 import browserSetup.BrowserOpen;
@@ -28,175 +24,300 @@ public class InvoiceListPage extends DataCreationPage {
 //	WebDriver driver;
 //	(1) All the elements will locate here
 
-	// Click on Add Invoice button
-	@FindBy(css = "button.New_product")
-	WebElement addNewInvoice;
+	DataCreationPage dcp = new DataCreationPage();
 
-	// Click on Client Section
-	@FindBy(css = "input[placeholder='Search & Select Client']")
-	WebElement searchClient;
+	@FindBy(css = "div[href='#commission']")
+	WebElement commissionButtonDropDown;
 
+	@FindBy(xpath = "//div/span[text()=' Shipping Charges ']")
+	WebElement scrollToshippingCharges;
 
-//	// Select and Add Client
-//	@FindBy(xpath = "//span[@class='mdc-list-item__primary-text' and text()=' Saim ']")
-//	WebElement addClient;
-	
-	@FindBy(css = "div[role='listbox'] mat-option:nth-of-type(2)")
-	WebElement addClient;
+	@FindBy(xpath = "//label[text()='Commission']/following::span[contains(@class, 'dropdown-toggle')]")
+	WebElement currencyArrowToSelectPercent;
 
-	// Click on Add product section to search for product
-	@FindBy(css = "input[name='itemName']")
-	WebElement searchProduct;
+	@FindBy(xpath = "//*[@id='commission']/div[1]/div[1]/div[2]/div[1]//li[2]")
+	WebElement clickOnPercentbutton;
 
-	// Add Product
-	@FindBy(xpath = "//mat-option[contains(@class, 'mat-mdc-option')]/span[contains(@class, 'mdc-list-item__primary-text')][text()=' Football ']")
-	WebElement addProduct;
+	@FindBy(css = "input[name='perOrAmountValue']")
+	WebElement enterCommssionAmount;
 
-	// Scroll the Page to click on line itme
-	@FindBy(css = "th.qty-field")
-	WebElement scrollToQtyINV;
+	@FindBy(xpath = "//li/input[@id='f-option']/following-sibling::label[text()='Pay Now']")
+	WebElement commissionPayNowButton;
 
-//	We have to wait and then Click on add product line item Button
-	@FindBy(css = "button.add-line-form")
-	WebElement addItemButton;
+	@FindBy(css = "button[class='add-commission']")
+	WebElement AddcommisionButton;
 
-	// Now Click on Save Invoice
-	@FindBy(xpath = "//button[contains(@class, 'btn-done') and contains(text(), 'Save Invoice')]")
-	WebElement saveInvoice;
+	@FindBy(css = "input[placeholder='Search & Select Agent']")
+	WebElement selectAgentDropDown;
 
-	// Now Going Back To Dashboard
-	@FindBy(css = "li.breadcrumb-item > a[routerlink='/dashboard']")
-	WebElement invToDashboard;
+//	2 Create Constructor and invoke both Driver from parent and this class
 
-//	(2) Made a Constructor 
-//	Initialize the Element
 	public InvoiceListPage() {
-
 
 		PageFactory.initElements(driver, this);
 	}
 
-// (3) Perform Action on the Elements
-
-	public boolean openInvoiceCreationForm() {
+//	Dynamic Agent selection
+	protected WebElement addAgent(int index) {
 		try {
-			
-			// 1 => INVOICE
-			int formType = 1;
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			selectAgentDropDown.click();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			String AgentSelection = String.format("div[role='listbox'] mat-option:nth-of-type(%d)", index);
+			WebElement agentSelected = driver.findElement(By.cssSelector(AgentSelection));
+			agentSelected.click();
 
+			BrowserOpen.log().info("Agent Added (Dynamically) Successfully");
+			ExtentManager.test.log(Status.PASS, "Agent Added (Dynamically) Successfully");
+			return agentSelected;
 
-			BrowserOpen.log().info("Invoice Creation Started");
-			ExtentManager.test.log(Status.PASS, "Invoice Creation Started");
+		} catch (Exception e) {
 
-			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
-			// TODO Auto-generated method stub
-			WebElement openInvoiceList = driver.findElement(By.cssSelector(dashboardSelectorCss));
-			openInvoiceList.click();
+			BrowserOpen.log().error("Dynamic Agent Is not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Dynamic Agent Is not Added:" + e);
+
+		}
+		return null;
+
+	}
+
+	public boolean openInvoiceModuleFromDashBoard() {
+		try {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			dcp.openModuleFromDashBoard(1);
+
+			return true;
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("Invoice Creation Form not Opened:" + e);
+			ExtentManager.test.log(Status.FAIL, "Invoice Creation Form not Opened:" + e);
+
+		}
+
+		return false;
+	}
+
+	public boolean openAddNewInvoicePage() {
+		try {
 
 			Duration duration = Duration.ofSeconds(10l, 10);
 			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button.New_product")));
+			wait.until(ExpectedConditions
+					.presenceOfElementLocated(By.cssSelector("button.empty-add-btn, button.New_product")));
 
-			addNewInvoice.click();
-//			System.out.println("Invoice creation Form Open");
+			dcp.CreateNewInvoicePageButton();
+
 			BrowserOpen.log().info("Invoice creation Form Open");
 			ExtentManager.test.log(Status.PASS, "Invoice creation Form Open");
 			return true;
 		} catch (Exception e) {
-//			System.out.println("Invoice Creation Form not Opened");
+
 			BrowserOpen.log().error("Invoice Creation Form not Opened:" + e);
 			ExtentManager.test.log(Status.FAIL, "Invoice Creation Form not Opened:" + e);
-			
+
 		}
 
 		return false;
 	}
 
-	public boolean addCCustomer() {
+	public boolean addHeaderReferenceDueDate() {
+
 		try {
-			searchClient.click();
-			addClient.click();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			dcp.addReferenceForInvoice();
+			dcp.addDataForHeader();
+			dcp.addDueDate();
+
+			BrowserOpen.log().info("Invoice Header, Reference And Due Date Added");
+			ExtentManager.test.log(Status.PASS, "Invoice Header, Reference And Due Date Added");
+
 			return true;
 		} catch (Exception e) {
-//			System.out.println("Customer not added");
-			BrowserOpen.log().error("Customer not added:" + e);
-			ExtentManager.test.log(Status.FAIL, "Customer not added:" + e);
+
+			BrowserOpen.log().error("Invoice Header, Reference And Due Date not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Invoice Header, Reference And Due Date not Added:" + e);
+
 		}
 
 		return false;
-
 	}
 
-	public boolean selectProduct() {
+	public boolean addCustomer() {
 		try {
-			searchProduct.click();
-			addProduct.click();
 
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToQtyINV);
-//			System.out.println("Page scrolled to 'QtY' ");
-			BrowserOpen.log().info("Page scrolled to 'QtY' ");
-			ExtentManager.test.log(Status.PASS, "Page scrolled to 'QtY' ");
+			dcp.SelectClient();
+			dcp.addClient(2);
 
-			// Wait for the element to be present and clickable
-			Duration duration = Duration.ofSeconds(10l, 10);
-			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
-			wait.until(ExpectedConditions.elementToBeClickable(addItemButton));
-			// Click the element using JavaScript to avoid interception issues
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", addItemButton);
-
-//			System.out.println("Product Added Successfully");
-			BrowserOpen.log().info("Product Added Successfully");
-			ExtentManager.test.log(Status.PASS, "Product Added Successfully");
+			BrowserOpen.log().info("Customer Added SuccessFully");
+			ExtentManager.test.log(Status.PASS, "Customer Added SuccessFully");
 			return true;
 		} catch (Exception e) {
-//			System.out.println("Product Line item not Added");
-			BrowserOpen.log().error("Product Line item not Added:" + e);
-			ExtentManager.test.log(Status.FAIL, "Product Line item not Added:" + e);
-			
+
+			BrowserOpen.log().error("Customer not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Customer not Added:" + e);
+
+		}
+
+		return false;
+	}
+
+	public boolean addproduct() {
+		try {
+
+			dcp.addProductItem();
+
+			BrowserOpen.log().info("Product Added SuccessFully");
+			ExtentManager.test.log(Status.PASS, "Product Added SuccessFully");
+			return true;
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("Product not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Product not Added:" + e);
+
+		}
+
+		return false;
+	}
+
+	public boolean addtermsAndCustomField() {
+
+		try {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			dcp.termsAndCondition();
+			dcp.addCustomField();
+
+			BrowserOpen.log().info("Invoice Terms&Condition And Custom Field Added");
+			ExtentManager.test.log(Status.PASS, "Invoice Terms&Condition And Custom Field Added");
+
+			return true;
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("Invoice Terms&Condition And Custom Field not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Invoice Terms&Condition And Custom Field not Added:" + e);
+
+		}
+
+		return false;
+	}
+
+	public boolean addDiscountTaxShippingAndROundOff() {
+
+		try {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			dcp.addDiscount();
+			dcp.addTax();
+			dcp.shippingAndRoundOff();
+
+			BrowserOpen.log().info("Invoice Discount, Tax Shpping Charges And RoundOff Added");
+			ExtentManager.test.log(Status.PASS, "Invoice Discount, Tax Shpping Charges And RoundOff Added");
+
+			return true;
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("Invoice Discount, Tax, Shpping Charges And RoundOff not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Invoice Discount, Tax, Shpping Charges And RoundOff not Added:" + e);
+
+		}
+
+		return false;
+	}
+
+	public boolean addCommission() {
+		try {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			commissionButtonDropDown.click();
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToshippingCharges);
+			wait.until(ExpectedConditions.elementToBeClickable(AddcommisionButton));
+			addAgent(2);
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			currencyArrowToSelectPercent.click();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			clickOnPercentbutton.click();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			enterCommssionAmount.click();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			enterCommssionAmount.sendKeys("15");
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			commissionPayNowButton.click();
+			AddcommisionButton.click();
+
+			BrowserOpen.log().info("Commission Added in Invoice");
+			ExtentManager.test.log(Status.PASS, "Commission Added in Invoice");
+
+			return true;
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("Commission Not Added in Invoice:" + e);
+			ExtentManager.test.log(Status.FAIL, "Commission Not Added in Invoice:" + e);
+
+		}
+
+		return false;
+	}
+
+	public boolean addPaymentOfInvoice() {
+
+		try {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			dcp.addPayment();
+
+			BrowserOpen.log().info("Payment of the Invoice Added SuccessFully");
+			ExtentManager.test.log(Status.PASS, "Payment of the Invoice Added SuccessFully");
+
+			return true;
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("Payment of the Invoice not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Payment of the Invoice not Added:" + e);
+
+		}
+
+		return false;
+	}
+
+	public boolean addFooterAndNote() {
+
+		try {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			dcp.addFooter();
+			dcp.invoiceNote();
+
+			BrowserOpen.log().info("Footer And Notes of Invoice Added SuccessFully");
+			ExtentManager.test.log(Status.PASS, "Footer And Notes of Invoice Added SuccessFully");
+
+			return true;
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("Footer And Notes of Invoice not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Footer And Notes of Invoice not Added:" + e);
+
 		}
 
 		return false;
 	}
 
 	public boolean saveInvoice() {
-		try {
 
-			saveInvoice.click();
-			BrowserOpen.log().info("Invoice Added Successfully");
-			ExtentManager.test.log(Status.PASS, "Invoice Added Successfully");
+		try {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			dcp.saveInvoiceButton();
+
+			BrowserOpen.log().info(" Invoice Added SuccessFully");
+			ExtentManager.test.log(Status.PASS, "Invoice Added SuccessFully");
+
 			return true;
 		} catch (Exception e) {
-//			System.out.println("Didn't Click on Save Invoice Button");
-			BrowserOpen.log().error("Didn't Click on Save Invoice Button:" + e );
-			ExtentManager.test.log(Status.FAIL, "Didn't Click on Save Invoice Button:" + e);
+
+			BrowserOpen.log().error("Save Invoice not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Invoice not Added:" + e);
+
 		}
 
 		return false;
-
 	}
 
-	public boolean dashboard() {
-		try {
-
-//			System.out.println("Waited 5 second");
-			BrowserOpen.log().info("Waited 5 second");
-			ExtentManager.test.log(Status.PASS, "Waited 5 second");
-			invToDashboard.click();
-			
-//			System.out.println("We have Successfully Completed First Module");
-			BrowserOpen.log().info("We have Successfully Completed Second Module");
-			ExtentManager.test.log(Status.PASS, "We have Successfully Completed Second Module");
-			// Set implicit wait of 5 seconds
-
-			return true;
-		} catch (Exception e) {
-//			System.out.println("Failed to Go on Dashboard from Invoice List");
-			BrowserOpen.log().error("Failed to Go on Dashboard from Invoice List" + e);
-			ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Invoice List" + e);			e.printStackTrace();
-		}
-
-		return false;
-
+	public void listToDashboard() {
+		dcp.listToDashBoard();
 	}
 
 }

@@ -10,7 +10,7 @@
 	<test thread-count="1" name="Test">
 		<classes>
 			<class name="Sim_automation.Login" />
-			<class name="Sim_automation.InvoicCreationdummy" />
+			<class name="Sim_automation.InvoiceCreation" />
 			
 			<class name="Sim_automation.LogOut" />
 
