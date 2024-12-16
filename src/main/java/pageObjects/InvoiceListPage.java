@@ -206,7 +206,8 @@ public class InvoiceListPage extends DataCreationPage {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			dcp.addDiscount();
 			dcp.addTax();
-			dcp.shippingAndRoundOff();
+			dcp.shipping();
+			dcp.roundOff();
 
 			BrowserOpen.log().info("Invoice Discount, Tax Shpping Charges And RoundOff Added");
 			ExtentManager.test.log(Status.PASS, "Invoice Discount, Tax Shpping Charges And RoundOff Added");

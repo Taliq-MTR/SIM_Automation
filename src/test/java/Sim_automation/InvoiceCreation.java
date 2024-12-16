@@ -4,13 +4,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pageObjects.InvoiceListPage;
-import pageObjects.Invoiceop;
+
 
 public class InvoiceCreation extends InvoiceListPage {
 
-	@Test(priority = 3, description = "Add an Invoice in the SIM-Web App")
+	@Test(priority = 4, description = "Add an Invoice in the SIM-Web App")
 	public void invoiceform() throws InterruptedException {
-		Invoiceop invpom = new Invoiceop();
+		InvoiceListPage invpom = new InvoiceListPage();
 
 		boolean createInv = invpom.openInvoiceModuleFromDashBoard();
 		Assert.assertEquals(createInv, true, "open Invoice List Page From DashBoard successfully");
@@ -20,7 +20,7 @@ public class InvoiceCreation extends InvoiceListPage {
 		Assert.assertEquals(Invpage, true, "Open Invoice Form From the Invice List page with \"Add New Invoice Button\" successfully");
 
 		boolean headerRef = invpom.addHeaderReferenceDueDate();
-		Assert.assertEquals(headerRef, true, "On Ivoice Form Header, Reference And Due Date Module Added successfully");
+		Assert.assertEquals(headerRef, true, "On Invoice Form Header, Reference And Due Date Module Added successfully");
 		Thread.sleep(400);
 
 		boolean customer = invpom.addCustomer();

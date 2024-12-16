@@ -108,7 +108,7 @@ public class DataCreationPage extends BrowserOpen {
 
 	// Add RoundOff
 	@FindBy(css = "input[name='adjustment']")
-	WebElement roundOff;
+	WebElement addRoundOff;
 
 	// Click on Paid Button
 	@FindBy(css = "div[href='#collapseExample'].paddingPayment.py-2")
@@ -291,10 +291,9 @@ public class DataCreationPage extends BrowserOpen {
 			dueDateDropdown.click();
 //		    Create an instance of the Select class
 			Select select = new Select(dueDateDropdown);
-			
+
 //			Select the "Immediately" option by visible text
 			select.selectByVisibleText("Immediately");
-			
 
 			BrowserOpen.log().info("Due Date Added Successfully");
 			ExtentManager.test.log(Status.PASS, "Due Date Added Successfully");
@@ -317,7 +316,6 @@ public class DataCreationPage extends BrowserOpen {
 			BrowserOpen.log().info("Client Search Button Clicked Successfully");
 			ExtentManager.test.log(Status.PASS, "Client Search Button Clicked Successfully");
 
-
 			BrowserOpen.log().info("Client button clicked Successfully");
 			ExtentManager.test.log(Status.PASS, "Client button clicked Successfully");
 
@@ -337,11 +335,9 @@ public class DataCreationPage extends BrowserOpen {
 			// Click the element using JavaScript to avoid interception issues
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToQty);
 
-			
 			BrowserOpen.log().info("Page scrolled to 'QtY' ");
 			ExtentManager.test.log(Status.PASS, "Page scrolled to 'QtY' ");
 
-			
 			// Wait for the element to be present and clickable
 			wait.until(ExpectedConditions.elementToBeClickable(productCustomField));
 			Thread.sleep(900);
@@ -426,15 +422,13 @@ public class DataCreationPage extends BrowserOpen {
 
 		try {
 
-			
-
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			addDiscount.click();
 			addDiscount.sendKeys("12.5");
-			
+
 			BrowserOpen.log().info("Discount Added SuccessFully");
 			ExtentManager.test.log(Status.PASS, "Discount Added SuccessFully");
-			
+
 //			 scroll the page
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", subTotal);
 //			wait.until(ExpectedConditions.elementToBeClickable(addDiscount));
@@ -470,7 +464,7 @@ public class DataCreationPage extends BrowserOpen {
 		return false;
 	}
 
-	protected boolean shippingAndRoundOff() {
+	protected boolean shipping() {
 
 		try {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -480,18 +474,31 @@ public class DataCreationPage extends BrowserOpen {
 			BrowserOpen.log().info("Shipping Charges Added SuccessFully");
 			ExtentManager.test.log(Status.PASS, "Shipping Charges Added SuccessFully");
 
+			return true;
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("Shipping Charges not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "Shipping Charges not Added:" + e);
+
+		}
+		return false;
+	}
+
+	protected boolean roundOff() {
+
+		try {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-			roundOff.clear();
-			roundOff.sendKeys("0.75");
+			addRoundOff.clear();
+			addRoundOff.sendKeys("0.75");
 
 			BrowserOpen.log().info("RoundOff Amount Added SuccessFully");
 			ExtentManager.test.log(Status.PASS, "RoundOff Amount Added SuccessFully");
 
 			return true;
 		} catch (Exception e) {
-//		System.out.println("Product Line item not Added");
-			BrowserOpen.log().error("Shipping Charges/RoundOff Amount not Added:" + e);
-			ExtentManager.test.log(Status.FAIL, "Shipping Charges/RoundOff Amount not Added:" + e);
+
+			BrowserOpen.log().error("RoundOff Amount not Added:" + e);
+			ExtentManager.test.log(Status.FAIL, "RoundOff Amount not Added:" + e);
 
 		}
 		return false;
@@ -507,7 +514,7 @@ public class DataCreationPage extends BrowserOpen {
 
 //			wait.until(ExpectedConditions.elementToBeClickable(footer));
 //			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", footer);
-			
+
 			BrowserOpen.log().info("Page scrolled to \"Paid Button\" ");
 			ExtentManager.test.log(Status.PASS, "Page scrolled to \"Paid Button\" ");
 			Thread.sleep(1000);
