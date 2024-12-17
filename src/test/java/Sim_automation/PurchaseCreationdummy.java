@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import pageObjects.PurchaseListPage;
 import pageObjects.Purchaseop;
 
-
 public class PurchaseCreationdummy extends Purchaseop {
 
 	@Test(priority = 3, description = "Add an Purchase in the SIM-Web App")
@@ -18,28 +17,28 @@ public class PurchaseCreationdummy extends Purchaseop {
 		Thread.sleep(500);
 
 		boolean purpage = purpom.openAddNewPurchasePage();
-		Assert.assertEquals(purpage, true, "Open Purchase Form From the Purice List page with \"Add New Purchase Button\" successfully");
+		Assert.assertEquals(purpage, true,
+				"Open Purchase Form From the Purice List page with \"Add New Purchase Button\" successfully");
 
 		boolean headerRef = purpom.addHeaderReferenceDueDate();
-		Assert.assertEquals(headerRef, true, "On Purchase Form Header, Reference And Due Date Module Added successfully");
+		Assert.assertEquals(headerRef, true,
+				"On Purchase Form Header, Reference And Due Date Module Added successfully");
 		Thread.sleep(400);
 
 		boolean customer = purpom.addSupplier();
-		Assert.assertEquals(customer, true, "Customer For the Purchase Added successfully");
+		Assert.assertEquals(customer, true, "Supplier For the Purchase Added successfully");
 		Thread.sleep(400);
 
 		boolean product = purpom.addproduct();
 		Assert.assertEquals(product, true, "product of the Purchase with Product Custom Field Added successfully");
 		Thread.sleep(400);
+
 		boolean termsCustom = purpom.addtermsAndCustomField();
 		Assert.assertEquals(termsCustom, true, "Terms&Condition with Custom Field of The Purchase Added successfully");
 		Thread.sleep(400);
 		boolean discount = purpom.addDiscountTaxShippingAndROundOff();
-		Assert.assertEquals(discount, true, "Discount, Shipping Charges & Round-Off for the Purchase Added successfully");
-		Thread.sleep(400);
-
-		boolean commission = purpom.addCommission();
-		Assert.assertEquals(discount, true, "Commission of The Purchase Paid successfully");
+		Assert.assertEquals(discount, true,
+				"Discount, Shipping Charges & Round-Off for the Purchase Added successfully");
 		Thread.sleep(400);
 
 		boolean payment = purpom.addPaymentOfPurchase();
@@ -54,9 +53,9 @@ public class PurchaseCreationdummy extends Purchaseop {
 		Assert.assertEquals(savePur, true, "Purchase Created successfully");
 		Thread.sleep(1000);
 
-//		boolean PurToDashboard = purpom.listToDashboard();
-//		Assert.assertEquals(PurToDashboard, true, "Successfully Came back to Dasboard");
-//		Thread.sleep(3500);
+		boolean purToDashboard = purpom.listToDashBoard();
+		Assert.assertEquals(purToDashboard, true, "Successfully Came back to Dasboard From Purchase");
+		Thread.sleep(3500);
 
 	}
 

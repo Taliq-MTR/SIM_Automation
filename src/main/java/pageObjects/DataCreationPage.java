@@ -17,6 +17,13 @@ import browserSetup.BrowserOpen;
 import browserSetup.ExtentManager;
 
 public class DataCreationPage extends BrowserOpen {
+	
+//	All the elements to make a Purchase required actions
+//	We use @FindBy testNg method to locate the element
+//	There are 3 works happen in page object model 1. Locate all the element 2. make constructor & initialize elements
+//	3. Perform actions on the elements
+
+//	(1) All the elements will locate here
 
 	// Click on Dashboard to start every test case without any dependency
 	@FindBy(css = "a._ngcontent-ng-c3709988206,img[src='assets/img/menu/dash.png']")
@@ -43,7 +50,7 @@ public class DataCreationPage extends BrowserOpen {
 	WebElement dueDateDropdown;
 
 	// Click on Client Section
-	@FindBy(css = "input[placeholder='Search & Select Client']")
+	@FindBy(id = "lwAddClient")
 	WebElement searchClient;
 
 	// Scroll the Page to click on line item
@@ -67,7 +74,7 @@ public class DataCreationPage extends BrowserOpen {
 	WebElement clickOnProductCustomFieldBox;
 
 	// Product custom Field Data Added
-	@FindBy(xpath = "//*[@id=\"collapseOne\"]/div/div/div/div/div/input")
+	@FindBy(xpath = "//*[@id='collapseOne']/div/div/div/div//div/input")
 	WebElement productCustomFieldData;
 
 	// We have to wait and then Click on add product line item Button
@@ -87,7 +94,7 @@ public class DataCreationPage extends BrowserOpen {
 	WebElement doneButtonTermsAndCondition;
 
 	// Add Custom Field For Invoice
-	@FindBy(xpath = "//*[@id=\"wrapper\"]/div/app-sale-add-edit/div/div//div/form/div[1]/div[4]/div[2]/div[1]/div[2]/div[2]//div/input")
+	@FindBy(xpath = "//*[@id='wrapper']/div//div/div//div/form/div[1]/div[4]/div[2]/div[1]/div[2]/div[2]//div/input | //*[@id='wrapper']/div//div/div//div/form/div[1]/div[5]/div[2]/div[1]/div[2]/div[2]//div/input")
 	WebElement customField;
 
 	// Scroll Page to Sub Total
@@ -99,7 +106,7 @@ public class DataCreationPage extends BrowserOpen {
 	WebElement addDiscount;
 
 	// Click on Tax
-	@FindBy(css = "label.container-checkbox input[type=\"checkbox\"]")
+	@FindBy(css = "label.container-checkbox input[type='checkbox']")
 	WebElement tax;
 
 	// Add Shipping Charges
@@ -234,6 +241,11 @@ public class DataCreationPage extends BrowserOpen {
 
 	protected boolean CreateNewInvoicePageButton() {
 		try {
+			Duration duration = Duration.ofSeconds(10l, 10);
+			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
+			wait.until(ExpectedConditions
+					.presenceOfElementLocated(By.cssSelector("button.empty-add-btn, button.New_product")));
+			
 			createNewInvoiceFormButton.click();
 			BrowserOpen.log().info("The user Clicked On Create New Form Button.");
 			ExtentManager.test.log(Status.PASS, "The user Clicked On Create New Form Button.");
@@ -609,7 +621,7 @@ public class DataCreationPage extends BrowserOpen {
 		return false;
 	}
 
-	protected boolean listToDashBoard() {
+	public boolean listToDashBoard() {
 		try {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 

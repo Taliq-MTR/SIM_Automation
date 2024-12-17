@@ -6,12 +6,13 @@
 		<listener class-name="browserSetup.Listeners" />
 	</listeners>
 
-	<!-- Test for Complete App -->
+	<!-- Test for Complete Application -->
 	<test thread-count="1" name="Test">
 		<classes>
 			<class name="Sim_automation.Login" />
+			<class name="Sim_automation.PurchaseCreation" />
 			<class name="Sim_automation.InvoiceCreation" />
-			
+			<!-- <class name="Sim_automation.PurchaseCreationdummy" /> -->
 			<class name="Sim_automation.LogOut" />
 
 

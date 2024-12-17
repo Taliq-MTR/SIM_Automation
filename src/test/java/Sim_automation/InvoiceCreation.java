@@ -8,7 +8,7 @@ import pageObjects.InvoiceListPage;
 
 public class InvoiceCreation extends InvoiceListPage {
 
-	@Test(priority = 4, description = "Add an Invoice in the SIM-Web App")
+	@Test(priority = 3, description = "Add an Invoice in the SIM-Web App")
 	public void invoiceform() throws InterruptedException {
 		InvoiceListPage invpom = new InvoiceListPage();
 
