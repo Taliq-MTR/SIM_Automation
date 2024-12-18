@@ -1,7 +1,6 @@
 package pageObjects;
 
 import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -17,7 +16,7 @@ import browserSetup.BrowserOpen;
 import browserSetup.ExtentManager;
 
 public class DataCreationPage extends BrowserOpen {
-	
+
 //	All the elements to make a Purchase required actions
 //	We use @FindBy testNg method to locate the element
 //	There are 3 works happen in page object model 1. Locate all the element 2. make constructor & initialize elements
@@ -27,128 +26,134 @@ public class DataCreationPage extends BrowserOpen {
 
 	// Click on Dashboard to start every test case without any dependency
 	@FindBy(css = "a._ngcontent-ng-c3709988206,img[src='assets/img/menu/dash.png']")
-	WebElement clickOnDashBoardIcon;
+	private WebElement clickOnDashBoardIcon;
 
 	// Click on Create New Invoices
 	@FindBy(css = "button.empty-add-btn, button.New_product")
-	WebElement createNewInvoiceFormButton;
+	private WebElement createNewInvoiceFormButton;
 
 	// Add Reference
 	@FindBy(css = "input[name='reference']")
-	WebElement reference;
+	private WebElement reference;
 
 	// Click on Header Button
 	@FindBy(css = "a[data-bs-target='#lwInvoiceHeader']")
-	WebElement headerButton;
+	private WebElement headerButton;
 
 	// Add Data in Header
 	@FindBy(css = "textarea[name='invoiceHeader']")
-	WebElement addDataInHeader;
+	private WebElement addDataInHeader;
 
 	// Due Date selection
 	@FindBy(id = "selectDueDate")
-	WebElement dueDateDropdown;
+	private WebElement dueDateDropdown;
 
 	// Click on Client Section
 	@FindBy(id = "lwAddClient")
-	WebElement searchClient;
+	private WebElement searchClient;
 
 	// Scroll the Page to click on line item
 	@FindBy(css = "th.qty-field")
-	WebElement scrollToQty;
+	private WebElement scrollToQty;
 
 	// Click on Add product section to search for product
 	@FindBy(css = "input[name='itemName']")
-	WebElement searchProduct;
+	private WebElement searchProduct;
 
 	// Select product
 	@FindBy(css = "div[role='listbox'] mat-option:nth-of-type(1)")
-	WebElement addProduct;
+	private WebElement addProduct;
 
 	// Product custom Field
 	@FindBy(xpath = "//h2[@class='accordion-header mt-0']")
-	WebElement productCustomField;
+	private WebElement productCustomField;
 
 //	Product Custom Field element is not working so We need to invoke element by cicking on it
 	@FindBy(xpath = "//*[@id='collapseOne']/div/div/div/div/div")
-	WebElement clickOnProductCustomFieldBox;
+	private WebElement clickOnProductCustomFieldBox;
 
 	// Product custom Field Data Added
 	@FindBy(xpath = "//*[@id='collapseOne']/div/div/div/div//div/input")
-	WebElement productCustomFieldData;
+	private WebElement productCustomFieldData;
 
 	// We have to wait and then Click on add product line item Button
 	@FindBy(css = "button.add-line-form")
-	WebElement addItemButton;
+	private WebElement addItemButton;
 
 	// Add Terms And Condition Button
 	@FindBy(xpath = "//button[contains (text(), ' Add Terms ')]")
-	WebElement termsAndConditionButton;
+	private WebElement termsAndConditionButton;
 
 	// Add Terms And Condition from popUpd
 	@FindBy(xpath = "//*[@id='termstwo']/div/div/div[1]/div//span")
-	WebElement selectTermsAndCondition;
+	private WebElement selectTermsAndCondition;
 
 	// Add Terms And Condition from popUpd
 	@FindBy(css = "button[color='btn-primary']")
-	WebElement doneButtonTermsAndCondition;
+	private WebElement doneButtonTermsAndCondition;
 
 	// Add Custom Field For Invoice
 	@FindBy(xpath = "//*[@id='wrapper']/div//div/div//div/form/div[1]/div[4]/div[2]/div[1]/div[2]/div[2]//div/input | //*[@id='wrapper']/div//div/div//div/form/div[1]/div[5]/div[2]/div[1]/div[2]/div[2]//div/input")
-	WebElement customField;
+	private WebElement customField;
 
 	// Scroll Page to Sub Total
 	@FindBy(xpath = "//div[contains(text(), 'Sub Total ')]")
-	WebElement subTotal;
+	private WebElement subTotal;
 
 	// Add Discount
 	@FindBy(css = "input[name='discountOnBillRate']")
-	WebElement addDiscount;
+	private WebElement addDiscount;
 
 	// Click on Tax
 	@FindBy(css = "label.container-checkbox input[type='checkbox']")
-	WebElement tax;
+	private WebElement tax;
 
 	// Add Shipping Charges
 	@FindBy(css = "input[name='shippingCharges']")
-	WebElement shippingCharges;
+	private WebElement shippingCharges;
 
 	// Add RoundOff
 	@FindBy(css = "input[name='adjustment']")
-	WebElement addRoundOff;
+	private WebElement addRoundOff;
 
 	// Click on Paid Button
 	@FindBy(css = "div[href='#collapseExample'].paddingPayment.py-2")
-	WebElement paidButton;
+	private WebElement paidButton;
 
 	// Add Note to the Payment
 	@FindBy(css = "textarea[name='note']")
-	WebElement addPaymentNote;
+	private WebElement addPaymentNote;
 
 	// Click on Add to Payment Button
 	@FindBy(xpath = "//*[@id='collapseExample']/div/div/div[1]/div[4]/button")
-	WebElement addPayment;
+	private WebElement addPayment;
 
 	// Click on Footer
 	@FindBy(css = "a[href='#lwInvoiceFooter']")
-	WebElement footer;
+	private WebElement footer;
 
 	// Click on Add to Payment Button
 	@FindBy(css = "textarea[name='invoiceFooter']")
-	WebElement addDataInFooter;
+	private WebElement addDataInFooter;
 
 	// Click on Add to Payment Button
 	@FindBy(css = "textarea[name='invoiceNote']")
-	WebElement addDataIn_InvoiceNote;
+	private WebElement addDataIn_InvoiceNote;
 
 	// Now Click on Save Invoices/Purchases
 
-	@FindBy(css = "button[type='submit'].btn-done")
-	WebElement saveDataofInvoices;
+	@FindBy(css = "button[type='submit'].btn-done, button[type='submit']")
+	private WebElement saveDataofInvoices;
 
 	// Now Going Back To Dashboard
 	@FindBy(css = "li.breadcrumb-item > a[routerlink='/dashboard']")
-	WebElement listToDashboard;
+	private WebElement listToDashboard;
+
+//	@FindBy(className = "btn-cancel")
+//	private WebElement cancelButtonByClassName;
+
+	@FindBy(xpath = "//button[contains(text(), 'Cancel')]")
+	private WebElement cancelButton;
 
 //	(2) Made a Constructor 
 //	Initialize the Element
@@ -181,6 +186,29 @@ public class DataCreationPage extends BrowserOpen {
 
 			BrowserOpen.log().error("The user Didn't open the" + formType + "Module from  DashBoard:" + e);
 			ExtentManager.test.log(Status.FAIL, "The user Didn't open the" + formType + "Module from  DashBoard:" + e);
+
+		}
+
+		return false;
+	}
+
+//	Cancel Invoice Form Button Check
+
+	public boolean cancelInvoiceForm() {
+
+		try {
+
+			Thread.sleep(500);
+			cancelButton.click();
+
+			BrowserOpen.log().info("Cancel Button is working on Invoice Creation Form");
+			ExtentManager.test.log(Status.PASS, "Cancel Button is working on Invoice Creation Form");
+			return true;
+
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("Cancel Button is not working on Invoice Creation Form:" + e);
+			ExtentManager.test.log(Status.FAIL, "Cancel Button is not working on Invoice Creation Form:" + e);
 
 		}
 
@@ -245,7 +273,7 @@ public class DataCreationPage extends BrowserOpen {
 			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
 			wait.until(ExpectedConditions
 					.presenceOfElementLocated(By.cssSelector("button.empty-add-btn, button.New_product")));
-			
+
 			createNewInvoiceFormButton.click();
 			BrowserOpen.log().info("The user Clicked On Create New Form Button.");
 			ExtentManager.test.log(Status.PASS, "The user Clicked On Create New Form Button.");

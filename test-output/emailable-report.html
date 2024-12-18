@@ -9,13 +9,39 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Suite_to_automate_SIM</th></tr>
-<tr><td><a href="#t0">Test</a></td><td class="num">4</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">79,064</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Test</a></td><td class="num">6</td><td class="num">0</td><td class="num">0</td><td class="num attn">3</td><td class="num">152,979</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite_to_automate_SIM</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">Sim_automation.InvoiceCreation</td><td><a href="#m0">invoiceform</a></td><td rowspan="1">1734440993087</td><td rowspan="1">18261</td></tr><tr class="passedodd"><td rowspan="1">Sim_automation.LogOut</td><td><a href="#m1">logOutdata</a></td><td rowspan="1">1734441011350</td><td rowspan="1">6227</td></tr><tr class="passedeven"><td rowspan="1">Sim_automation.Login</td><td><a href="#m2">logindata</a></td><td rowspan="1">1734440955216</td><td rowspan="1">17991</td></tr><tr class="passedodd"><td rowspan="1">Sim_automation.PurchaseCreation</td><td><a href="#m3">Purchaseform</a></td><td rowspan="1">1734440973214</td><td rowspan="1">19869</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite_to_automate_SIM</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">Sim_automation.LogOut</td><td><a href="#m0">logOutdata</a></td><td rowspan="1">1734524168397</td><td rowspan="1">7333</td></tr><tr class="failedodd"><td rowspan="1">Sim_automation.PaymentPaidCreation</td><td><a href="#m1">paymentPecivedForm</a></td><td rowspan="1">1734524167167</td><td rowspan="1">1117</td></tr><tr class="failedeven"><td rowspan="1">Sim_automation.PaymentReceivedCreation</td><td><a href="#m2">paymentRecivedForm</a></td><td rowspan="1">1734524150256</td><td rowspan="1">16789</td></tr><tr><th colspan="4">Test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">Sim_automation.EstimateCreation</td><td><a href="#m3">Estimateform</a></td><td rowspan="1">1734524133193</td><td rowspan="1">17060</td></tr><tr class="passedodd"><td rowspan="1">Sim_automation.InvoiceCreation</td><td><a href="#m4">invoiceform</a></td><td rowspan="1">1734524074929</td><td rowspan="1">23381</td></tr><tr class="passedeven"><td rowspan="1">Sim_automation.Login</td><td><a href="#m5">logindata</a></td><td rowspan="1">1734524038926</td><td rowspan="1">14348</td></tr><tr class="passedodd"><td rowspan="1">Sim_automation.PurchaseCreation</td><td><a href="#m6">Purchaseform</a></td><td rowspan="1">1734524053282</td><td rowspan="1">21643</td></tr><tr class="passedeven"><td rowspan="1">Sim_automation.PurchaseOrderCreation</td><td><a href="#m7">PurchaseOrderform</a></td><td rowspan="1">1734524098313</td><td rowspan="1">17623</td></tr><tr class="passedodd"><td rowspan="1">Sim_automation.SaleOrderCreation</td><td><a href="#m8">SaleOrderform</a></td><td rowspan="1">1734524115940</td><td rowspan="1">17249</td></tr></tbody>
 </table>
-<h2>Test</h2><h3 id="m0">Sim_automation.InvoiceCreation#invoiceform</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">Sim_automation.LogOut#logOutdata</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">Sim_automation.Login#logindata</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">Sim_automation.PurchaseCreation#Purchaseform</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Test</h2><h3 id="m0">Sim_automation.LogOut#logOutdata</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: USer Log-Out From the SIM-Web App successfully expected [true] but found [false]
+	at Sim_automation.LogOut.logOutdata(LogOut.java:14)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 21 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">Sim_automation.PaymentPaidCreation#paymentPecivedForm</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Payment List Form Open expected [true] but found [false]
+	at Sim_automation.PaymentPaidCreation.paymentPecivedForm(PaymentPaidCreation.java:17)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 21 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">Sim_automation.PaymentReceivedCreation#paymentRecivedForm</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Form open to fill up Details for the receipt of the corresponding Payment expected [true] but found [false]
+	at Sim_automation.PaymentReceivedCreation.paymentRecivedForm(PaymentReceivedCreation.java:24)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 21 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">Sim_automation.EstimateCreation#Estimateform</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">Sim_automation.InvoiceCreation#invoiceform</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">Sim_automation.Login#logindata</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">Sim_automation.PurchaseCreation#Purchaseform</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">Sim_automation.PurchaseOrderCreation#PurchaseOrderform</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m8">Sim_automation.SaleOrderCreation#SaleOrderform</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

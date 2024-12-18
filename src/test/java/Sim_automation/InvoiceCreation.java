@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 
 import pageObjects.InvoiceListPage;
 
-
 public class InvoiceCreation extends InvoiceListPage {
 
 	@Test(priority = 3, description = "Add an Invoice in the SIM-Web App")
@@ -16,11 +15,17 @@ public class InvoiceCreation extends InvoiceListPage {
 		Assert.assertEquals(createInv, true, "open Invoice List Page From DashBoard successfully");
 		Thread.sleep(500);
 
+		boolean cancelInv = invpom.cancelInvoiceCreationForm();
+		Assert.assertEquals(cancelInv, true, "Invoice Form Cancelled successfully");
+		Thread.sleep(800);
+
 		boolean Invpage = invpom.openAddNewInvoicePage();
-		Assert.assertEquals(Invpage, true, "Open Invoice Form From the Invice List page with \"Add New Invoice Button\" successfully");
+		Assert.assertEquals(Invpage, true,
+				"Open Invoice Form From the Invice List page with \"Add New Invoice Button\" successfully");
 
 		boolean headerRef = invpom.addHeaderReferenceDueDate();
-		Assert.assertEquals(headerRef, true, "On Invoice Form Header, Reference And Due Date Module Added successfully");
+		Assert.assertEquals(headerRef, true,
+				"On Invoice Form Header, Reference And Due Date Module Added successfully");
 		Thread.sleep(400);
 
 		boolean customer = invpom.addCustomer();
@@ -34,7 +39,8 @@ public class InvoiceCreation extends InvoiceListPage {
 		Assert.assertEquals(termsCustom, true, "Terms&Condition with Custom Field of The Invoice Added successfully");
 		Thread.sleep(400);
 		boolean discount = invpom.addDiscountTaxShippingAndROundOff();
-		Assert.assertEquals(discount, true, "Discount, Shipping Charges & Round-Off for the Invoice Added successfully");
+		Assert.assertEquals(discount, true,
+				"Discount, Shipping Charges & Round-Off for the Invoice Added successfully");
 		Thread.sleep(400);
 
 		boolean commission = invpom.addCommission();
@@ -53,9 +59,9 @@ public class InvoiceCreation extends InvoiceListPage {
 		Assert.assertEquals(saveInv, true, "Invoice Created successfully");
 		Thread.sleep(1000);
 
-//		boolean invToDashboard = invpom.listToDashboard();
-//		Assert.assertEquals(invToDashboard, true, "Successfully Came back to Dasboard");
-//		Thread.sleep(3500);
+		boolean invToDashboard = invpom.listToDashboard();
+		Assert.assertEquals(invToDashboard, true, "Successfully Came back to Dasboard");
+		Thread.sleep(3500);
 
 	}
 

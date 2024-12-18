@@ -2,66 +2,17 @@ package pageObjects;
 
 import java.time.Duration;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.aventstack.extentreports.Status;
-
 import browserSetup.BrowserOpen;
 import browserSetup.ExtentManager;
 
-public class PurchaseOrderListPage extends BrowserOpen{
+public class PurchaseOrderListPage extends DataCreationPage {
 
-	
 //	All the elements to make a Purchase required actions
 //	We use @FindBy testNg method to locate the element
 //	There are 3 works happen in page object model 1. Locate all the element 2. make constructor & initialize elements
 //	3. Perform actions on the elements
-
-//	WebDriver driver;
-//	(1) All the elements will locate here
-
-	// Click on Add Purchase button
-	@FindBy(css = "button.New_product")
-	WebElement addNewPurchaseOrder;
-
-	// Click on Supplier Section
-	@FindBy(css = "#lwAddClient")
-	WebElement searchSupplier;
-
-
-	// Select and Add Client
-	@FindBy(css = "div[role='listbox'] mat-option:nth-of-type(2)")
-	WebElement addSupplier;
-
-	// Click on Add product section to search for product
-	@FindBy(css = "input[name='itemName']")
-	WebElement searchProduct;
-
-	// Add Product
-	@FindBy(xpath = "//mat-option//span[text()=' Football ']")
-	WebElement addProduct;
-
-	// Scroll the Page to click on line item
-	@FindBy(css = "th.qty-field")
-	WebElement scrollToQtyINV;
-
-//	We have to wait and then Click on add product line item Button
-	@FindBy(css = "button.add-line-form")
-	WebElement addItemButton;
-
-	// Now Click on Save Purchase
-	@FindBy(xpath ="//button[contains(@class, 'btn-done') and contains(text(), 'Save Purchase Order')]")
-	WebElement savePurchaseOrder;
-
-	// Now Going Back To Dashboard
-	@FindBy(css = "a[href='#/dashboard']")
-	WebElement purchaseToDashboard;
 
 //	(2) Made a Constructor 
 //	Initialize the Element
@@ -70,124 +21,129 @@ public class PurchaseOrderListPage extends BrowserOpen{
 		PageFactory.initElements(driver, this);
 	}
 
+	DataCreationPage dcp = new DataCreationPage();
+
 // (3) Perform Action on the Elements
 
-	public boolean openPurchaseOrderCreationForm() {
-		try {
-			
-			// 2 => Purchase Order
-			int formType = 4;
+	public boolean openPurchaseOrderModuleFromDashBoard() {
 
-			BrowserOpen.log().info("Purchase Order Creation Started");
-			ExtentManager.test.log(Status.PASS, "Purchase Order Creation Started");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		dcp.openModuleFromDashBoard(4);
 
-			String dashboardSelectorCss = String.format(".grid-container > :nth-child(%s)", formType);
-			// TODO Auto-generated method stub
-			WebElement openPurchaseList = driver.findElement(By.cssSelector(dashboardSelectorCss));
-			openPurchaseList.click();
+		return true;
 
-			Duration duration = Duration.ofSeconds(10l, 10);
-			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button.New_product")));
+	}
 
-			addNewPurchaseOrder.click();
+	public boolean cancelPurchaseOrderCreationForm() {
 
-			BrowserOpen.log().info("Purchase Order creation Form Open");
-			ExtentManager.test.log(Status.PASS, "Purchase Order creation Form Open");
-			return true;
-		} catch (Exception e) {
+		dcp.CreateNewInvoicePageButton();
+		dcp.cancelInvoiceForm();
 
-			BrowserOpen.log().error("Purchase Order Creation Form not Opened:" + e);
-			ExtentManager.test.log(Status.FAIL, "Purchase Order Creation Form not Opened:" + e);
-			
-		}
+		BrowserOpen.log().info("Cancel Button is working on Purchase Order Creation Form");
+		ExtentManager.test.log(Status.PASS, "Cancel Button is working on Purchase Order Creation Form");
+		return true;
 
-		return false;
+	}
+
+	public boolean openAddNewPurchaseOrderPage() {
+
+		dcp.CreateNewInvoicePageButton();
+
+		BrowserOpen.log().info("PurchaseOrder creation Form Open");
+		ExtentManager.test.log(Status.PASS, "PurchaseOrder creation Form Open");
+		return true;
+
+	}
+
+	public boolean addHeader() {
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+		dcp.addDataForHeader();
+
+		BrowserOpen.log().info("PurchaseOrder Header Added");
+		ExtentManager.test.log(Status.PASS, "PurchaseOrder Header Added");
+
+		return true;
+
 	}
 
 	public boolean addSupplier() {
-		try {
-			searchSupplier.click();
-			addSupplier.click();
-			return true;
-		} catch (Exception e) {
 
-			BrowserOpen.log().error("Supplier not added:" + e);
-			ExtentManager.test.log(Status.FAIL, "Supplier not added:" + e);
-		}
+		dcp.SelectClient();
+		dcp.addClient(3);
 
-		return false;
+		BrowserOpen.log().info("Supplier Added SuccessFully");
+		ExtentManager.test.log(Status.PASS, "Supplier Added SuccessFully");
+		return true;
 
 	}
 
-	public boolean selectProduct() {
-		try {
-			searchProduct.click();
-			addProduct.click();
+	public boolean addproduct() {
 
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToQtyINV);
+		dcp.addProductItem();
 
-			BrowserOpen.log().info("Page scrolled to 'QtY' ");
-			ExtentManager.test.log(Status.PASS, "Page scrolled to 'QtY' ");
-
-			// Wait for the element to be present and clickable
-			Duration duration = Duration.ofSeconds(10l, 10);
-			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
-			wait.until(ExpectedConditions.elementToBeClickable(addItemButton));
-			// Click the element using JavaScript to avoid interception issues
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", addItemButton);
-
-
-			BrowserOpen.log().info("Product Added Successfully");
-			ExtentManager.test.log(Status.PASS, "Product Added Successfully");
-			return true;
-		} catch (Exception e) {
-
-			BrowserOpen.log().error("Product Line item not Added:" + e);
-			ExtentManager.test.log(Status.FAIL, "Product Line item not Added:" + e);
-			
-		}
-
-		return false;
+		BrowserOpen.log().info("Product Added SuccessFully");
+		ExtentManager.test.log(Status.PASS, "Product Added SuccessFully");
+		return true;
 	}
 
-	public boolean savePurchase() {
-		try {
+	public boolean addtermsAndCustomField() {
 
-			savePurchaseOrder.click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		dcp.termsAndCondition();
+		dcp.addCustomField();
 
-			BrowserOpen.log().info("Purchase Order Added Successfully");
-			ExtentManager.test.log(Status.PASS, "Purchase Order Added Successfully");
-			return true;
-		} catch (Exception e) {
+		BrowserOpen.log().info("PurchaseOrder Terms&Condition And Custom Field Added");
+		ExtentManager.test.log(Status.PASS, "PurchaseOrder Terms&Condition And Custom Field Added");
 
-			BrowserOpen.log().error("Didn't Click on Save Purchase Order Button:" + e );
-			ExtentManager.test.log(Status.FAIL, "Didn't Click on Save Purchase Order Button:" + e);
-		}
-
-		return false;
+		return true;
 
 	}
 
-	public boolean dashboard() {
-		try {
+	public boolean addDiscountTaxShippingAndROundOff() {
 
-			BrowserOpen.log().info("Waited 5 second");
-			ExtentManager.test.log(Status.PASS, "Waited 5 second");
-			purchaseToDashboard.click();
-			
-			BrowserOpen.log().info("We have Successfully Completed Third Module");
-			ExtentManager.test.log(Status.PASS, "We have Successfully Completed Third Module");
-			// Set implicit wait of 5 seconds
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		dcp.addDiscount();
+		dcp.addTax();
+		dcp.shipping();
+		dcp.roundOff();
 
-			return true;
-		} catch (Exception e) {
-			BrowserOpen.log().error("Failed to Go on Dashboard from Purchase Order List" + e);
-			ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Purchase Order List" + e);			e.printStackTrace();
-		}
+		BrowserOpen.log().info("PurchaseOrder Discount, Tax Shpping Charges And RoundOff Added");
+		ExtentManager.test.log(Status.PASS, "PurchaseOrder Discount, Tax Shpping Charges And RoundOff Added");
 
-		return false;
+		return true;
 
 	}
-	
+
+	public boolean addFooterAndNote() {
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		dcp.addFooter();
+		dcp.invoiceNote();
+
+		BrowserOpen.log().info("Footer And Notes of PurchaseOrder Added SuccessFully");
+		ExtentManager.test.log(Status.PASS, "Footer And Notes of PurchaseOrder Added SuccessFully");
+
+		return true;
+
+	}
+
+	public boolean savePurchaseOrder() {
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		dcp.saveInvoiceButton();
+
+		BrowserOpen.log().info(" PurchaseOrder Added SuccessFully");
+		ExtentManager.test.log(Status.PASS, "PurchaseOrder Added SuccessFully");
+
+		return true;
+
+	}
+
+	public boolean listToDashboard() {
+		dcp.listToDashBoard();
+		return true;
+	}
+
 }

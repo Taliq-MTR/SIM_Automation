@@ -2,14 +2,7 @@ package pageObjects;
 
 import java.time.Duration;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.aventstack.extentreports.Status;
 
 import browserSetup.BrowserOpen;
@@ -22,49 +15,7 @@ public class SaleOrderListPage extends DataCreationPage {
 //	There are 3 works happen in page object model 1. Locate all the element 2. make constructor & initialize elements
 //	3. Perform actions on the elements
 
-//	WebDriver driver;
-//	(1) All the elements will locate here
 
-//	 Add a wait to add new Sale order button click
-	
-	@FindBy(xpath = "//div[@class='grid-container']//div/h4[contains(text(), 'Sale Order ')]")
-	WebElement openSaleOrderModule;
-	// Click on Add Invoice button
-	@FindBy(css = "button.New_product")
-	WebElement addNewSaleOrder;
-
-	// Click on Client Section
-	@FindBy(css = "input[placeholder='Search & Select Client']")
-	WebElement searchClient;
-
-
-	// Select and Add Client
-	@FindBy(css = "div[role='listbox'] mat-option:nth-of-type(2)")
-	WebElement addClient;
-
-	// Click on Add product section to search for product
-	@FindBy(css = "input[name='itemName']")
-	WebElement searchProduct;
-
-	// Add Product
-	@FindBy(xpath = "//mat-option//span[text()=' Football ']")
-	WebElement addProduct;
-
-	// Scroll the Page to click on line itme
-	@FindBy(css = "th.qty-field")
-	WebElement scrollToQtyINV;
-
-//	We have to wait and then Click on add product line item Button
-	@FindBy(css = "button.add-line-form")
-	WebElement addItemButton;
-
-	// Now Click on Save Invoice
-	@FindBy(xpath = "//*[@id=\"wrapper\"]/div/app-add-edit/div/div/div[2]/div[2]/div/form/div[4]/div/button[2]")
-	WebElement saveSaleOrder;
-
-	// Now Going Back To Dashboard
-	@FindBy(css = "li.breadcrumb-item > a[routerlink='/dashboard']")
-	WebElement saleOrderToDashboard;
 
 //	(2) Made a Constructor 
 //	Initialize the Element
@@ -75,122 +26,127 @@ public class SaleOrderListPage extends DataCreationPage {
 
 // (3) Perform Action on the Elements
 
-	public boolean openSaleOrderCreationForm() {
-		try {
-			
-			// 1 => Sale Order
-			
-			BrowserOpen.log().info("Sale Order Creation Started");
-			ExtentManager.test.log(Status.PASS, "Sale Order Creation Started");
+	DataCreationPage dcp = new DataCreationPage();
+	public boolean openSaleOrderModuleFromDashBoard() {
 
-			
-			openSaleOrderModule.click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		dcp.openModuleFromDashBoard(3);
 
-			Duration duration = Duration.ofSeconds(10l, 10);
-			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button.New_product")));
-
-			addNewSaleOrder.click();
-
-			BrowserOpen.log().info("Sale Order creation Form Open");
-			ExtentManager.test.log(Status.PASS, "Sale Order creation Form Open");
-			return true;
-		} catch (Exception e) {
-
-			BrowserOpen.log().error("Sale Order Creation Form not Opened:" + e);
-			ExtentManager.test.log(Status.FAIL, "Sale Order Creation Form not Opened:" + e);
-			
-		}
-
-		return false;
-	}
-
-	public boolean addCCustomer() {
-		try {
-			searchClient.click();
-			addClient.click();
-			return true;
-		} catch (Exception e) {
-
-			BrowserOpen.log().error("Customer not added:" + e);
-			ExtentManager.test.log(Status.FAIL, "Customer not added:" + e);
-		}
-
-		return false;
+		return true;
 
 	}
 
-	public boolean selectProduct() {
-		try {
-			searchProduct.click();
-			addProduct.click();
+	public boolean openAddNewSaleOrderPage() {
 
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToQtyINV);
+		dcp.CreateNewInvoicePageButton();
 
-			BrowserOpen.log().info("Page scrolled to 'QtY' ");
-			ExtentManager.test.log(Status.PASS, "Page scrolled to 'QtY' ");
-
-			// Wait for the element to be present and clickable
-			Duration duration = Duration.ofSeconds(10l, 10);
-			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
-			wait.until(ExpectedConditions.elementToBeClickable(addItemButton));
-			// Click the element using JavaScript to avoid interception issues
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", addItemButton);
-
-
-			BrowserOpen.log().info("Product Added Successfully");
-			ExtentManager.test.log(Status.PASS, "Product Added Successfully");
-			return true;
-		} catch (Exception e) {
-
-			BrowserOpen.log().error("Product Line item not Added:" + e);
-			ExtentManager.test.log(Status.FAIL, "Product Line item not Added:" + e);
-			
-		}
-
-		return false;
-	}
-
-	public boolean saveInvoice() {
-		try {
-
-			saveSaleOrder.click();
-
-			BrowserOpen.log().info("Sale Order Added Successfully");
-			ExtentManager.test.log(Status.PASS, "Sale Order Added Successfully");
-			return true;
-		} catch (Exception e) {
-
-			BrowserOpen.log().error("Didn't Click on Save Sale Order Button:" + e );
-			ExtentManager.test.log(Status.FAIL, "Didn't Click on Save Sale Order Button:" + e);
-		}
-
-		return false;
+		BrowserOpen.log().info("SaleOrder creation Form Open");
+		ExtentManager.test.log(Status.PASS, "SaleOrder creation Form Open");
+		return true;
 
 	}
 
-	public boolean dashboard() {
-		try {
+	public boolean cancelSaleOrderCreationForm() {
 
+		driver.manage().timeouts().implicitlyWait(duration.ofSeconds(5));
+		dcp.CreateNewInvoicePageButton();
+		dcp.cancelInvoiceForm();
 
-			BrowserOpen.log().info("Waited 5 second");
-			ExtentManager.test.log(Status.PASS, "Waited 5 second");
-			saleOrderToDashboard.click();
-			
+		BrowserOpen.log().info("Cancel Button is working on Sale Order Creation Form");
+		ExtentManager.test.log(Status.PASS, "Cancel Button is working on Sale Order Creation Form");
+		return true;
 
-			BrowserOpen.log().info("We have Successfully Completed Fourth Module");
-			ExtentManager.test.log(Status.PASS, "We have Successfully Completed Fourth Module");
-		
+	}
 
-			return true;
-		} catch (Exception e) {
+	public boolean addHeader() {
 
-			BrowserOpen.log().error("Failed to Go on Dashboard from Invoice List" + e);
-			ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Sale Order List" + e);			e.printStackTrace();
-		}
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-		return false;
+		dcp.addDataForHeader();
 
+		BrowserOpen.log().info("SaleOrder Header Added");
+		ExtentManager.test.log(Status.PASS, "SaleOrder Header Added");
+
+		return true;
+
+	}
+
+	public boolean addCustomer() {
+
+		dcp.SelectClient();
+		dcp.addClient(6);
+
+		BrowserOpen.log().info("Customer Added SuccessFully");
+		ExtentManager.test.log(Status.PASS, "Customer Added SuccessFully");
+		return true;
+
+	}
+
+	public boolean addproduct() {
+
+		dcp.addProductItem();
+
+		BrowserOpen.log().info("Product Added SuccessFully");
+		ExtentManager.test.log(Status.PASS, "Product Added SuccessFully");
+		return true;
+	}
+
+	public boolean addtermsAndCustomField() {
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		dcp.termsAndCondition();
+		dcp.addCustomField();
+
+		BrowserOpen.log().info("SaleOrder Terms&Condition And Custom Field Added");
+		ExtentManager.test.log(Status.PASS, "SaleOrder Terms&Condition And Custom Field Added");
+
+		return true;
+
+	}
+
+	public boolean addDiscountTaxShippingAndROundOff() {
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		dcp.addDiscount();
+		dcp.addTax();
+		dcp.shipping();
+		dcp.roundOff();
+
+		BrowserOpen.log().info("SaleOrder Discount, Tax Shpping Charges And RoundOff Added");
+		ExtentManager.test.log(Status.PASS, "SaleOrder Discount, Tax Shpping Charges And RoundOff Added");
+
+		return true;
+
+	}
+
+	public boolean addFooterAndNote() {
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		dcp.addFooter();
+		dcp.invoiceNote();
+
+		BrowserOpen.log().info("Footer And Notes of SaleOrder Added SuccessFully");
+		ExtentManager.test.log(Status.PASS, "Footer And Notes of SaleOrder Added SuccessFully");
+
+		return true;
+
+	}
+
+	public boolean saveSaleOrder() {
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		dcp.saveInvoiceButton();
+
+		BrowserOpen.log().info(" SaleOrder Added SuccessFully");
+		ExtentManager.test.log(Status.PASS, "SaleOrder Added SuccessFully");
+
+		return true;
+
+	}
+
+	public boolean listToDashboard() {
+		dcp.listToDashBoard();
+		return true;
 	}
 
 }

@@ -15,8 +15,8 @@ import com.aventstack.extentreports.Status;
 import browserSetup.BrowserOpen;
 import browserSetup.ExtentManager;
 
-public class EstimateListPage extends BrowserOpen {
-	
+public class EstimateListPage extends DataCreationPage {
+
 //	All the elements to make a Invoice required actions
 //	We use @FindBy testNg method to locate the element
 //	There are 3 works happen in page object model 1. Locate all the element 2. make constructor & initialize elements
@@ -27,177 +27,175 @@ public class EstimateListPage extends BrowserOpen {
 
 	// Open Invoice to select Estimate list
 	@FindBy(xpath = "//div[@class='menu-scrolling']/div/ul/li[2]/a")
-	WebElement clickOnInvoice;
-	
+	private WebElement clickOnInvoice;
+
 	// Click on Add Invoice button
 	@FindBy(xpath = "//li[@class='mm-active']/ul/li[4]/a[contains(text(),  'Estimate List')]")
-	WebElement openEstimateList;
-	
-	// Click on Add Invoice button
-	@FindBy(css = "button.New_product")
-	WebElement addNewEstimate;
-
-	// Click on Client Section
-	@FindBy(css = "input[placeholder='Search & Select Client']")
-	WebElement searchClient;
-
-
-	// Select and Add Client
-	@FindBy(css = "div[role='listbox'] mat-option:nth-of-type(4)")
-	WebElement addClient;
-
-	// Click on Add product section to search for product
-	@FindBy(css = "input[name='itemName']")
-	WebElement searchProduct;
-
-	// Add Product
-	@FindBy(xpath = "//div[@class='cdk-overlay-connected-position-bounding-box']//span[contains(text(), ' Kiwi')]")
-	WebElement addProduct;
-
-	// Scroll the Page to click on line itme
-	@FindBy(css = "th.qty-field")
-	WebElement scrollToQtyINV;
-
-//	We have to wait and then Click on add product line item Button
-	@FindBy(css = "button.add-line-form")
-	WebElement addItemButton;
-
-	// Now Click on Save estimate
-	@FindBy(xpath = "//div[@class='fa-pull-right']//button[contains(text(), ' Save Estimate ')]")
-	WebElement saveEstimate;
-
-	// Now Going Back To Dashboard
-	@FindBy(css = "li.breadcrumb-item > a[routerlink='/dashboard']")
-	WebElement EstimateToDashboard;
+	private WebElement openEstimateList;
 
 //	(2) Made a Constructor 
 //	Initialize the Element
 	public EstimateListPage() {
 
-		
-
 		PageFactory.initElements(driver, this);
 	}
 
+	DataCreationPage dcp = new DataCreationPage();
 // (3) Perform Action on the Elements
 
-	public boolean openEstimateCreationForm() {
+	public boolean openEstimateModuleFromDashBoard() {
 		try {
-			
+
 			clickOnInvoice.click();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			openEstimateList.click();
-			
+
 			BrowserOpen.log().info("Estimate Creation Started");
 			ExtentManager.test.log(Status.PASS, "Estimate Creation Started");
 
-
-			Duration duration = Duration.ofSeconds(10l, 10);
-			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button.New_product")));
-
-			addNewEstimate.click();
-
-			BrowserOpen.log().info("Estimate creation Form Open");
-			ExtentManager.test.log(Status.PASS, "Estimate creation Form Open");
 			return true;
 		} catch (Exception e) {
 
 			BrowserOpen.log().error("Estimate Creation Form not Opened:" + e);
 			ExtentManager.test.log(Status.FAIL, "Estimate Creation Form not Opened:" + e);
-			
+
 		}
 
 		return false;
 	}
 
-	public boolean addCCustomer() {
-		try {
-			searchClient.click();
-			addClient.click();
-			return true;
-		} catch (Exception e) {
+	public boolean openAddNewEstimatePage() {
 
-			BrowserOpen.log().error("Customer not added:" + e);
-			ExtentManager.test.log(Status.FAIL, "Customer not added:" + e);
-		}
+		dcp.CreateNewInvoicePageButton();
 
-		return false;
+		BrowserOpen.log().info("Estimate creation Form Open");
+		ExtentManager.test.log(Status.PASS, "Estimate creation Form Open");
+		return true;
 
 	}
 
-	public boolean selectProduct() {
-		try {
-			searchProduct.click();
-			addProduct.click();
+	public boolean cancelEstimateCreationForm() {
 
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToQtyINV);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		dcp.CreateNewInvoicePageButton();
+		dcp.cancelInvoiceForm();
 
-			BrowserOpen.log().info("Page scrolled to 'QtY' ");
-			ExtentManager.test.log(Status.PASS, "Page scrolled to 'QtY' ");
+		BrowserOpen.log().info("Cancel Button is working on Estimate Creation Form");
+		ExtentManager.test.log(Status.PASS, "Cancel Button is working on Estimate Creation Form");
+		return true;
 
-			// Wait for the element to be present and clickable
-			Duration duration = Duration.ofSeconds(10l, 10);
-			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
-			wait.until(ExpectedConditions.elementToBeClickable(addItemButton));
-			// Click the element using JavaScript to avoid interception issues
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", addItemButton);
+	}
 
+	public boolean addHeader() {
 
-			BrowserOpen.log().info("Product Added Successfully");
-			ExtentManager.test.log(Status.PASS, "Product Added Successfully");
-			return true;
-		} catch (Exception e) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-			BrowserOpen.log().error("Product Line item not Added:" + e);
-			ExtentManager.test.log(Status.FAIL, "Product Line item not Added:" + e);
-			
-		}
+		dcp.addDataForHeader();
 
-		return false;
+		BrowserOpen.log().info("Estimate Header Added");
+		ExtentManager.test.log(Status.PASS, "Estimate Header Added");
+
+		return true;
+
+	}
+
+	public boolean addCustomer() {
+
+		dcp.SelectClient();
+		dcp.addClient(6);
+
+		BrowserOpen.log().info("Customer Added SuccessFully");
+		ExtentManager.test.log(Status.PASS, "Customer Added SuccessFully");
+		return true;
+
+	}
+
+	public boolean addproduct() {
+
+		dcp.addProductItem();
+
+		BrowserOpen.log().info("Product Added SuccessFully");
+		ExtentManager.test.log(Status.PASS, "Product Added SuccessFully");
+		return true;
+	}
+
+	public boolean addtermsAndCustomField() {
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		dcp.termsAndCondition();
+		dcp.addCustomField();
+
+		BrowserOpen.log().info("Estimate Terms & Condition And Custom Field Added");
+		ExtentManager.test.log(Status.PASS, "Estimate Terms&Condition And Custom Field Added");
+
+		return true;
+
+	}
+
+	public boolean addDiscountTaxShippingAndROundOff() {
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		dcp.addDiscount();
+		dcp.addTax();
+		dcp.shipping();
+		dcp.roundOff();
+
+		BrowserOpen.log().info("Estimate Discount, Tax Shpping Charges And RoundOff Added");
+		ExtentManager.test.log(Status.PASS, "Estimate Discount, Tax Shpping Charges And RoundOff Added");
+
+		return true;
+
+	}
+
+	public boolean addFooterAndNote() {
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		dcp.addFooter();
+		dcp.invoiceNote();
+
+		BrowserOpen.log().info("Footer And Notes of Estimate Added SuccessFully");
+		ExtentManager.test.log(Status.PASS, "Footer And Notes of Estimate Added SuccessFully");
+
+		return true;
+
 	}
 
 	public boolean saveEstimate() {
-		try {
 
-			saveEstimate.click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		dcp.saveInvoiceButton();
 
-			BrowserOpen.log().info("Estimate Added Successfully");
-			ExtentManager.test.log(Status.PASS, "Estimate Added Successfully");
-			return true;
-		} catch (Exception e) {
+		BrowserOpen.log().info(" Estimate Added SuccessFully");
+		ExtentManager.test.log(Status.PASS, "Estimate Added SuccessFully");
 
-			BrowserOpen.log().error("Didn't Click on Save Estimate Button:" + e );
-			ExtentManager.test.log(Status.FAIL, "Didn't Click on Save Estimate Button:" + e);
-		}
-
-		return false;
+		return true;
 
 	}
 
-	public boolean dashboard() {
+	public boolean listToDashboard() {
+
+		dcp.listToDashBoard();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+		return true;
+	}
+
+	public boolean closeInvoiceListdropDown() {
 		try {
 
-
-			BrowserOpen.log().info("Waited 5 second");
-			ExtentManager.test.log(Status.PASS, "Waited 5 second");
-			EstimateToDashboard.click();
-			Thread.sleep(50);
-			clickOnInvoice.click();			
-			Thread.sleep(500);
-			BrowserOpen.log().info("We have Successfully Completed Sixth Module");
-			ExtentManager.test.log(Status.PASS, "We have Successfully Completed Sixth Module");
-		
+			clickOnInvoice.click();
+			BrowserOpen.log().info("Invoice List DropDown Close SuccessFully");
+			ExtentManager.test.log(Status.PASS, "Invoice List DropDown Close SuccessFully");
 
 			return true;
 		} catch (Exception e) {
 
-			BrowserOpen.log().error("Failed to Go on Dashboard from Invoice List" + e);
-			ExtentManager.test.log(Status.FAIL, "Failed to Go on Dashboard from Invoice List" + e);			e.printStackTrace();
+			BrowserOpen.log().error("Invoice List DropDown not Close:" + e);
+			ExtentManager.test.log(Status.FAIL, "Invoice List DropDown not Close:" + e);
+
 		}
 
 		return false;
-
 	}
 
 }

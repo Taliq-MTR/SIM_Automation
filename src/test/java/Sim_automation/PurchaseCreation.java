@@ -4,17 +4,20 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pageObjects.PurchaseListPage;
-import pageObjects.Purchaseop;
 
 public class PurchaseCreation extends PurchaseListPage {
 
 	@Test(priority = 2, description = "Add a Purchase in the SIM-Web App")
 	public void Purchaseform() throws InterruptedException {
-		Purchaseop purpom = new Purchaseop();
+		PurchaseListPage purpom = new PurchaseListPage();
 
 		boolean createPur = purpom.openPurchaseModuleFromDashBoard();
 		Assert.assertEquals(createPur, true, "open Purchase List Page From DashBoard successfully");
 		Thread.sleep(500);
+
+		boolean cancelPur = purpom.cancelPurchaseForm();
+		Assert.assertEquals(cancelPur, true, "Purchase Form Cancelled successfully");
+		Thread.sleep(900);
 
 		boolean purpage = purpom.openAddNewPurchasePage();
 		Assert.assertEquals(purpage, true,

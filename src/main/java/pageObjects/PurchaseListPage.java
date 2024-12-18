@@ -20,45 +20,6 @@ import browserSetup.ExtentManager;
 public class PurchaseListPage extends DataCreationPage {
 	DataCreationPage dcp = new DataCreationPage();
 
-////	 Click On Purchase Module
-//
-//	@FindBy(xpath = "//div[@class='grid-container']//div[2]/h4[contains(text(), 'Purchase ')]")
-//	WebElement openPurchaseModule;
-//	// Click on Add Purchase button
-//	@FindBy(css = "button.New_product")
-//	WebElement addNewPurchase;
-//
-//	// Click on Supplier Section
-//	@FindBy(css = "#lwAddClient")
-//	WebElement searchSupplier;
-//
-//	// Select and Add Client
-//	@FindBy(css = "div[role='listbox'] mat-option:nth-of-type(2)")
-//	WebElement addSupplier;
-//
-//	// Click on Add product section to search for product
-//	@FindBy(css = "input[name='itemName']")
-//	WebElement searchProduct;
-//
-//	// Add Product
-//	@FindBy(xpath = "//mat-option//span[text()=' Football ']")
-//	WebElement addProduct;
-//
-//	// Scroll the Page to click on line item
-//	@FindBy(css = "th.qty-field")
-//	WebElement scrollToQtyINV;
-//
-////	We have to wait and then Click on add product line item Button
-//	@FindBy(css = "button.add-line-form")
-//	WebElement addItemButton;
-//
-//	// Now Click on Save Purchase
-//	@FindBy(xpath = "//button[contains(@class, 'btn-done') and contains(text(), 'Save Purchase')]")
-//	WebElement savePurchase;
-//
-//	// Now Going Back To Dashboard
-//	@FindBy(css = "a[href='#/dashboard']")
-//	WebElement purchaseToDashboard;
 
 //	(2) Made a Constructor 
 //	Initialize the Element
@@ -74,6 +35,17 @@ public class PurchaseListPage extends DataCreationPage {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		dcp.openModuleFromDashBoard(2);
 
+		return true;
+
+	}
+
+	public boolean cancelPurchaseForm() {
+
+		dcp.CreateNewInvoicePageButton();
+		dcp.cancelInvoiceForm();
+
+		BrowserOpen.log().info("Cancel Button is working on Purchase Creation Form");
+		ExtentManager.test.log(Status.PASS, "Cancel Button is working on Purchase Creation Form");
 		return true;
 
 	}

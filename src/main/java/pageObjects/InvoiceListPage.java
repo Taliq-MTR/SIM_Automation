@@ -13,7 +13,6 @@ import com.aventstack.extentreports.Status;
 import browserSetup.BrowserOpen;
 import browserSetup.ExtentManager;
 
-
 public class InvoiceListPage extends DataCreationPage {
 
 //	All the elements to make a Invoice required actions
@@ -95,6 +94,19 @@ public class InvoiceListPage extends DataCreationPage {
 		}
 
 		return false;
+	}
+
+//	Cancel Invoice Creation Form
+
+	public boolean cancelInvoiceCreationForm() {
+
+		dcp.CreateNewInvoicePageButton();
+		dcp.cancelInvoiceForm();
+
+		BrowserOpen.log().info("Cancel Button is working on Invoice Creation Form");
+		ExtentManager.test.log(Status.PASS, "Cancel Button is working on Invoice Creation Form");
+		return true;
+
 	}
 
 	public boolean openAddNewInvoicePage() {
@@ -317,8 +329,9 @@ public class InvoiceListPage extends DataCreationPage {
 		return false;
 	}
 
-	public void listToDashboard() {
+	public boolean listToDashboard() {
 		dcp.listToDashBoard();
+		return true;
 	}
 
 }
