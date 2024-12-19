@@ -15,11 +15,11 @@ public class PaymentPaidCreation extends PaymentPaidListPage{
 		
 		boolean openPaymentList = paymentP.openPaymentListForm();
 		Assert.assertEquals(openPaymentList, true, "Payment List Form Open");
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		
 		boolean addNewPayment = paymentP.addPaymentForm();
 		Assert.assertEquals(addNewPayment, true, "Form open to fill up Details for New payment");
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		
 		
 		

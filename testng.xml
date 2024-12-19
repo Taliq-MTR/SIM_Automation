@@ -10,19 +10,18 @@
 	<test thread-count="1" name="Test">
 		<classes>
 			<class name="Sim_automation.Login" />
-			
 			<class name="Sim_automation.EstimateCreation" />
 			<class name="Sim_automation.PurchaseCreation" />
-			<class name="Sim_automation.InvoiceCreation" /> 
+			<class name="Sim_automation.InvoiceCreation" />
 			<class name="Sim_automation.PurchaseOrderCreation" />
-			<class name="Sim_automation.SaleOrderCreation" /> 
+			<class name="Sim_automation.SaleOrderCreation" />
 			<class name="Sim_automation.PaymentReceivedCreation" />
 			<class name="Sim_automation.PaymentPaidCreation" />
-			
-			
-			
-			<!-- <class name="Sim_automation.EstimateCreationdummy" /> -->
 			<class name="Sim_automation.LogOut" />
+
+			<!-- 
+			
+			<class name="Sim_automation.EstimateCreationdummy" /> -->
 
 
 		</classes>

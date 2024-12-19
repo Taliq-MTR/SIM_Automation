@@ -2,6 +2,7 @@ package pageObjects;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -85,6 +86,23 @@ public class PaymentPaidListPage extends BrowserOpen {
 	 }
 	// (3) Perform Action on the Elements
 	 
+	 protected WebElement selectSupplier(int index) {
+			try {
+				// Use String.format to dynamically insert the index into the XPath
+				String clientSelection = String.format("//virtual-scroller//tr[%d]//h4", index);
+				WebElement clientSelected = driver.findElement(By.xpath(clientSelection));
+				clientSelected.click();
+
+				BrowserOpen.log().info("Dynamically Supplier Selected For Advance Payment");
+				ExtentManager.test.log(Status.PASS, "Dynamically Supplier Selected For Advance Payment");
+				return clientSelected;
+			} catch (Exception e) {
+				// Log the error if the client is not added
+				BrowserOpen.log().error("Dynamic Client Is not Added: " + e);
+				ExtentManager.test.log(Status.FAIL, "Dynamic Client Is not Added: " + e);
+			}
+			return null;
+		}
 	 
 	 public boolean openPaymentListForm () {
 		 try {
@@ -119,13 +137,16 @@ public class PaymentPaidListPage extends BrowserOpen {
 		   driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		   supplierButton.click();
 		   Thread.sleep(2000);
-//		 Scroll to select the Supplier we want
-		   driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-		 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToSelectSupplier);
-		   BrowserOpen.log().info("Supplier List Scrolled SuccessFully");
-		   ExtentManager.test.log(Status.PASS, "Supplier List Scrolled SuccessFully");
-		 
-		   selectSupplierName.click();
+////		 Scroll to select the Supplier we want
+//		   driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+//		 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollToSelectSupplier);
+//		   BrowserOpen.log().info("Supplier List Scrolled SuccessFully");
+//		   ExtentManager.test.log(Status.PASS, "Supplier List Scrolled SuccessFully");
+//		 
+//		   selectSupplierName.click();
+		   
+//		   Select supplier Dynamically by calling method
+		   selectSupplier(3);
 		   Thread.sleep(2000);
 		   BrowserOpen.log().info("Seleceted The Supplier MTR");
 		   ExtentManager.test.log(Status.PASS, "Seleceted The Supplier Sneha");

@@ -14,19 +14,19 @@ public class PaymentReceivedCreation extends PaymentReceivedListPage{
 		
 		boolean openPaymentList = paymentR.openPaymentListForm();
 		Assert.assertEquals(openPaymentList, true, "Payment List Form Open");
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		
 		boolean addNewPayment = paymentR.addPaymentForm();
 		Assert.assertEquals(addNewPayment, true, "Form open to fill up Details for New payment");
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		
 		boolean addNewReceipt = paymentR.addReceiptForm();
 		Assert.assertEquals(addNewReceipt, true, "Form open to fill up Details for the receipt of the corresponding Payment");
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		
-		boolean paymentToDashboard = paymentR.dashboard();
+		boolean paymentToDashboard = paymentR.listToDashboard();
 		Assert.assertEquals(paymentToDashboard, true, "Successfully Came back to Dasboard From Payment List");
-		Thread.sleep(3500);
+		Thread.sleep(5000);
 		
 	}
 }
