@@ -14,10 +14,10 @@ import browserSetup.BrowserOpen;
 public class LoginPage extends BrowserOpen {
 	
 //	1) Allocate all the web element
-	@FindBy (xpath="//div[@class='box-login']//input[@name='email']")
+	@FindBy (css="input[name='email']")
 	WebElement username;
 
-	@FindBy (xpath="//div[contains(@class, 'form-group password-field')]//input[@name='password']")
+	@FindBy (css="input[name='password']")
 	WebElement password;
 	
 	@FindBy (css = "button.public-btn")
