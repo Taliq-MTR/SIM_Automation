@@ -19,6 +19,19 @@ public class PaymentCreationPage extends BrowserOpen {
 
 //	(1) All the elements will locate here
 
+//	Click on Home To disable any Kind of Side bar menue
+	@FindBy(css = "button.home-btn")
+	private WebElement homeBttn;
+
+//	Click on Go to Dashboard
+	@FindBy(css = "button[routerlink='/dashboard']")
+	private WebElement goToDashboardBttn;
+	
+//	Scroll to expense To Open payment List
+	@FindBy(xpath = "//ul[@id= 'side-menu']/li[4]")
+	private WebElement scrollToExpense;
+	
+
 //	Select Payment Module from Left Drawer
 	@FindBy(xpath = "//*[@id='side-menu']/li[6]/a")
 	private WebElement paymentsideMenu;
@@ -34,13 +47,13 @@ public class PaymentCreationPage extends BrowserOpen {
 	@FindBy(xpath = "//button[contains(text(), ' Add Payment ')]")
 	private WebElement addnewPaymentButton;
 
-//	Scroll to the customer to select the customer which we want to make payment
-	@FindBy(xpath = "//*[@class=\"mat-mdc-tab-body-wrapper\"]//table/tbody/tr[2]/td/div/div/h4[contains(text(), 'Neha ')]")
-	private WebElement scrollToSelectCustomer;
-
-//	Select Customer for payment
-	@FindBy(xpath = "//h4[(text()='Sneha ')]")
-	private WebElement selectCustomer;
+////	Scroll to the customer to select the customer which we want to make payment
+//	@FindBy(xpath = "//*[@class=\"mat-mdc-tab-body-wrapper\"]//table/tbody/tr[2]/td/div/div/h4[contains(text(), 'Neha ')]")
+//	private WebElement scrollToSelectCustomer;
+//
+////	Select Customer for payment
+//	@FindBy(xpath = "//h4[(text()='Sneha ')]")
+//	private WebElement selectCustomer;
 
 // 	Click on 'Lumsum' Amount for advance payment 
 	@FindBy(xpath = "//div[contains(text(), 'Lumpsum Amount')]")
@@ -75,7 +88,7 @@ public class PaymentCreationPage extends BrowserOpen {
 	private WebElement paymentlistToDashboard;
 
 //	CLose Button
-	@FindBy(css = "button[class='btn-cancel']")
+	@FindBy(css = "button[class='cancel_btn']")
 	private WebElement closeButton;
 
 	public PaymentCreationPage() {
@@ -83,8 +96,38 @@ public class PaymentCreationPage extends BrowserOpen {
 		PageFactory.initElements(driver, this);
 	}
 
+	protected boolean goToHome() {
+		try {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			homeBttn.click();
+			
+
+			return true;
+		} catch (Exception e) {
+			BrowserOpen.log().error("Didn't Perform action to Go on Home Page:" + e);
+			ExtentManager.test.log(Status.FAIL, "Didn't Perform action to Go on Home Page:" + e);
+		}
+		return false;
+	}
+
+	protected boolean goToDashBoard() {
+		try {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			goToDashboardBttn.click();
+			return true;
+		} catch (Exception e) {
+			BrowserOpen.log().error("Didn't Perform action to \"Go To DashBoard\":" + e);
+			ExtentManager.test.log(Status.FAIL, "Didn't Perform action to \"Go To DashBoard\":" + e);
+		}
+		return false;
+	}
+
 	protected boolean clickOnPaymentOnSidebar() {
 		try {
+			
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].scrollIntoView(true);", scrollToExpense);
+			
 			paymentsideMenu.click();
 			return true;
 		} catch (Exception e) {
@@ -94,11 +137,9 @@ public class PaymentCreationPage extends BrowserOpen {
 		return false;
 	}
 
-	
-
 	protected boolean openPaymentListForm() {
 		try {
-			
+
 			// Wait for the "Payment List" element to be visible and clickable
 			Duration duration = Duration.ofSeconds(10l, 10);
 			WebDriverWait wait = new WebDriverWait(driver, duration); // Set an explicit wait of 10 seconds
@@ -147,6 +188,61 @@ public class PaymentCreationPage extends BrowserOpen {
 			ExtentManager.test.log(Status.FAIL, "Dynamic Client Is not Added: " + e);
 		}
 		return null;
+	}
+	
+	protected boolean addLumsumPayment() {
+		try {
+			PaymentCreationPage pcp = new PaymentCreationPage();
+			
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			addnewPaymentButton.click();	
+			selectLumsumPayment.click();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			addAmount.sendKeys("500");
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			addNotes.sendKeys("This Payment Added Through Hybrid FrameWork By SIR \"MTR\" ");
+			nextButton.click();
+			paymentDonebutton.click();
+			
+			
+			
+			BrowserOpen.log().info("LumSum Payment Added SuccessFully");
+			ExtentManager.test.log(Status.PASS, "LumSum Payment Added SuccessFully");
+			return true;
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("LumSum Payment not Added: " + e);
+			ExtentManager.test.log(Status.FAIL, "LumSum Payment not Added: " + e);
+		}
+		return false;
+	}
+	
+	protected boolean addReciept() {
+		try {
+			closeButton.click();
+			BrowserOpen.log().info("Clicked On CLose Button");
+			ExtentManager.test.log(Status.PASS, "Clicked On CLose Button");
+			return true;
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("CLose Button is Not Clicked: " + e);
+			ExtentManager.test.log(Status.FAIL, "CLose Button is Not Clicked: " + e);
+		}
+		return false;
+	}
+	
+	protected boolean paymentListToDashBoard() {
+		try {
+			closeButton.click();
+			BrowserOpen.log().info("Clicked On CLose Button");
+			ExtentManager.test.log(Status.PASS, "Clicked On CLose Button");
+			return true;
+		} catch (Exception e) {
+
+			BrowserOpen.log().error("CLose Button is Not Clicked: " + e);
+			ExtentManager.test.log(Status.FAIL, "CLose Button is Not Clicked: " + e);
+		}
+		return false;
 	}
 
 }

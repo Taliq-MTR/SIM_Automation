@@ -132,11 +132,11 @@ public class DataCreationPage extends BrowserOpen {
 	@FindBy(css = "a[href='#lwInvoiceFooter']")
 	private WebElement footer;
 
-	// Click on Add to Payment Button
+	// Click on Footer
 	@FindBy(css = "textarea[name='invoiceFooter']")
 	private WebElement addDataInFooter;
 
-	// Click on Add to Payment Button
+	// Click on Add to Notes Button
 	@FindBy(css = "textarea[name='invoiceNote']")
 	private WebElement addDataIn_InvoiceNote;
 
@@ -201,14 +201,14 @@ public class DataCreationPage extends BrowserOpen {
 			Thread.sleep(500);
 			cancelButton.click();
 
-			BrowserOpen.log().info("Cancel Button is working on Invoice Creation Form");
-			ExtentManager.test.log(Status.PASS, "Cancel Button is working on Invoice Creation Form");
+			BrowserOpen.log().info("Cancel Button is working on after open any type of creation Creation Form");
+			ExtentManager.test.log(Status.PASS, "Cancel Button is working on after open any type of creation Creation Form");
 			return true;
 
 		} catch (Exception e) {
 
-			BrowserOpen.log().error("Cancel Button is not working on Invoice Creation Form:" + e);
-			ExtentManager.test.log(Status.FAIL, "Cancel Button is not working on Invoice Creation Form:" + e);
+			BrowserOpen.log().error("Cancel Button is not working on after open any type of creation Creation Form:" + e);
+			ExtentManager.test.log(Status.FAIL, "Cancel Button is not working on after open any type of creation Creation Form:" + e);
 
 		}
 
@@ -611,10 +611,10 @@ public class DataCreationPage extends BrowserOpen {
 		return false;
 	}
 
-	protected boolean invoiceNote() {
+	public boolean invoiceNote() {
 		try {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
+			addDataIn_InvoiceNote.click();
 			addDataIn_InvoiceNote
 					.sendKeys("Notes Added for the Invoice Which will Not show in PDF, This Data is Auto Genereated");
 

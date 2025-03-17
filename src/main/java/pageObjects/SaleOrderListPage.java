@@ -27,6 +27,8 @@ public class SaleOrderListPage extends DataCreationPage {
 // (3) Perform Action on the Elements
 
 	DataCreationPage dcp = new DataCreationPage();
+	
+	
 	public boolean openSaleOrderModuleFromDashBoard() {
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

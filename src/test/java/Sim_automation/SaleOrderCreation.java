@@ -3,6 +3,7 @@ package Sim_automation;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import pageObjects.DataCreationPage;
 import pageObjects.InvoiceListPage;
 import pageObjects.SaleOrderListPage;
 
@@ -52,7 +53,7 @@ public class SaleOrderCreation extends SaleOrderListPage {
 		Assert.assertEquals(saveSaleOrder, true, "SaleOrder Created successfully");
 		Thread.sleep(1000);
 
-		boolean SaleOrderToDashboard = SaleOrderpom.listToDashBoard();
+		boolean SaleOrderToDashboard = SaleOrderpom.listToDashboard();
 		Assert.assertEquals(SaleOrderToDashboard, true, "Successfully Came back to Dasboard From SaleOrder");
 		Thread.sleep(3500);
 
