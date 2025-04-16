@@ -68,11 +68,11 @@ public class PaymentCreationPage extends BrowserOpen {
 	private WebElement addNotes;
 
 //	Click on Next button to submit payment
-	@FindBy(xpath = "//button[@class='btn-done']")
+	@FindBy(xpath = "//button[@class='save_btn']")
 	private WebElement nextButton;
 
 //	Click on Done button to submit the payment form
-	@FindBy(xpath = "//button[contains(@class, 'pay-next font-size-15')]")
+	@FindBy(xpath = "//button[contains(@class, 'payment_next_btn') and text()=' Next ']")
 	private WebElement paymentDonebutton;
 
 //	Click on Yes button to add Receipt
@@ -160,6 +160,13 @@ public class PaymentCreationPage extends BrowserOpen {
 //	Check the Close Button is working or not
 	protected boolean closeModule() {
 		try {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			addnewPaymentButton.click();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			selectClient(2).click();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			selectLumsumPayment.click();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			closeButton.click();
 			BrowserOpen.log().info("Clicked On CLose Button");
 			ExtentManager.test.log(Status.PASS, "Clicked On CLose Button");
@@ -195,13 +202,16 @@ public class PaymentCreationPage extends BrowserOpen {
 			PaymentCreationPage pcp = new PaymentCreationPage();
 			
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-			addnewPaymentButton.click();	
+//			addnewPaymentButton.click();	
 			selectLumsumPayment.click();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			addAmount.sendKeys("500");
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			addNotes.sendKeys("This Payment Added Through Hybrid FrameWork By SIR \"MTR\" ");
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+			Thread.sleep(200);
 			nextButton.click();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 			paymentDonebutton.click();
 			
 			
@@ -233,7 +243,7 @@ public class PaymentCreationPage extends BrowserOpen {
 	
 	protected boolean paymentListToDashBoard() {
 		try {
-			closeButton.click();
+			paymentlistToDashboard.click();
 			BrowserOpen.log().info("Clicked On CLose Button");
 			ExtentManager.test.log(Status.PASS, "Clicked On CLose Button");
 			return true;

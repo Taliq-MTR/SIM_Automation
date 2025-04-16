@@ -104,17 +104,17 @@
                     <div class="method-list-content passed suite-Suite_to_automate_SIM">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite_to_automate_SIM" title="Sim_automation.SaleOrderCreation" class="method navigator-link" hash-for-method="SaleOrderform">SaleOrderform</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite_to_automate_SIM" title="Sim_automation.LogOut" class="method navigator-link" hash-for-method="logOutdata">logOutdata</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite_to_automate_SIM" title="Sim_automation.Login" class="method navigator-link" hash-for-method="logindata">logindata</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite_to_automate_SIM" title="Sim_automation.PaymentReceivedCreation" class="method navigator-link" hash-for-method="paymentRecivedForm">paymentRecivedForm</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite_to_automate_SIM -->
@@ -166,16 +166,16 @@
           <div class="suite-Suite_to_automate_SIM-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">Sim_automation.SaleOrderCreation</span>
+              <span class="class-name">Sim_automation.PaymentReceivedCreation</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="SaleOrderform">
-                  </a> <!-- SaleOrderform -->
-                  <span class="method-name">SaleOrderform</span>
+                  <a name="paymentRecivedForm">
+                  </a> <!-- paymentRecivedForm -->
+                  <span class="method-name">paymentRecivedForm</span>
                   <em>
-(Add an SaleOrder in the SIM-Web App)                  </em>
+(Add a Payment (Received) in the SIM-Web App)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -196,7 +196,7 @@
   &lt;test thread-count=&quot;1&quot; parallel=&quot;tests&quot; name=&quot;Test&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;Sim_automation.Login&quot;/&gt;
-      &lt;class name=&quot;Sim_automation.SaleOrderCreation&quot;/&gt;
+      &lt;class name=&quot;Sim_automation.PaymentReceivedCreation&quot;/&gt;
       &lt;class name=&quot;Sim_automation.LogOut&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
@@ -239,22 +239,22 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(3);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'SaleOrderform')
-data.setCell(0, 2, 'Sim_automation.SaleOrderCreation')
-data.setCell(0, 3, 16122);
+data.setCell(0, 1, 'logindata')
+data.setCell(0, 2, 'Sim_automation.Login')
+data.setCell(0, 3, 20997);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'logindata')
-data.setCell(1, 2, 'Sim_automation.Login')
-data.setCell(1, 3, 15579);
+data.setCell(1, 1, 'paymentRecivedForm')
+data.setCell(1, 2, 'Sim_automation.PaymentReceivedCreation')
+data.setCell(1, 3, 17295);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'logOutdata')
 data.setCell(2, 2, 'Sim_automation.LogOut')
-data.setCell(2, 3, 6234);
+data.setCell(2, 3, 6359);
 window.suiteTableData['Suite_to_automate_SIM']= { tableData: data, tableDiv: 'times-div-Suite_to_automate_SIM'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 47 seconds</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Suite_to_automate_SIM">
               </div> <!-- times-div-Suite_to_automate_SIM -->
             </div> <!-- times-div -->
@@ -286,7 +286,7 @@ return data;
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
             <div class="ignored-class-div">
-              <span class="ignored-class-name">Sim_automation.SaleOrderCreation</span>
+              <span class="ignored-class-name">Sim_automation.PaymentReceivedCreation</span>
               <div class="ignored-methods-div">
                 <span class="ignored-method-name">browserOpen</span>
                 <br/>
@@ -313,36 +313,36 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-test before">
                 <span class="method-name">browserOpen</span>
-                <span class="method-start">209 ms</span>
+                <span class="method-start">178 ms</span>
               </div> <!-- configuration-test before -->
               <div class="test-method">
                 <span class="method-name">logindata</span>
-                <span class="method-start">9414 ms</span>
+                <span class="method-start">24560 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
-              <div class="chronological-class-name">Sim_automation.SaleOrderCreation</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">Sim_automation.PaymentReceivedCreation</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <span class="method-name">SaleOrderform</span>
-                <span class="method-start">25002 ms</span>
+                <span class="method-name">paymentRecivedForm</span>
+                <span class="method-start">45564 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">Sim_automation.LogOut</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">logOutdata</span>
-                <span class="method-start">41125 ms</span>
+                <span class="method-start">62864 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">Sim_automation.Login</div> <!-- chronological-class-name -->
               <div class="configuration-test after">
                 <span class="method-name">logout</span>
-                <span class="method-start">47360 ms</span>
+                <span class="method-start">69224 ms</span>
               </div> <!-- configuration-test after -->
               <div class="configuration-suite after">
                 <span class="method-name">endReport</span>
-                <span class="method-start">47462 ms</span>
+                <span class="method-start">69341 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
